@@ -1,0 +1,40 @@
+REQUIREMENTS:
+1. Must have dedicated web server (nginx, apache, lighttpd etc), these files cannot be run in the bot's web server.
+2. Dedicated web server must have php installed and enabled.
+3. Php must have curl enabled.
+
+This is the start of implementing a web-based control panel for the bot. Thanks to crunchprank for his starting work on the previous interface test. 
+If at all possible, we would like any contributors to add extra fields to the panel as needed by the bot per different commands, 
+and attach them to this thread. 
+
+Steps:
+1. Extract the files to your web server.
+2. Open includes/config.php
+3. Type in your info and save/
+
+Config.php Example:
+//Web panel login information - This is only to login into the web panel, you don't need to type in your twitch account info here.
+$loginuser='username';
+$loginpass='password';
+
+//Bot connection configuration
+$baseport=25000;
+$owner='your twitch username';
+$url='URL for your web server'; //The url can be an IP address or a url you have directing to that IP. all other details are named corresponding to the bot's botlogin.txt.
+$oauth='your bot's oauth key';
+$botpath='where your bot folder is located';
+
+The url can be an IP address or a url you have directing to that IP. all other details are named corresponding to the bot's botlogin.txt.
+
+Then navigate to the the index.php you extracted to your web server, via your browser. 
+Test the buttons. check the bot console periodically to make sure the commands show up and no odd errors occur. If they do please report them.
+
+MUSIC PLAYER:
+To enable the queue list you must first follow these steps.
+Steps:
+1.Open the config.php you edited before with your bot details
+2.Set the folder for your bot in $botpath=""
+3. Go to the web panel and click on Music Player on the top.
+4. Click on both "Enable Storing" and "Set StorePath"
+
+This should do the trick for you.

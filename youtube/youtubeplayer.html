@@ -1,0 +1,43 @@
+<?php
+include('../includes/includes.php');
+?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Phantombot Youtube Player</title>
+        <script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="../js/webcontrols.js"></script>
+        <script type="text/javascript" src="../js/app.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.min.css" />
+	
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+
+        <link rel="stylesheet" type="text/css" href="../css/youtube.css">
+    </head>
+
+    <body>
+
+        <div class="header">
+            <img id="logo" src="images/logo.png"/>
+            <h1>Music Player</h1>
+        </div>
+        <div class="container">
+            <div id="main">
+                <div id="player"></div>
+				<br />
+				<center>
+				<iframe id="ytf" src="youtubecontrol.php" scrolling="no" frameborder="0" height="100%" width="100%"></iframe>
+				</center>
+				</div>
+				</div>
+            </div>
+
+
+        </div>
+
+    </body>
+</html>

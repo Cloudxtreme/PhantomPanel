@@ -1,0 +1,73 @@
+#logo {
+    width: 48px;
+	text-align: center;
+    float: left;
+    display: inline-block;
+    margin-top: 18px;
+}
+
+.container { 
+position:relative;
+}
+
+.header {
+    background-color: #19191f;
+	border-bottom: 1px solid #46464E;
+    margin-top: -20px;
+    margin-bottom: 10px;
+    height: 70px;
+}
+
+body {
+	color: #8c8c9c;
+    background-color: #19191f;
+}
+
+h1 {
+    color: white;
+    padding-top: 15px;
+	text-align: center;
+    font-size: 17px;
+    font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+    display: inline-block;
+}
+
+#container {
+    width: 350px;
+	left: 0;
+}
+
+
+#main {
+    display: inline;
+    float: left;
+    overflow: hidden;
+    width: 350px;
+    padding-top: 10px;
+}
+
+#player {
+
+    width: 350px;
+	padding-right: 40px;
+
+}
+
+#youtubeframe {
+    background-color: #19191f;
+	width: 350px;
+
+}
+
+#ytf {
+    background-color: #19191f;
+	width: 350px;
+	height: 1000px;
+}
+::-webkit-scrollbar              { background: #3E3E3E; }
+::-webkit-scrollbar-button       { 	background: #19191f; }
+::-webkit-scrollbar-track        { background: #3E3E3E; }
+::-webkit-scrollbar-track-piece  { background: #3E3E3E; }
+::-webkit-scrollbar-thumb        { background: #8c8c9c; }
+::-webkit-scrollbar-corner       { background: #8c8c9c;}
+::-webkit-resizer                { 	background: #19191f}
