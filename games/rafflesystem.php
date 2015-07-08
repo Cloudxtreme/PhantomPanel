@@ -30,9 +30,15 @@ include('../includes/includes.php');
 				</form>
 				</div>
             <div class="panel-body">
-                <form action="" method="post">
-                <button id="rafflestartfollowers" class="btn btn-sm  btn-default" name="message" value="!raffle start -followers 0 signmeup prize">Start Free Raffle (for followers)</button>
-                <button id="rafflestartanyone" class="btn btn-sm  btn-default" name="message" value="!raffle start 0 signmeup prize">Start Free Raffle (for anyone)</button>
+					<form action="" method="post" style="float: left; padding-right: 5px;">
+					<button class="btn btn-sm  btn-default" name="message2" value="!raffle start -followers 0 signmeup ">Start Free Raffle (for followers)</button>
+					<input id="input1" type="text" name="message3" placeholder="<prize>" value="">
+					</form>
+					<form action="" method="post" style="float: left; padding-right: 5px;">
+                <button class="btn btn-sm  btn-default" name="message2" value="!raffle start 0 signmeup ">Start Free Raffle (for anyone)</button>
+					<input id="input1" type="text" name="message3" placeholder="<prize>" value="">
+					</form>
+				<form action="" method="post" style="float: left; padding-right: 5px;">
                 <button id="raffleend" class="btn btn-sm  btn-default" name="message" value="!raffle end">End The Raffle</button>
                 <button id="rafflerepick" class="btn btn-sm  btn-default" name="message" value="!raffle repick">Repick Winner</button>
 
