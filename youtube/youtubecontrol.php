@@ -64,16 +64,12 @@
 
 Now Playing: 
 <marquee style="width: 318px;" behavior="scroll" direction=left>
-<div id="now-playing" style="width: 318px;"></div>
+<div id="now-playing" style="width: 318px;">Loading...</div>
 </marquee>
-Next:
-
+Queue:
 <div style="height:200px;width:318px;border:1px solid #3E3E3E;overflow:auto;font-size:13px;">
-<?php
-$myfile = fopen("$botpath/web/queue.txt", "r") or die("Bot Path not set in config.php!");
-echo fread($myfile,filesize("$botpath/web/queue.txt"));
-fclose($myfile);
-?><br />
+<div id="playlist">Loading...</div>
+<br />
 </div>
 
 
@@ -87,6 +83,15 @@ $(document).ready(function() {
 $.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
 setInterval(function() {
 $('#now-playing').load('nowplaying.php');
+}, 5000); // the "3000" here refers to the time to refresh the div.  it is in milliseconds. 
+});
+// ]]></script>
+
+<script type="text/javascript">// <![CDATA[
+$(document).ready(function() {
+$.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
+setInterval(function() {
+$('#playlist').load('playlist.php');
 }, 5000); // the "3000" here refers to the time to refresh the div.  it is in milliseconds. 
 });
 // ]]></script>

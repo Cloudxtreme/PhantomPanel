@@ -60,6 +60,8 @@
                                 </li>
                                 <li><a target="main" href="/modules/marathon.php">Marathon Commands</a>
                                 </li>
+                                <li><a target="main" href="/modules/misc.php">Misc Commands</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="dropdown">
