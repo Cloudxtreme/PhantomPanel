@@ -38,60 +38,61 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Commands <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <!--<li class="divider"></li>-->
-                                <li><a target="main" href="/modules/addcommand.php">Custom Commands</a>
+                                <li><a target="main" href="modules/addcommand.php">Custom Commands</a>
                                 </li>
-                                <li><a target="main" href="/modules/pointsystem.php">Point Commands</a>
+                                <li><a target="main" href="modules/pointsystem.php">Point Commands</a>
                                 </li>
-                                <li><a target="main" href="/modules/timesystem.php">Time Commands</a>
+                                <li><a target="main" href="modules/timesystem.php">Time Commands</a>
                                 </li>
-                                <li><a target="main" href="/modules/permissions.php">Group Commands</a>
+                                <li><a target="main" href="modules/permissions.php">Group Commands</a>
                                 </li>
-                                <li><a target="main" href="/modules/notices.php">Notice Commands</a>
+                                <li><a target="main" href="modules/notices.php">Notice Commands</a>
                                 </li>
-                                <li><a target="main" href="/modules/chatmod.php">ChatMod Commands</a>
+                                <li><a target="main" href="modules/chatmod.php">ChatMod Commands</a>
                                 </li>
-                                <li><a target="main" href="/modules/follows.php">Follow Commands</a>
+                                <li><a target="main" href="modules/follows.php">Follow Commands</a>
                                 </li>
-                                <li><a target="main" href="/modules/subscribers.php">Subscriber Commands</a>
+                                <li><a target="main" href="modules/subscribers.php">Subscriber Commands</a>
                                 </li>
-                                <li><a target="main" href="/modules/hosting.php">Host Commands</a>
+                                <li><a target="main" href="modules/hosting.php">Host Commands</a>
                                 </li>
-                                <li><a target="main" href="/modules/greeting.php">Greeting Commands</a>
+                                <li><a target="main" href="modules/greeting.php">Greeting Commands</a>
                                 </li>
-                                <li><a target="main" href="/modules/marathon.php">Marathon Commands</a>
+                                <li><a target="main" href="modules/marathon.php">Marathon Commands</a>
                                 </li>
-                                <li><a target="main" href="/modules/quote.php">Quote Commands</a>
+                                <li><a target="main" href="modules/quote.php">Quote Commands</a>
                                 </li>
-                                <li><a target="main" href="/modules/misc.php">Misc Commands</a>
+                                <li><a target="main" href="modules/misc.php">Misc Commands</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Games <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Games/Other <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <!--<li class="divider"></li>-->
-                                <li><a target="main" href="/games/bankheist.php">BankHeist Commands</a>
+                                <li><a target="main" href="games/bankheist.php">BankHeist Commands</a>
                                 </li>
-                                <li><a target="main" href="/games/rafflesystem.php">Raffle Commands</a>
+                                <li><a target="main" href="games/rafflesystem.php">Raffle Commands</a>
                                 </li>
-                                <li><a target="main" href="/games/betsystem.php">Bet Commands</a>
+                                <li><a target="main" href="games/betsystem.php">Bet Commands</a>
                                 </li>
-                                <li><a target="main" href="/games/polls.php">Poll Commands</a>
+                                <li><a target="main" href="games/polls.php">Poll Commands</a>
                                 </li>
-                                <li><a target="main" href="/games/bids.php">Bid Commands</a>
+                                <li><a target="main" href="games/bids.php">Bid Commands</a>
                                 </li>
-                                <li><a target="main" href="/games/roll.php">Roll Commands</a>
+                                <li><a target="main" href="games/roll.php">Roll Commands</a>
                                 </li>
-
+                                <li><a target="main" href="http://www.challonge.com">Challonge</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Music Player<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <!--<li class="divider"></li>-->
-                                <li><a target="music" href="/youtube/youtubeplayer.html">Music Player</a>
+                                <li><a target="music" href="youtube/youtubeplayer.html">Music Player</a>
                                 </li>
-                                <li><a target="music" href="/youtube/blank.html">Exit Music Player</a>
+                                <li><a target="music" href="youtube/blank.html">Exit Music Player</a>
                                 </li>
                             </ul>
                         </li>

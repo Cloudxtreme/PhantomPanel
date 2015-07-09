@@ -26,11 +26,6 @@ include('../includes/includes.php');
             <div class="panel-heading">
                 <h3 class="panel-title"><i class="fa fa-android fa-2x"></i>&nbsp;&nbsp; Group Commands</h3>
             </div>
-			 <div class="panel-body">
-		<form action="" method="post">
-        <button class="btn btn-sm  btn-default" name="message" value="!group list">List of Groups</button>
-		</form>
-		</div>
         <div class="panel-body">
         <form action="" method="post" style="float: left; padding-right: 5px;">
 		<button class="btn btn-sm btn-default" name="message2" value="!group ">Group Level</button>
@@ -60,6 +55,17 @@ include('../includes/includes.php');
 		<input id="input3" type="text" name="message3" placeholder="<group> <multiplier>" value="">
 		</form>
 	</div>
+	<div class="panel-body" >
+			  <h5>Groups:</h5>
+			<div style="height:200px;width:400px;border:1px solid #ccc;overflow:auto;font-size:13px;">
+
+			<?php
+			$myfile = fopen("$botpath/inistore/groups.ini", "r") or die("Bot Path not set in config.php!");
+			echo fread($myfile,filesize("$botpath/inistore/groups.ini"));
+			fclose($myfile);
+			?>
+
+</div></div>
         </div>
     </div>
 </div>
