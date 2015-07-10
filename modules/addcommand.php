@@ -66,7 +66,7 @@ include('../includes/includes.php');
 				</form>
 				<form action="" method="post" style="float: left; padding-right: 5px;">
 				<button  class="btn btn-sm btn-default"  name="message2" value="!permcom ">Set Permission</button>
-				<input id="input4" type="text" name="message3" placeholder="<command> <group name>" value="">
+				<input id="input4" type="text" name="message3" placeholder="<command> <group> <mod>" value="">
 				</form>
 				</div>
 				<div class="panel-body" style="float:left;">
