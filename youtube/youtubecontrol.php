@@ -27,7 +27,12 @@
         </form>
         <form action="" method="post">
             <button class="btn btn-sm  btn-default" name="message" value="!nextsong ">Next Song</button>
-            <button class="btn btn-sm  btn-default" name="message" value="!song toggle ">Music on/off</button>
+            <button class="btn btn-sm  btn-default" name="message" value="!module enable ./addonscripts/youtubePlayer.js ">Enable Music</button>
+            <button class="btn btn-sm  btn-default" name="message" value="!module disable ./addonscripts/youtubePlayer.js">Disable Music</button>
+		</form>
+		<br />
+		<form action="" method="post">
+			<button class="btn btn-sm  btn-default" name="message" value="!song toggle ">Toggle Song Messages</button>
         </form>
     </div>
     <div id="youtubeframe" class="panel-body">
@@ -47,12 +52,6 @@
             <button class="btn btn-sm btn-default" name="message2" value="!song limit ">Song Limit</button>
             <input id="input1" type="text" name="message3" placeholder="<amount>" value="">
         </form>
-        <br />
-        <br />
-        <form action="" method="post" style="float: left; padding-right: 5px;">
-            <button class="btn btn-sm btn-default" name="message2" value="!pricecom addsong ">Song Price</button>
-            <input id="input1" type="text" name="message3" placeholder="<amount>" value="">
-        </form>
     </div>
 
   <form action="" method="post">
@@ -67,7 +66,7 @@ Now Playing:
 <div id="now-playing" style="width: 318px;">Loading...</div>
 </marquee>
 Queue:
-<div style="height:200px;width:318px;border:1px solid #3E3E3E;overflow:auto;font-size:13px;">
+<div style="height:150px;width:318px;border:1px solid #3E3E3E;overflow:auto;font-size:13px;">
 <div id="playlist">Loading...</div>
 <br />
 </div>

@@ -5,10 +5,7 @@
     display: inline-block;
     margin-top: 18px;
 }
-#ytclose {
-    display: inline-block;
-	margin-left: 140px;
-}
+
 input {
 	background-color: #3E3E3E;
 	border: 1px solid #8c8c9c;
