@@ -150,7 +150,7 @@
             </div>
         </div>
 
-        <iframe class="iframe1" src="/modules/botcommands.php" frameborder="0" scrolling="no" height="100%" width="100%"></iframe>
+        <iframe class="iframe1" src="modules/botcommands.php" frameborder="0" scrolling="no" height="100%" width="100%"></iframe>
         <iframe class="iframe2" name="main" frameborder="0" scrolling="no" height="100%" width="100%"></iframe>
 
     </div>
