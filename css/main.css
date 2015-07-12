@@ -100,15 +100,17 @@ margin-top: 20px;
 	display: block; 
 	margin: auto;
 }
-#sidebar {
+#chatsidebar {
 position: absolute;
 top: 0;
 right: 0;
 bottom: 0;
 height: 100%;
 width: 350px;
+
 }
-#sidebar2 {
+
+#musicsidebar {
 position: absolute;
 top: 0;
 left: 0;
@@ -116,6 +118,7 @@ bottom: 0;
 height: 100%;
 width: 350px;
 }
+
 #chat {
 	border-left: 1px solid #3E3E3E;
 	height: 100%; 

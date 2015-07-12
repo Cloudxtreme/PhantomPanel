@@ -5,7 +5,16 @@
     display: inline-block;
     margin-top: 18px;
 }
+#ytclose {
+    display: inline-block;
+	margin-left: 140px;
+}
+input {
+	background-color: #3E3E3E;
+	border: 1px solid #8c8c9c;
+	color: #ffffff;
 
+}
 .container { 
 position:relative;
 }
@@ -21,6 +30,7 @@ position:relative;
 body {
 	color: #8c8c9c;
     background-color: #19191f;
+	width: 350px;
 }
 
 h1 {

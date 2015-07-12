@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>PB WebPanel v1.1.2</title>
+    <title>PB WebPanel v1.1.3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/sandstone/bootstrap.min.css" rel="stylesheet">
@@ -86,16 +86,9 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Music Player<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <!--<li class="divider"></li>-->
-                                <li><a target="music" href="youtube/youtubeplayer.html">Music Player</a>
-                                </li>
-                                <li><a target="music" href="youtube/blank.html">Exit Music Player</a>
-                                </li>
-                            </ul>
+						<li><a onClick=" hide2();">Toggle Music</a>
                         </li>
+
 											 <li><a href="#" onClick=" hide();">Toggle Chat</a>
                         </li>
                     </ul>
@@ -161,14 +154,12 @@
         <iframe class="iframe2" name="main" frameborder="0" scrolling="no" height="100%" width="100%"></iframe>
 
     </div>
-    <div id="sidebar" name="chat">
-        <iframe id="chat" src="http://www.twitch.tv/<?php echo $owner ?>/chat?popout=" frameborder="0" scrolling="no" height="100%" width="350px"></iframe>
-
+    <div id="chatsidebar" name="chat">
+        <iframe id="chat" src="http://www.twitch.tv/<?php echo $owner ?>/chat?popout=" frameborder="0" scrolling="no" height="100%"></iframe>
     </div>
 
-    <div id="sidebar2" name="music">
-        <iframe name="music" frameborder="0" scrolling="no" height="100%" width="100%"> </iframe>
-
+    <div id="musicsidebar">
+        <iframe name="music" src="youtube/youtubeplayer.html" frameborder="0" scrolling="no" height="100%" width="350px"> </iframe>
     </div>
 
 
@@ -179,10 +170,10 @@
 <script>
     $(function() {
 
-        var $sidebar = $("#sidebar"),
+        var $sidebar = $("#chatsidebar"),
             $window = $(window),
             offset = $sidebar.offset(),
-            topPadding = 15;
+            topPadding = 0;
 
         $window.scroll(function() {
             if ($window.scrollTop() > offset.top) {
@@ -201,21 +192,29 @@
 
 <SCRIPT>
     function hide() {
-        if (document.getElementById('chat').style.visibility == 'hidden') {
-            document.getElementById('chat').style.visibility = 'visible';
+        if (document.getElementById("chatsidebar").style.display=="none") {
+            document.getElementById("chatsidebar").style.display="block";
         } else {
-            document.getElementById('chat').style.visibility = 'hidden';
+			document.getElementById("chatsidebar").style.display="none";
         }
     }
 </SCRIPT>
-
+<SCRIPT>
+    function hide2() {
+        if (document.getElementById("musicsidebar").style.display=="none") {
+            document.getElementById("musicsidebar").style.display="block";
+        } else {
+			document.getElementById("musicsidebar").style.display="none";
+        }
+    }
+</SCRIPT>
 <script>
     $(function() {
 
-        var $sidebar = $("#sidebar2"),
+        var $sidebar = $("#musicsidebar"),
             $window = $(window),
             offset = $sidebar.offset(),
-            topPadding = 15;
+            topPadding = 0;
 
         $window.scroll(function() {
             if ($window.scrollTop() > offset.top) {
@@ -231,3 +230,4 @@
 
     });
 </script>
+
