@@ -26,6 +26,7 @@ include('../includes/includes.php');
 
 			  <div class="panel-body">
 			    <form action="" method="post">
+				<button  class="btn btn-sm btn-default"  name="message2" value="!roll ">Make a Roll</button>
 				<button  class="btn btn-sm btn-default"  name="message2" value="!roll wait ">Roll Cooldown on/off</button>
 				<button  class="btn btn-sm btn-default"  name="message2" value="!roll stream ">Stream Only Roll on/off</button>
 				</form>

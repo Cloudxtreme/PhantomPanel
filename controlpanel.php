@@ -80,6 +80,8 @@
                                 </li>
                                 <li><a target="main" href="games/bids.php">Bid Commands</a>
                                 </li>
+                                <li><a target="main" href="games/slot.php">Slot Commands</a>
+                                </li>
                                 <li><a target="main" href="games/roll.php">Roll Commands</a>
                                 </li>
                                 <li><a target="main" href="http://www.challonge.com">Challonge</a>

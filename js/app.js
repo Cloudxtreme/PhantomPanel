@@ -17,7 +17,7 @@ function onYouTubeIframeAPIReady() {
             showinfo: 0,
             showsearch: 0,
             modestbranding: 1,
-            autoplay: 1
+            autoplay: 0
         },
         events: {
             'onReady': onPlayerReady,

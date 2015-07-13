@@ -47,7 +47,7 @@
                     </form>
                 </div>
                 <div class="panel-body">
-                    <h4>Hightlights:</h4>
+                    <h5>Hightlights:</h5>
                     <br>
                     <form action="" method="post" style="float: left; padding-right: 5px;">
                         <button class="btn btn-sm btn-default" name="message2" value="!highlight ">Highlight</button>
@@ -59,15 +59,16 @@
                 </div>
 
                 <div class="panel-body">
-                    <h4>Player Queue:</h4>
+                    <h5>Player Queue:</h5>
                     <br>
+                    <form action="" method="post">
                     <button id="currentplayer" class="btn btn-sm  btn-default" name="message" value="!currentplayer">Current Player</button>
                     <button id="waitinglist" class="btn btn-sm  btn-default" name="message" value="!waitinglist">Waiting List</button>
                     <button id="nextround" class="btn btn-sm  btn-default" name="message" value="!nextround">Next Round</button>
                     </form>
                 </div>
                 <div class="panel-body">
-                    <h4>Commercials:</h4>
+                    <h5>Commercials:</h5>
                     <br>
                     <form action="" method="post">
                         <button class="btn btn-sm btn-default" name="message" value="!commercial enable">Enable Commercials</button>
