@@ -167,3 +167,10 @@ form.loginform input[type="username"], form.loginform input[type="password"] {
     color: #6C6C6C;
     text-align: center;
 }
+
+.error {
+    width: 50%;
+    text-align: center;
+    color: #AA0000;
+    border: 1px #AA0000 dashed;
+}

@@ -1,45 +1,22 @@
 <?php 
 
-session_start();
-$timeout = 3600*6; // Number of seconds until it times out.
- 
-// Check if the timeout field exists.
-if(isset($_SESSION['timeout'])) {
-    // See if the number of seconds since the last
-    // visit is larger than the timeout period.
-    $duration = time() - (int)$_SESSION['timeout'];
-    if($duration > $timeout) {
-        // Destroy the session and restart it.
-        session_destroy();
-        session_start();
-    }
-}
- 
-// Update the timout field with the current time.
-$_SESSION['timeout'] = time();
-
-include('includes/config.php');
+require_once('includes/nocache.php');
+require_once('includes/session.php');
+require_once('includes/config.php');
+require_once('includes/func.php');
 
  
-if ($_GET['login']) {
-     // Only load the code below if the GET
-     // variable 'login' is set. You will
-     // set this when you submit the form
- 
-     if ($_POST['username'] == $loginuser
-         && $_POST['password'] == $loginpass) {
-         // Load code below if both username
-         // and password submitted are correct
- 
-         $_SESSION['loggedin'] = 1;
-          // Set session variable
+if (isset($_GET['login'])) {
+     if (CheckLogin($_POST['username'], $_POST['password'])) {
+         $session_data['loggedin'] = true;
+         
+         save_session();
 
          header("Location: controlpanel.php");
-         exit;
+         die();
          // Redirect to a protected page
  
-     } else echo "Wrong details";
-     // Otherwise, echo the error message
+     }
  
 }
  
@@ -71,8 +48,9 @@ if ($_GET['login']) {
         <div class="fa_user">
           <img src="http://i.imgur.com/a0h0zM5.png" />
         </div>
+          <?php if (isset($_GET['login'])) { echo '<div class="error">Invalid Username or Password</div>'; } ?>
         <h5>LOGIN</h5>
-        <form action="?login=1" method="post" class="loginform">
+        <form action="?login" method="post" class="loginform">
           <div class="form-group">
             <label class="sr-only">Username</label>
             <div class="input-group">

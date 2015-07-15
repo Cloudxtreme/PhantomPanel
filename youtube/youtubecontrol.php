@@ -1,5 +1,5 @@
 
-<?php include( '../includes/includes.php'); ?>
+<?php require_once('../includes/includes.php'); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <!DOCTYPE html>
 <html>
