@@ -29,7 +29,5 @@ $owner = 'channel owner';
 $url = 'url to your bot';
 //The oauth key used by the bot to login to chat (used so only this script can access the bot)
 $oauth = 'your oauth key';
-//
-$botpath = 'bot file path (only works if bot is running on the same server as the webpanel)';
 
 ?>

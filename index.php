@@ -1,9 +1,6 @@
 <?php 
 
-require_once('includes/nocache.php');
-require_once('includes/session.php');
-require_once('includes/config.php');
-require_once('includes/func.php');
+require_once('includes/includes.php');
 
  
 if (isset($_GET['login'])) {

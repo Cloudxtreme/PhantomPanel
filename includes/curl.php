@@ -1,21 +1,40 @@
 <?php
 
-$message = urlencode($_POST['message']);
+function curl_put($message) {
+    global $url, $baseport, $owner, $oauth;
 
-if(isset($_POST['message2'])) {
+    $curl = curl_init($url . ':' . $baseport);
 
-$message = urlencode($_POST['message2'].$_POST['message3']);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
+    $curlpass = str_replace("oauth:", "", $oauth);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, array('user: ' . $owner, 'message: ' . urlencode($message), 'password: ' . $curlpass));
+    $result = curl_exec($curl);
+    $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
+    curl_close($curl);
+
+    return array($result, $status);
 }
 
-$curl = curl_init($url.':'.$baseport);
+function curl_get($uri) {
+    global $url, $baseport, $oauth;
 
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
-$curlpass = str_replace("oauth:", "", $oauth);
-curl_setopt($curl, CURLOPT_HTTPHEADER, array('user: '.$owner, 'message: '.$message, 'password: '.$curlpass));
-$result = curl_exec($curl);
-$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    if (substr($uri, 0, 1) == '/') {
+        $uri = substr($uri, 1);
+    }
+    
+    $curl = curl_init($url . ':' . $baseport . '/' . $uri);
 
-curl_close($curl);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $curlpass = str_replace("oauth:", "", $oauth);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, array('password: ' . $curlpass));
+    $result = curl_exec($curl);
+    $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+    curl_close($curl);
+
+    return array($result, $status);
+}
+
 ?>

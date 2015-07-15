@@ -2,7 +2,11 @@
 
 
 <?php
-$myfile = fopen("$botpath/web/queue.txt", "r") or die("Bot Path not set in config.php!");
-echo fread($myfile,filesize("$botpath/web/queue.txt"));
-fclose($myfile);
+$result = curl_get("/web/queue.txt");
+
+if ($result[1] == 200) {
+    echo $result[0];
+} else {
+    echo 'Failed to get songrequest queue';
+}
 ?>
