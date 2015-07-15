@@ -1,5 +1,13 @@
 <?php require_once('includes/includes.php'); ?>
+<?php
+if (isset($_POST['message'])) {
+    $result = curl_put($_POST['message']);
+}
 
+if (isset($_POST['message2']) && isset($_POST['message3'])) {
+    $result = curl_put($_POST['message2'] . $_POST['message3']);
+}
+?>
 <!DOCTYPE html>
 <html>
 
