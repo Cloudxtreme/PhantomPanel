@@ -40,18 +40,7 @@ include('../includes/includes.php');
 				<button  class="btn btn-sm btn-default"  name="message2" value="!quote ">Specified Quote</button>
 				<input id="input1" type="text" name="message3" placeholder="<ID>" value="">
 				</form>
-				</div>
-				<div class="panel-body" >
-			  <h5>Quotes:</h5>
-			<div style="height:200px;width:400px;border:1px solid #ccc;overflow:auto;font-size:13px;">
-
-			<?php
-			$myfile = fopen("$botpath/inistore/quotes.ini", "r") or die("Bot Path not set in config.php!");
-			echo fread($myfile,filesize("$botpath/inistore/quotes.ini"));
-			fclose($myfile);
-			?>
-
-</div></div>
+				</div></div>
 
         </div>
     </div>

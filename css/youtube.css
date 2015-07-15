@@ -7,15 +7,31 @@
 }
 
 input {
-	background-color: #3E3E3E;
-	border: 1px solid #8c8c9c;
+	background-color: #24242a;
+	border: 1px solid #3E3E3E;
 	color: #ffffff;
 
+}
+input, select, textarea{
+    color: #fff;
+}
+
+textarea:focus, input:focus {
+    color: #fff;
+}
+
+input[type=text]:focus, textarea:focus{
+color: #fff;
 }
 .container { 
 position:relative;
 }
-
+.btn {
+background-color: #6441a5;
+}
+.btn:hover {
+background-color: #a68ed2;
+}
 .header {
     background-color: #19191f;
 	border-bottom: 1px solid #46464E;
@@ -55,8 +71,7 @@ h1 {
 
 #player {
 
-    width: 350px;
-	padding-right: 40px;
+    width: 318px;
 
 }
 

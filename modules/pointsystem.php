@@ -25,7 +25,9 @@ include('../includes/includes.php');
                 <h3 class="panel-title"><i class="fa fa-users fa-2x"></i>&nbsp;&nbsp; Point System</h3>
             </div>
             <div class="panel-body">
-			<h4>Currency Control:</h4>
+			<h5>Currency Control:</h5>
+			Full control of a players wallet.
+			<br />
 			<br />
 				<form action="" method="post" style="float: left; padding-right: 5px;">
 				<button  class="btn btn-sm btn-default"  name="message2" value="!points all ">Send Points to Everyone</button>
@@ -48,7 +50,9 @@ include('../includes/includes.php');
 				</form>
 				</div>
 				<div class="panel-body">
-				<h4>Currency Settings:</h4>
+				<h5>Currency Settings:</h5>
+				Change and control the amount of points distributed.
+				<br />
 				<br />
 				<form action="" method="post" style="float: left; padding-right: 5px;">
 				<button  class="btn btn-sm btn-default"  name="message2" value="!points name ">Change Points Name</button>
@@ -68,14 +72,14 @@ include('../includes/includes.php');
 				<input id="input1" type="text" name="message3" placeholder="<amount>" value="">
 				</form>
 				<form action="" method="post" style="float: left; padding-right: 5px;">
-				<button  class="btn btn-sm btn-default"  name="message2" value="!points mingift ">Minimum Gift</button>
+				<button  class="btn btn-sm btn-default"  name="message2" value="!points mingift ">Minimum Gifting</button>
 				<input id="input1" type="text" name="message3" placeholder="<amount>" value="">
 				</form>
 				<br />
 				<br />
 				<br />
 				<form action="" method="post" style="float: left; padding-right: 5px;">
-				<button  class="btn btn-sm btn-default"  name="message2" value="!points interval ">Point Gain Interval</button>
+				<button  class="btn btn-sm btn-default"  name="message2" value="!points interval ">Online Point Gain Interval</button>
 				<input id="input1" type="text" name="message3" placeholder="<minutes>" value="">
 				</form>
 				<form action="" method="post" style="float: left; padding-right: 5px;">
@@ -88,7 +92,9 @@ include('../includes/includes.php');
 				</form>
 				</div>
 				<div class="panel-body">
-				<h4>Penalty System:</h4>
+				<h5>Penalty System:</h5>
+				Prevent certain viewers from gaining points.
+				<br />
 				<br />
 				<form action="" method="post" style="float: left; padding-right: 5px;">
 				<button  class="btn btn-sm btn-default"  name="message2" value="!penalty ">Set Penalty</button>

@@ -22,9 +22,11 @@ include('../includes/includes.php');
     <div class="col-lg">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-android fa-2x"></i>&nbsp;&nbsp; Chat Moderation</h3>
+                <h3 class="panel-title"><i class="fa fa-android fa-2x"></i>&nbsp;&nbsp; Chat Protection</h3>
             </div>
 			<div class="panel-body">
+			<h4>Chat Control:</h4>
+			<br />
 				<form action="" method="post" style="float: left; padding-right: 5px;">
 				<button  class="btn btn-sm btn-default"  name="message2" value="!purge ">Purge</button>
 				<input id="input1" type="text" name="message3" placeholder="<name>" value="">
@@ -64,7 +66,8 @@ include('../includes/includes.php');
 				</div>
 
             <div class="panel-body">
-				<h5>Warning Messages:</h5> <br />
+				<h5>Warning Messages:</h5> 
+				<p>Customize the warning messages when someone triggers chat protection.</p>
 				<form action="" method="post" style="float: left; padding-right: 5px;">
 				<button  class="btn btn-sm btn-default"  name="message2" value="!chatmod warning1type ">Warning Type #1</button>
 				<input id="input3" type="text" name="message3" placeholder="purge/ban/timeout" value="">
@@ -98,16 +101,18 @@ include('../includes/includes.php');
             <div class="panel-body">
 			<h4>Chat Moderation Settings:</h4>
 			    <div class="panel-body">
-				<h5>Links/URL:</h5>	<br />
-				Links in Messages:
+				<h5>Links/URL:</h5>	
+				<p>Auto-Purges links/URLs in chat.</p>
 				<form action="" method="post">
-				<button id="linksa" class="btn btn-sm  btn-default" name="message" value="!chatmod linksallowed true">Allow</button>
-				<button id="linksd" class="btn btn-sm  btn-default" name="message" value="!chatmod linksallowed false">Deny</button>
+				<button id="linksa" class="btn btn-sm  btn-default" name="message" value="!chatmod linksallowed true">Allow Links</button>
+				<button id="linksd" class="btn btn-sm  btn-default" name="message" value="!chatmod linksallowed false">Deny Links</button>
 				</form>
-				YouTube URLs: 
+				<br />
+				<h5>YouTube URLs:</h5>
+				<p>Auto-Purges <span style="color:red">ONLY YouTube links/URLs</span> in chat</p>			
 				<form action="" method="post">
-				<button id="youtubea" class="btn btn-sm  btn-default" name="message" value="!chatmod youtubeallowed true">Allow</button>
-				<button id="youtubed" class="btn btn-sm  btn-default" name="message" value="!chatmod youtubeallowed false">Deny</button>
+				<button id="youtubea" class="btn btn-sm  btn-default" name="message" value="!chatmod youtubeallowed true">Allow YT Links</button>
+				<button id="youtubed" class="btn btn-sm  btn-default" name="message" value="!chatmod youtubeallowed false">Deny YT Links</button>
 				</form>
 				<br />
 				<br />
@@ -121,13 +126,13 @@ include('../includes/includes.php');
 				<input id="input1" type="text" name="message3" placeholder="<URL>" value="">
 				</form>
 				</div>
-				
+				<hr>
 				<div class="panel-body">
-				<h5>Caps:</h5> <br />
-				Caps in Messages:
+				<h5>Chat Caps:</h5>
+				<p>Auto-Purges Caps in chat.</p>
 				<form action="" method="post">
-				<button class="btn btn-sm  btn-default" name="message" value="!chatmod capsallowed true">Allow</button>
-				<button class="btn btn-sm  btn-default" name="message" value="!chatmod capsallowed false">Deny</button>
+				<button class="btn btn-sm  btn-default" name="message" value="!chatmod capsallowed true">Allow Caps</button>
+				<button class="btn btn-sm  btn-default" name="message" value="!chatmod capsallowed false">Deny Caps</button>
 				</form>
 				<br />
 				<br />
@@ -144,13 +149,13 @@ include('../includes/includes.php');
 				<input id="input1" type="text" name="message3" placeholder="<amount>" value="">
 				</form>
 				</div>
-				
+				<hr>
 				<div class="panel-body">
-				<h5>Spam:</h5><br />
-				Spam in Messages: 
+				<h5>Chat Spam:</h5>
+				<p>Auto-Purges Spam in chat.</p> 
 				<form action="" method="post">
-				<button class="btn btn-sm  btn-default" name="message" value="!chatmod spamallowed true">Allow</button>
-				<button class="btn btn-sm  btn-default" name="message" value="!chatmod spamallowed false">Deny</button>
+				<button class="btn btn-sm  btn-default" name="message" value="!chatmod spamallowed true">Allow Spam</button>
+				<button class="btn btn-sm  btn-default" name="message" value="!chatmod spamallowed false">Deny Spam</button>
 				</form>
 				<br>
 				<br>
@@ -158,19 +163,18 @@ include('../includes/includes.php');
 				<button  class="btn btn-sm btn-default"  name="message2" value="!chatmod spammessage ">Spam Message</button>
 				<input id="input1" type="text" name="message3" placeholder="<message>" value="">
 				</form>
-				
 				<form action="" method="post" style="float: left; padding-right: 5px;">
 				<button  class="btn btn-sm btn-default"  name="message2" value="!chatmod spamlimit ">Spam Limit</button>
 				<input id="input1" type="text" name="message3" placeholder="<amount>" value="">
 				</form>
 				</div>
-				
+				<hr>
 				<div class="panel-body">
-				<h5>Symbols:</h5><br />
-				Symbols in Messages: 
+				<h5>Chat Symbols:</h5>
+				<p>Auto-Purges Symbols in chat, like: "!$#%&*"</p>
 				<form action="" method="post">
-				<button class="btn btn-sm  btn-default" name="message" value="!chatmod symbolsallowed true">Allow</button>
-				<button class="btn btn-sm  btn-default" name="message" value="!chatmod symbolsallowed false">Deny</button>
+				<button class="btn btn-sm  btn-default" name="message" value="!chatmod symbolsallowed true">Allow Symbols</button>
+				<button class="btn btn-sm  btn-default" name="message" value="!chatmod symbolsallowed false">Deny Symbols</button>
 				</form>
 				<br>
 				<br>
@@ -189,13 +193,13 @@ include('../includes/includes.php');
 				<input id="input1" type="text" name="message3" placeholder="<amount>" value="">
 				</form>
 				</div>
-			
+				<hr>
 				<div class="panel-body">
-				<h5>Repeating:</h5><br />
-				Repeats in Messages: 
+				<h5>Chat Repeats:</h5>
+				<p>Auto-Purges repeating words in a message.</p> 
 				<form action="" method="post">
-				<button class="btn btn-sm  btn-default" name="message" value="!chatmod repeatallowed true">Allow</button>
-				<button class="btn btn-sm  btn-default" name="message" value="!chatmod repeatallowed false">Deny</button>
+				<button class="btn btn-sm  btn-default" name="message" value="!chatmod repeatallowed true">Allow Repeats</button>
+				<button class="btn btn-sm  btn-default" name="message" value="!chatmod repeatallowed false">Deny Repeats</button>
 				</form>
 				<br>
 				<br>
@@ -209,14 +213,15 @@ include('../includes/includes.php');
 				<input id="input1" type="text" name="message3" placeholder="<amount>" value="">
 				</form>
 				</div>			
-
+				<hr>
 				<div class="panel-body">
-				<h5>Graphme:</h5><br />
-				Graphme in Messages: 
+				<h5>Chat Graphmes:</h5>
+				<p>Auto-Purges graphemes in chat.</p>
 				<form action="" method="post">
-				<button class="btn btn-sm  btn-default" name="message" value="!chatmod graphemeallowed true">Allow</button>
-				<button class="btn btn-sm  btn-default" name="message" value="!chatmod graphemeallowed false">Deny</button>
+				<button class="btn btn-sm  btn-default" name="message" value="!chatmod graphemeallowed true">Allow Graphmes</button>
+				<button class="btn btn-sm  btn-default" name="message" value="!chatmod graphemeallowed false">Deny Graphmes</button>
 				</form>
+				<br>
 				<br>
 				<form action="" method="post" style="float: left; padding-right: 5px;">
 				<button  class="btn btn-sm btn-default"  name="message2" value="!chatmod graphmemessage ">Graphme Message</button>

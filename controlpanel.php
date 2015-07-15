@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>PB WebPanel v1.1.3</title>
+    <title>PhantomBot Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/sandstone/bootstrap.min.css" rel="stylesheet">
@@ -29,7 +29,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand">PhantomBot</a>
+                    <a class="navbar-brand">Dashboard <br /> <span style="font-size:12px;padding-left: 10px;color: gray;">version 1.1.6</span></a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -67,7 +67,7 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Games/Other <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Games<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <!--<li class="divider"></li>-->
                                 <li><a target="main" href="games/bankheist.php">BankHeist Commands</a>
@@ -138,8 +138,8 @@
                         <div class="panel-heading" role="tab" id="headingOne">
                             <h4 class="panel-title">
 	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-	          Video
-	        </a>
+	          Video Stream
+	        </a>  <span id="viewers" style="float:right;padding-bottom: 3px;"><img src="images/viewers.png" style="height: 30px;padding-left: 5px;padding-right: 5px;padding-bottom: 5px;" /> 0</span>
 	      </h4>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -163,7 +163,10 @@
     <div id="musicsidebar">
         <iframe name="music" src="youtube/youtubeplayer.html" frameborder="0" scrolling="no" height="100%" width="350px"> </iframe>
     </div>
-
+        <div class="footer">
+		<hr>
+            <img src="images/pblogo2.png" style="width:300px;padding-bottom: 20px;" />
+        </div>
 
 </body>
 
@@ -174,13 +177,12 @@
 
         var $sidebar = $("#chatsidebar"),
             $window = $(window),
-            offset = $sidebar.offset(),
-            topPadding = 0;
+            offset = $sidebar.offset()
 
         $window.scroll(function() {
             if ($window.scrollTop() > offset.top) {
                 $sidebar.stop().animate({
-                    marginTop: $window.scrollTop() - offset.top + topPadding
+                    marginTop: $window.scrollTop() - offset.top 
                 });
             } else {
                 $sidebar.stop().animate({
@@ -190,9 +192,7 @@
         });
 
     });
-</script>
 
-<SCRIPT>
     function hide() {
         if (document.getElementById("chatsidebar").style.display=="none") {
             document.getElementById("chatsidebar").style.display="block";
@@ -200,8 +200,7 @@
 			document.getElementById("chatsidebar").style.display="none";
         }
     }
-</SCRIPT>
-<SCRIPT>
+
     function hide2() {
         if (document.getElementById("musicsidebar").style.display=="none") {
             document.getElementById("musicsidebar").style.display="block";
@@ -209,19 +208,18 @@
 			document.getElementById("musicsidebar").style.display="none";
         }
     }
-</SCRIPT>
-<script>
+
     $(function() {
 
         var $sidebar = $("#musicsidebar"),
             $window = $(window),
-            offset = $sidebar.offset(),
-            topPadding = 0;
+            offset = $sidebar.offset()
+
 
         $window.scroll(function() {
             if ($window.scrollTop() > offset.top) {
                 $sidebar.stop().animate({
-                    marginTop: $window.scrollTop() - offset.top + topPadding
+                    marginTop: $window.scrollTop() - offset.top
                 });
             } else {
                 $sidebar.stop().animate({
@@ -232,4 +230,3 @@
 
     });
 </script>
-

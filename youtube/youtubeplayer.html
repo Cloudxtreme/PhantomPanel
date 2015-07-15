@@ -2,6 +2,12 @@
 include('../includes/includes.php');
 ?>
 
+<script>
+function setURL(url){
+    document.getElementById('vid').src = url;
+}
+</script>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,10 +30,17 @@ include('../includes/includes.php');
         <div class="header">
             <img id="logo" src="images/logo.png"/>
             <h1>Music Player</h1>
+			<form name="change" style="display:inline;">
+		<SELECT  style="margin-left: 105px;width: 78px;text-align:center;" class="btn btn-sm btn-default" NAME="options" ONCHANGE="document.getElementById('vid').src = this.options[this.selectedIndex].value">
+		<option disabled selected style='display:none;'>Start</option>
+		<option value="playerhd.html">High Quality</option>
+		<option value="player.html">Standard</option>
+		</SELECT>
+		</form>
         </div>
         <div class="container">
             <div id="main">
-                <div id="player"></div>
+				<iframe id="vid" style="background-color: #000;" height="200" width="318" scrolling="no" frameborder="0"/></iframe>
 				<br />
 				<center>
 				<iframe id="ytf" src="youtubecontrol.php" scrolling="no" frameborder="0" height="100%" width="100%"></iframe>

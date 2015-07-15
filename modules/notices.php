@@ -24,32 +24,31 @@ include('../includes/includes.php');
                 <h3 class="panel-title"><i class="fa fa-ticket fa-2x"></i>&nbsp;&nbsp; Notices/Announcements</h3>
             </div>
 			  <div class="panel-body">
-			  <h5>Notice Settings:</h5>
 				<div class="panel-body">
-				<form action="" method="post">
+				<h5>Notice Creation:</h5>
+				Notices are like announcements for your channel. You can add, delete and modify them here.
+				<br />
+				<form action="" method="post" style="padding-bottom: 25px;padding-top: 15px;">
                 <button class="btn btn-sm btn-default" name="message" value="!notice toggle">Notices on/off</button>
 				</form>
-				<br />
-				<br />
-				<form action="" method="post" style="float: left; padding-right: 5px;">
+				<form action="" method="post" style="float: left; padding-right: 5px;display:inline;">
 				<button  class="btn btn-sm btn-default"  name="message2" value="!addnotice ">Create Notice</button>
 				<input id="input1" type="text" name="message3" placeholder="<message>" value="">
 				</form>
-				</div>
-				<div class="panel-body">
-				<form action="" method="post" style="float: left; padding-right: 5px;">
+				<form action="" method="post" style="float: left; padding-right: 5px;display:inline;">
 				<button  class="btn btn-sm btn-default"  name="message2" value="!delnotice ">Delete Notice</button>
-				<input id="input1" type="text" name="message3" placeholder="<Notice ID #>" value="">
+				<input id="input1" type="text" name="message3" placeholder="<Notice #>" value="">
 				</form>
-				</div>
-				<div class="panel-body">
-				<form action="" method="post" style="float: left; padding-right: 5px;">
+				<form action="" method="post" style="float: left; padding-right: 5px;display:inline;">
 				<button  class="btn btn-sm btn-default"  name="message2" value="!notice insert ">Notice Order</button>
-				<input id="input4" type="text" name="message3" placeholder="<Notice ID #> <message>" value="">
+				<input id="input3" type="text" name="message3" placeholder="<Notice #> <message>" value="">
 				</form>
 				</div>
-				</div>
 				<div class="panel-body">
+				<h5>Notice Triggering:</h5> 
+				Notices are triggered based on both by the number of messages and time.<br />
+				A notice will appear if the number of messages are sent into chat within the amount of time set.
+				<br /><br />
 				<form action="" method="post" style="float: left; padding-right: 5px;">
 				<button  class="btn btn-sm btn-default"  name="message2" value="!notice req ">Message Requirement</button>
 				<input id="input1" type="text" name="message3" placeholder="<amount>" value="">
@@ -58,18 +57,7 @@ include('../includes/includes.php');
 				<button  class="btn btn-sm btn-default"  name="message2" value="!notice timer ">Notice Interval</button>
 				<input id="input1" type="text" name="message3" placeholder="<minutes>" value="">
 				</form>
-				</div>
-				<div class="panel-body" >
-			  <h5>Notices:</h5>
-			<div style="height:200px;width:400px;border:1px solid #ccc;overflow:auto;font-size:13px;">
-
-			<?php
-			$myfile = fopen("$botpath/inistore/notices.ini", "r") or die("Bot Path not set in config.php!");
-			echo fread($myfile,filesize("$botpath/inistore/notices.ini"));
-			fclose($myfile);
-			?>
-
-</div></div>
+				</div></div></div>
 
         </div>
     </div>

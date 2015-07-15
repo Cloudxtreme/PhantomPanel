@@ -35,8 +35,9 @@ include('../includes/includes.php');
 				<li>(2) this targets the second argument in a command.</li>
 				</ul>
 				<br />
-				<h5>Command Creation Panel:</h5>
 				<div class="panel-body">
+				<h5>Command Creation:</h5>
+				<br />
 				<form action="" method="post" style="float: left; padding-right: 5px;">
 				<button  class="btn btn-sm btn-default"  name="message2" value="!addcom ">Create Command</button>
 				<input id="input3" type="text" name="message3" placeholder="<command> <message>" value="">
@@ -54,22 +55,25 @@ include('../includes/includes.php');
 				<input id="input3" type="text" name="message3" placeholder="<command> <message>" value="">
 				</form>
 				</div>
-				</div>
+
 				<div class="panel-body">
-				<form action="" method="post" style="float: left; padding-right: 5px;">
-				<button  class="btn btn-sm btn-default"  name="message2" value="!aliascom ">Set Alias</button>
-				<input id="input3" type="text" name="message3" placeholder="<command> <alias>" value="">
+				<h5>Command Features:</h5>
+				<br />
+				<form action="" method="post" style="float: left; padding-right: 5px;padding-bottom:5px;display:inline;">
+				<button  class="btn btn-sm btn-default"  name="message2" value="!aliascom ">Set Command Alias </button>
+				<input id="input2" type="text" name="message3" placeholder="<command> <alias>" value="">
 				</form>
-				<form action="" method="post" style="float: left; padding-right: 5px;">
-				<button  class="btn btn-sm btn-default"  name="message2" value="!pricecom ">Set Price</button>
+				<form action="" method="post" style="float: left; padding-right: 5px;padding-bottom:5px;display:inline;">
+				<button  class="btn btn-sm btn-default"  name="message2" value="!pricecom ">Set Command Price</button>
 				<input id="input3" type="text" name="message3" placeholder="<command> <amount>" value="">
 				</form>
-				<form action="" method="post" style="float: left; padding-right: 5px;">
-				<button  class="btn btn-sm btn-default"  name="message2" value="!permcom ">Set Permission</button>
+				<form action="" method="post" style="float: left; padding-right: 5px;padding-bottom:5px;display:inline;">
+				<button  class="btn btn-sm btn-default"  name="message2" value="!permcom ">Set Command Perm</button>
 				<input id="input4" type="text" name="message3" placeholder="<command> <group> <mode>" value="">
 				</form>
 				</div>
-				<div class="panel-body" style="float:left;">
+				</div>
+				<!--<div class="panel-body" style="float:left;">
 
 			  <h5>Custom Commands:</h5>
 			<div style="height:200px;width:400px;border:1px solid #ccc;overflow:auto;font-size:13px;">
@@ -112,9 +116,9 @@ include('../includes/includes.php');
 			echo fread($myfile,filesize("$botpath/inistore/commandperm.ini"));
 			
 			fclose($myfile);
-			?>
+			?> 
 </div>
-</div></div>
+</div></div> -->
 				</div>
 
         </div>

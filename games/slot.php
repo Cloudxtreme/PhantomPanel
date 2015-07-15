@@ -42,6 +42,10 @@ include('../includes/includes.php');
 				<button  class="btn btn-sm btn-default"  name="message2" value="!slot bonus ">Set Slot Bonus</button>
 				<input id="input1" type="text" name="message3" placeholder="<amount>" value="">
 				</form>
+				<form action="" method="post" style="float: left; padding-right: 5px;">
+				<button  class="btn btn-sm btn-default"  name="message2" value="!slot jackpot ">Set Slot Jackpot</button>
+				<input id="input1" type="text" name="message3" placeholder="<amount>" value="">
+				</form>
 				</div>
 				<div class="panel-body">
 				<h5>Slot Emotes:</h5>

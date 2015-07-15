@@ -2,7 +2,7 @@
 
 
 <?php
-$myfile = fopen("$botpath/web/queue.txt", "r") or die("Bot Path not set in config.php!");
-echo fread($myfile,filesize("$botpath/web/queue.txt"));
+$myfile = fopen("localhost/addons/youtubePlayer/queue.txt", "r") or die("queue.txt is missing!");
+echo fread($myfile,filesize("localhost/addons/youtubePlayer/queue.txt"));
 fclose($myfile);
 ?>

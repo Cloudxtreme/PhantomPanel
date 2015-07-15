@@ -49,6 +49,8 @@
                 </div>
 
                 <div class="panel-body">
+				<h5>Ratio Messages:</h5>
+				<p>Customize messages for each %</p>
                     <form action="" method="post" style="float: left; padding-right: 5px;">
                         <button class="btn btn-sm btn-default" name="message2" value="!bankheist ratio50 ">50% Message</button>
                         <input id="input1" type="text" name="message3" placeholder="<message>" value="">
@@ -76,6 +78,8 @@
                     </form>
                 </div>
                 <div class="panel-body">
+				<h5>Message Chance</h5>
+				<p>Customize the messages for each chance percentage.</p>
                     <form action="" method="post" style="float: left; padding-right: 5px;">
                         <button class="btn btn-sm btn-default" name="message2" value="!bankheist chances50 ">50% Chances</button>
                         <input id="input1" type="text" name="message3" placeholder="<number>" value="">
@@ -104,32 +108,28 @@
                 </div>
                 <div class="panel-body">
                     <form action="" method="post" style="float: left; padding-right: 5px;">
-                        <button class="btn btn-sm btn-default" name="message2" value="!bankheist stringchancesare ">Chance Message</button>
-                        <input id="input1" type="text" name="message3" placeholder="<message>" value="">
-                    </form>
-
-                    <form action="" method="post" style="float: left; padding-right: 5px;">
                         <button class="btn btn-sm btn-default" name="message2" value="!bankheist heistcancelled ">Banks Are Open Message</button>
                         <input id="input1" type="text" name="message3" placeholder="<message>" value="">
                     </form>
-                </div>
-                <div class="panel-body">
-                    <form action="" method="post" style="float: left; padding-right: 5px;">
-                        <button class="btn btn-sm btn-default" name="message2" value="!bankheist stringnumberinvolved ">Message Number Involved</button>
-                        <input id="input1" type="text" name="message3" placeholder="<message>" value="">
-                    </form>
-
-                    <form action="" method="post" style="float: left; padding-right: 5px;">
-                        <button class="btn btn-sm btn-default" name="message2" value="!bankheist startedheist ">Start Message</button>
-                        <input id="input1" type="text" name="message3" placeholder="<message>" value="">
-                    </form>
-
-                    <form action="" method="post" style="float: left; padding-right: 5px;">
+					 <form action="" method="post" style="float: left; padding-right: 5px;">
                         <button class="btn btn-sm btn-default" name="message2" value="!bankheist stringstarting ">Starting Message</button>
                         <input id="input1" type="text" name="message3" placeholder="<message>" value="">
                     </form>
-                    <br />
-                    <br />
+				    <form action="" method="post" style="float: left; padding-right: 5px;">
+                        <button class="btn btn-sm btn-default" name="message2" value="!bankheist startedheist ">Started Message</button>
+                        <input id="input1" type="text" name="message3" placeholder="<message>" value="">
+                    </form>
+                    <form action="" method="post" style="float: left; padding-right: 5px;">
+                        <button class="btn btn-sm btn-default" name="message2" value="!bankheist stringchancesare ">Chances Message</button>
+                        <input id="input1" type="text" name="message3" placeholder="<message>" value="">
+                    </form>
+
+                </div>
+                <div class="panel-body">
+                    <form action="" method="post" style="float: left; padding-right: 5px;">
+                        <button class="btn btn-sm btn-default" name="message2" value="!bankheist stringnumberinvolved ">Message for Players Involved</button>
+                        <input id="input1" type="text" name="message3" placeholder="<message>" value="">
+                    </form>
                     <form action="" method="post" style="float: left; padding-right: 5px;">
                         <button class="btn btn-sm btn-default" name="message2" value="!bankheist stringnojoin ">No Players Message</button>
                         <input id="input1" type="text" name="message3" placeholder="<message>" value="">

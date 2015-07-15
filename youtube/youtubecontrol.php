@@ -19,58 +19,55 @@
 </head>
 
 <body>
-    <div id="youtubeframe" class="panel-body">
-        <form action="" method="post">
-            <button class="btn btn-sm btn-default" name="message" value="!skipsong ">Skip Song</button>
-            <button class="btn btn-sm  btn-default" name="message" value="!currentsong ">Current Song</button>
-            <button class="btn btn-sm  btn-default" name="message" value="!stealsong ">Steal Song</button>
+♫ Now Playing: 
+<marquee style="width:318px;background-color: #24242a;border:1px solid #3E3E3E;" behavior="scroll" direction=left>
+<div id="now-playing" style="width: 318px;">Searching for currentsong.txt...</div>
+</marquee>
+<br />
+<br />
+        <form action="" method="post" style="display:inline;">
+            <button class="btn btn-sm btn-default" name="message" value="!skipsong ">Skip ♫</button>
+            <button class="btn btn-sm  btn-default" name="message" value="!currentsong ">Current ♫</button>
+            <button class="btn btn-sm  btn-default" name="message" value="!stealsong ">Steal ♫</button>
         </form>
-        <form action="" method="post">
-            <button class="btn btn-sm  btn-default" name="message" value="!nextsong ">Next Song</button>
-            <button class="btn btn-sm  btn-default" name="message" value="!module enable ./addonscripts/youtubePlayer.js ">Enable Music</button>
-            <button class="btn btn-sm  btn-default" name="message" value="!module disable ./addonscripts/youtubePlayer.js">Disable Music</button>
+        <form action="" method="post"style="display:inline;">
+            <button class="btn btn-sm  btn-default" name="message" value="!nextsong ">Next ♫</button>
 		</form>
-		<br />
-		<form action="" method="post">
-			<button class="btn btn-sm  btn-default" name="message" value="!song toggle ">Toggle Song Messages</button>
-        </form>
-    </div>
-    <div id="youtubeframe" class="panel-body">
-        <form action="" method="post" style="float: left; padding-right: 5px;">
-            <button class="btn btn-sm btn-default" name="message2" value="!addsong ">Add Song</button>
-            <input id="input1" type="text" name="message3" placeholder="<YouTube link>" value="">
-        </form>
-        <br />
-        <br />
-        <form action="" method="post" style="float: left; padding-right: 5px;">
-            <button class="btn btn-sm btn-default" name="message2" value="!delsong ">Delete Song</button>
-            <input id="input1" type="text" name="message3" placeholder="<YouTube link>" value="">
-        </form>
-        <br />
-        <br />
-        <form action="" method="post" style="float: left; padding-right: 5px;">
-            <button class="btn btn-sm btn-default" name="message2" value="!song limit ">Song Limit</button>
+			<br />
+			<br />
+	<form action="" method="post">
+            <button class="btn btn-sm btn-default" name="message2" value="!song limit ">Limit</button>
             <input id="input1" type="text" name="message3" placeholder="<amount>" value="">
         </form>
-    </div>
+	<form action="" method="post">
+            <button class="btn btn-sm btn-default" name="message2" value="!pricecom addsong " style="display:inline;">Price</button>
+            <input id="input1" type="text" name="message3" placeholder="<amount>" value="">
+        </form>
+		<br />
+        <form action="" method="post" style="display:inline;">
+            <button class="btn btn-sm btn-default" name="message2" value="!addsong ">Add</button>
+            <input id="input1" type="text" name="message3" placeholder="<link>" value="">
+        </form>
+        <form action="" method="post" style="display:inline;">
+            <button class="btn btn-sm btn-default" name="message2" value="!delsong ">Remove</button>
+            <input id="input1" type="text" name="message3" placeholder="<link>" value="">
+        </form>
+        <br />
+		<br />
+		<br />
+  <form action="" method="post" style="display:inline;">
+            <button class="btn btn-sm  btn-default" name="message" value="!song titles ">Toggle Titles</button>
+			        </form>	
+		<form action="" method="post" style="display:inline;">
+			<button class="btn btn-sm  btn-default" name="message" value="!song toggle " >Toggle Messages</button>
+        </form>
+			<br /><br />
 
-  <form action="" method="post">
-            <button class="btn btn-sm  btn-default" name="message" value="!song titles ">Song Titles</button>
-            <button class="btn btn-sm  btn-default" name="message" value="!song storing ">Enable Storing</button>
-			<button class="btn btn-sm  btn-default" name="message" value="!song storepath <?php echo $botpath ?>/web">Set StorePath</button>
-        </form>	
-<br />
-
-Now Playing: 
-<marquee style="width: 318px;" behavior="scroll" direction=left>
-<div id="now-playing" style="width: 318px;">Loading...</div>
-</marquee>
-Queue:
-<div style="height:150px;width:318px;border:1px solid #3E3E3E;overflow:auto;font-size:13px;">
-<div id="playlist">Loading...</div>
+♫ Queue:
+<div style="height:150px;width:318px;border:1px solid #3E3E3E;overflow:auto;font-size:13px;background-color: #24242a;">
+<div id="playlist">Searching for queue.txt...</div>
 <br />
 </div>
-
 
 
 </body>

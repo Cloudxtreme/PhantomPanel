@@ -27,6 +27,28 @@ include('../includes/includes.php');
                 <h3 class="panel-title"><i class="fa fa-android fa-2x"></i>&nbsp;&nbsp; Group Commands</h3>
             </div>
         <div class="panel-body">
+		<h5>Rank Up Settings:</h5><br />
+		Section for changing prices or required time for the command !rankup.
+		<br />
+		<br />
+		<form action="" method="post">
+		<button class="btn btn-sm btn-default" name="message2" value="!rankup toggle">RankUp Toggle on/off</button>
+		</form>
+		<br />
+		<form action="" method="post" style="float: left; padding-right: 5px;display:inline;">
+		<button class="btn btn-sm btn-default" name="message2" value="!rankup price ">Rank Up Price</button>
+		<input id="input2" type="text" name="message3" placeholder="<group> <amount>" value="">
+		</form>
+		<form action="" method="post" style="float: left; padding-right: 5px;">
+		<button class="btn btn-sm btn-default" name="message2" value="!rankup time ">Rank Up Time</button>
+		<input id="input2" type="text" name="message3" placeholder="<group> <minutes>" value="">
+		</form>
+		</div>
+		<div class="panel-body">
+		<h5>Group Settings:</h5>
+		Create, Remove, Change and Set groups for viewers.
+		<br />
+		<br />
         <form action="" method="post" style="float: left; padding-right: 5px;">
 		<button class="btn btn-sm btn-default" name="message2" value="!group ">Group Level</button>
 		<input id="input1" type="text" name="message3" placeholder="<name>" value="">
@@ -36,7 +58,7 @@ include('../includes/includes.php');
 		<input id="input1" type="text" name="message3" placeholder="<name>" value="">
 		</form>
         <form action="" method="post" style="float: left; padding-right: 5px;">
-		<button class="btn btn-sm btn-default" name="message2" value="!group remove ">Remove Group</button>
+		<button class="btn btn-sm btn-default" name="message2" value="!group remove ">Remove from Group</button>
 		<input id="input1" type="text" name="message3" placeholder="<group>" value="">
 		</form>
 		<br />
@@ -55,17 +77,7 @@ include('../includes/includes.php');
 		<input id="input3" type="text" name="message3" placeholder="<group> <multiplier>" value="">
 		</form>
 	</div>
-	<div class="panel-body" >
-			  <h5>Groups:</h5>
-			<div style="height:200px;width:400px;border:1px solid #ccc;overflow:auto;font-size:13px;">
-
-			<?php
-			$myfile = fopen("$botpath/inistore/groups.ini", "r") or die("Bot Path not set in config.php!");
-			echo fread($myfile,filesize("$botpath/inistore/groups.ini"));
-			fclose($myfile);
-			?>
-
-</div></div>
+</div>
         </div>
     </div>
 </div>

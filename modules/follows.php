@@ -48,18 +48,7 @@ include('../includes/includes.php');
 				<button  class="btn btn-sm btn-default"  name="message2" value="!followreward ">Follow Reward</button>
 				<input id="input1" type="text" name="message3" placeholder="<amount>" value="">
 				</form>
-				</div>
-				<div class="panel-body" >
-			  <h5>Followers:</h5>
-			<div style="height:100px;width:400px;border:1px solid #ccc;overflow:auto;font-size:13px;">
-
-			<?php
-			$myfile = fopen("$botpath/inistore/followed.ini", "r") or die("Bot Path not set in config.php!");
-			echo fread($myfile,filesize("$botpath/inistore/followed.ini"));
-			fclose($myfile);
-			?>
-
-</div></div>
+				</div></div>
         </div>
     </div>
 </div>
