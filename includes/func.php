@@ -1,6 +1,8 @@
 <?php
 
-if (include('autoconfig.php') === false) {
+include('autoconfig.php');
+
+if (!isset($session_name) || strlen($session_name) < 30) {
     $r = random_int(10000, 99999);
     
     $sk = '';
