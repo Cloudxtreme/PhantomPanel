@@ -30,9 +30,7 @@ if (!isset($session_name) || strlen($session_name) < 30) {
 
 require_once('autoconfig.php');
 
-if (!isset($logins)) {
-    $logins = array();
-}
+$logins = array();
 
 function AddLogin($username, $password) {
     global $logins;
@@ -41,13 +39,13 @@ function AddLogin($username, $password) {
         return;
     }
     
-    array_merge($logins, array($username => $password));
+    $logins[$username] = $password;
 }
 
 function CheckLogin($username, $password) {
     global $logins;
     
-    return isset($logins[$username]) && $logins[$username] === $password;
+    return isset($logins[$username]) && $logins[$username] == $password;
 }
 
 ?>
