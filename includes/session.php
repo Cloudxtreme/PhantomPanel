@@ -2,6 +2,7 @@
 
 require_once('nocache.php');
 require_once('func.php');
+require_once('config.php');
 
 $lifetime = 0;
 $path = "/";
@@ -12,6 +13,7 @@ $hmac_algo = "sha256";
 
 $login_url = $login_uri;
 
+session_register_shutdown();
 session_name($session_name);
 session_set_cookie_params($lifetime, $path, $domain, $secure, $httponly);
 session_start();
@@ -29,7 +31,7 @@ function create_session() {
 
     $session_data['ip'] = $_SERVER['REMOTE_ADDR'];
     $session_data['ua'] = substr($_SERVER['HTTP_USER_AGENT'], 0, 64);
-    $_SESSION['iv'] = mcrypt_create_iv(mcrypt_enc_get_iv_size($mc), MCRYPT_DEV_RANDOM);
+    $_SESSION['iv'] = mcrypt_create_iv(mcrypt_enc_get_iv_size($mc), MCRYPT_DEV_URANDOM);
 
     mcrypt_module_close($mc);
 
@@ -86,7 +88,7 @@ if (!isset($_SESSION['expires']) || !isset($_SESSION['iv']) || !isset($_SESSION[
     }
 }
 
-if ($session_data['ip'] != $_SERVER['REMOTE_ADDR'] || $session_data['ua'] != substr($_SERVER['HTTP_USER_AGENT'], 0, 64) || time() > $_SESSION['expires']) {
+if ($session_data['ip'] != $_SERVER['REMOTE_ADDR'] || $session_data['ua'] != substr($_SERVER['HTTP_USER_AGENT'], 0, 64)) {
     create_session();
     $session_data['loggedin'] = false;
 }
