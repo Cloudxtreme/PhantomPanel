@@ -3,17 +3,17 @@
 include('autoconfig.php');
 
 if (!isset($session_name) || strlen($session_name) < 30) {
-    $r = random_int(10000, 99999);
+    $r = mt_rand(10000, 99999);
     
     $sk = '';
     
     for ($i = 0; $i < 36; $i++) {
-        $n = random_int(1, 2);
+        $n = mt_rand(1, 2);
         
         if ($n == 1) {
-            $sk .= chr(random_int(97, 122));
+            $sk .= chr(mt_rand(97, 122));
         } else {
-            $sk .= random_int(0, 9);
+            $sk .= mt_rand(0, 9);
         }
     }
     
