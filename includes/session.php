@@ -72,9 +72,7 @@ if (!isset($_SESSION['expires']) || !isset($_SESSION['iv']) || !isset($_SESSION[
 
     $data = mdecrypt_generic($mc, $_SESSION['data']);
 
-    if (ord(substr($data, -1)) == 0) {
-        $data = substr($data, 0, -1);
-    }
+    $data = rtrim($data, chr(0));
 
     mcrypt_generic_deinit($mc);
     mcrypt_module_close($mc);
