@@ -60,6 +60,12 @@ function save_session() {
     $_SESSION['hash'] = $hash;
 }
 
+function set_loggedin($bool) {
+    global $session_data;
+    $session_data['loggedin'] = $bool;
+    $session_data['isloggedin'] = $bool ? "yes":"no";
+}
+
 if (!isset($_SESSION['expires']) || !isset($_SESSION['iv']) || !isset($_SESSION['data'])
         || !isset($_SESSION['hash']) || strlen($_SESSION['iv']) == 0) {
     create_session();
