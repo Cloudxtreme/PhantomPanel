@@ -100,7 +100,7 @@ if ($session_data['ip'] != $_SERVER['REMOTE_ADDR'] || $session_data['ua'] != sub
 if (!isset($session_data['loggedin'])) {
     $session_data['loggedin'] = false;
 }
-
+if (substr($_SERVER['REQUEST_URI'], 0, strlen($login_uri)) != $login_uri) { die('<pre>'.print_r($_SESSION, true).print_r($session_data, true).'</pre>'); }
 if ($session_data['loggedin'] == false && substr($_SERVER['REQUEST_URI'], 0, strlen($login_uri)) != $login_uri) {
     header("Location: $login_url");
     die();
