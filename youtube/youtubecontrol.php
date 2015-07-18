@@ -28,12 +28,6 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
 </head>
 
 <body>
-♫ Now Playing: 
-<marquee style="width:318px;background-color: #24242a;border:1px solid #3E3E3E;" behavior="scroll" direction=left>
-<div id="now-playing" style="width: 318px;">Searching for currentsong files...</div>
-</marquee>
-<br />
-<br />
         <form action="" method="post" style="display:inline;">
             <button class="btn btn-sm btn-default" name="message" value="!skipsong ">Skip ♫</button>
             <button class="btn btn-sm  btn-default" name="message" value="!song shuffle ">Shuffle ♫</button>
@@ -78,57 +72,9 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
             <input id="input3" type="text" name="message3" placeholder="<song from playlist>" value="">
         </form>
 		
-<div class="tabs">
-    
-   <div class="tab">
-       <input type="radio" id="tab-1" name="tab-group-1" checked>
-       <label for="tab-1">Queue</label>
-       
-       <div class="content">
-<div id="queue">Searching for queue files...</div>
-<br />
-       </div> 
-   </div>
-    
-   <div class="tab">
-       <input type="radio" id="tab-2" name="tab-group-1">
-       <label for="tab-2">Default Playlist</label>
-       
-       <div class="content">
-		<div id="playlist">Searching for playlist files...</div>
-		<br />
-       </div> 
-   </div>    
-</div>
 
 
 </body>
 
 </html>
 
-<script type="text/javascript">// <![CDATA[
-$(document).ready(function() {
-$.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
-setInterval(function() {
-$('#now-playing').load('nowplaying.php');
-}, 5000); // the "3000" here refers to the time to refresh the div.  it is in milliseconds. 
-});
-// ]]></script>
-
-<script type="text/javascript">// <![CDATA[
-$(document).ready(function() {
-$.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
-setInterval(function() {
-$('#queue').load('queue.php');
-}, 5000); // the "3000" here refers to the time to refresh the div.  it is in milliseconds. 
-});
-// ]]></script>
-
-<script type="text/javascript">// <![CDATA[
-$(document).ready(function() {
-$.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
-setInterval(function() {
-$('#playlist').load('playlist.php');
-}, 5000); // the "3000" here refers to the time to refresh the div.  it is in milliseconds. 
-});
-// ]]></script>
