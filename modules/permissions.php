@@ -1,5 +1,13 @@
 <?php
-include('../includes/includes.php');
+require_once('../includes/includes.php');
+?>
+<?php
+if (isset($_POST['message'])) {
+    $result = curl_put($_POST['message']);
+}
+if (isset($_POST['message2']) && isset($_POST['message3'])) {
+    $result = curl_put($_POST['message2'] . $_POST['message3']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +40,7 @@ include('../includes/includes.php');
 		<br />
 		<br />
 		<form action="" method="post">
-		<button class="btn btn-sm btn-default" name="message2" value="!rankup toggle">RankUp Toggle on/off</button>
+		<button class="btn btn-sm btn-default" name="message" value="!rankup toggle">RankUp Toggle on/off</button>
 		</form>
 		<br />
 		<form action="" method="post" style="float: left; padding-right: 5px;display:inline;">

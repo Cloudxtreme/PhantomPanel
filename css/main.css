@@ -2,7 +2,9 @@ html, body {
 height: 100%;
 }
 h5 {
-font-weight: bold;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+color: #666;
+
 }
 kbd {
   padding: 5px 6px 3px 5px;
@@ -119,6 +121,7 @@ color: #8c8c9c;
 .dropdown-menu {
   background-color: #29292F;
   border: #8c8c9c;
+  text-align: center;
 }
 .dropdown-menu :hover{
   background-color: #19191f;
@@ -170,26 +173,31 @@ padding-top: 15px;
     background-color: inherit;
     border-color: transparent;
 }
-
+.data-box {
+  border-radius: 4px;
+  background-color: #fff;
+  height:200px;
+  width:400px;
+  border:1px solid #ccc;
+  overflow:auto;
+  font-size:13px;
+}
 .panel-primary {
-  border-color: #6441a5;
-}
-.panel-primary > .panel-heading {
-  color: #ffffff;
-  background-color: #6441a5;
-  border-color: #6441a5;
-}
-.panel-primary > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #6441a5;
+  border-color: #CCC;
+  background-color: #f2f2f2;
 }
 .panel-primary > .panel-heading .badge {
   color: #6441a5;
   background-color: #ffffff;
 }
-.panel-primary > .panel-footer + .panel-collapse > .panel-body {
-  border-bottom-color: #6441a5;
-  
+.panel-primary>.panel-heading {
+  color: #ffffff;
+  background-color: #6441a5;
+  border-color: #CCC;
 }
+.panel-primary>.panel-heading+.panel-collapse>.panel-body {
+border-top-color: #000;
+ }
 
 .page-header {
   padding-bottom: 0px;

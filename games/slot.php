@@ -1,5 +1,13 @@
 <?php
-include('../includes/includes.php');
+require_once('../includes/includes.php');
+?>
+<?php
+if (isset($_POST['message'])) {
+    $result = curl_put($_POST['message']);
+}
+if (isset($_POST['message2']) && isset($_POST['message3'])) {
+    $result = curl_put($_POST['message2'] . $_POST['message3']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +37,8 @@ include('../includes/includes.php');
 			  Win points by hitting 3 of the same emotes in a row!
 			  <br /><br />
 			    <form action="" method="post">
-				<button  class="btn btn-sm btn-default"  name="message2" value="!slot ">Play the Slot</button>
-				<button  class="btn btn-sm btn-default"  name="message2" value="!slot CooldownMessages toggle ">Cooldown Messages On/Off</button>
+				<button  class="btn btn-sm btn-default"  name="message" value="!slot ">Play the Slot</button>
+				<button  class="btn btn-sm btn-default"  name="message" value="!slot CooldownMessages toggle ">Cooldown Messages On/Off</button>
 				</form>
 				</div>
 				<div class="panel-body">
@@ -120,7 +128,7 @@ include('../includes/includes.php');
 				Set a custom reward or toggle off the ability to recieve points when you get 2 of the same emote in a row.<br />
 				<br />
 				 <form action="" method="post">
-				<button  class="btn btn-sm btn-default"  name="message2" value="!slot halfrewards toggle ">Toggle Half-Rewards On/Off</button>
+				<button  class="btn btn-sm btn-default"  name="message" value="!slot halfrewards toggle ">Toggle Half-Rewards On/Off</button>
 				</form>
 				<br />
 				<form action="" method="post" style="padding-bottom:5px;float: left; padding-right: 5px;display:inline;">

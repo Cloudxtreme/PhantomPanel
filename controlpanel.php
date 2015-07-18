@@ -1,4 +1,13 @@
-<?php include( 'includes/includes.php'); ?>
+<?php require_once('includes/includes.php'); ?>
+
+<?php
+if (isset($_POST['message'])) {
+    $result = curl_put($_POST['message']);
+}
+if (isset($_POST['message2']) && isset($_POST['message3'])) {
+    $result = curl_put($_POST['message2'] . $_POST['message3']);
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -20,6 +29,7 @@
 <body>
     <div class="container">
         <br>
+		<!-- Navigation Menu-->
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -29,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand">Dashboard <br /> <span style="font-size:12px;padding-left: 10px;color: gray;">version 1.1.6</span></a>
+                    <a class="navbar-brand">Dashboard <br /> <span style="font-size:12px;padding-left: 10px;color: gray;">version 1.1.7</span></a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -139,7 +149,10 @@
                             <h4 class="panel-title">
 	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 	          Video Stream
-	        </a>  <span id="viewers" style="float:right;padding-bottom: 3px;"><img src="images/viewers.png" style="height: 30px;padding-left: 5px;padding-right: 5px;padding-bottom: 5px;" /> 0</span>
+	        </a>  
+			<span id="followers" style="float:right;"><img src="images/followers.png" style="height: 15px;padding-left: 5px;padding-right: 5px;display:inline;" /> 0</span>
+			<span id="viewers" style="float:right;padding-right: 10px;"><img src="images/viewers.png" style="height: 20px;padding-left: 5px;padding-right: 5px;display:inline;" /> 0</span>
+
 	      </h4>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -151,15 +164,17 @@
                 </div>
             </div>
         </div>
-
+		<!-- Default Bot Commands Panel -->
         <iframe class="iframe1" src="modules/botcommands.php" frameborder="0" scrolling="no" height="100%" width="100%"></iframe>
+		<!-- Iframe that will display any panel selected in the navigation menu -->
         <iframe class="iframe2" name="main" frameborder="0" scrolling="no" height="100%" width="100%"></iframe>
 
     </div>
+	<!-- Right Sidebar for Twitch Chat -->
     <div id="chatsidebar" name="chat">
         <iframe id="chat" src="http://www.twitch.tv/<?php echo $owner ?>/chat?popout=" frameborder="0" scrolling="no" height="100%"></iframe>
     </div>
-
+	<!-- Left Sidebar using iframe to display Music player content -->
     <div id="musicsidebar">
         <iframe name="music" src="youtube/youtubeplayer.html" frameborder="0" scrolling="no" height="100%" width="350px"> </iframe>
     </div>

@@ -2,10 +2,12 @@
 
 
 <?php
-$result = curl_get("/addons/youtubePlayer/currentsong.txt");
+
+$result = curl_get("requests.html");
+
 if ($result[1] == 200) {
     echo $result[0];
 } else {
-    echo 'Failed to get current song';
+    echo 'Failed to get songrequest queue';
 }
 ?>

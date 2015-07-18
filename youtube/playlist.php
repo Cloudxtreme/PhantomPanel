@@ -1,8 +1,13 @@
-<?php include( '../includes/includes.php'); ?>
+<?php require_once('../includes/includes.php'); ?>
 
 
 <?php
-$myfile = fopen("localhost/addons/youtubePlayer/queue.txt", "r") or die("queue.txt is missing!");
-echo fread($myfile,filesize("localhost/addons/youtubePlayer/queue.txt"));
-fclose($myfile);
+$result = curl_get("default.html");
+
+
+if ($result[1] == 200) {
+    echo $result[0];
+} else {
+    echo 'Failed to get songrequest playlist';
+}
 ?>

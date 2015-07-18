@@ -1,6 +1,15 @@
+<?php require_once('../includes/includes.php'); ?>
+<?php
+if (isset($_POST['message'])) {
+    $result = curl_put($_POST['message']);
+}
+if (isset($_POST['message2']) && isset($_POST['message3'])) {
+    $result = curl_put($_POST['message2'] . $_POST['message3']);
+}
+?>
 
-<?php include( '../includes/includes.php'); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
 <!DOCTYPE html>
 <html>
 
@@ -21,20 +30,20 @@
 <body>
 ♫ Now Playing: 
 <marquee style="width:318px;background-color: #24242a;border:1px solid #3E3E3E;" behavior="scroll" direction=left>
-<div id="now-playing" style="width: 318px;">Searching for currentsong.txt...</div>
+<div id="now-playing" style="width: 318px;">Searching for currentsong files...</div>
 </marquee>
 <br />
 <br />
         <form action="" method="post" style="display:inline;">
             <button class="btn btn-sm btn-default" name="message" value="!skipsong ">Skip ♫</button>
-            <button class="btn btn-sm  btn-default" name="message" value="!currentsong ">Current ♫</button>
+            <button class="btn btn-sm  btn-default" name="message" value="!song shuffle ">Shuffle ♫</button>
             <button class="btn btn-sm  btn-default" name="message" value="!stealsong ">Steal ♫</button>
+			<button class="btn btn-sm  btn-default" name="message" value="!nextsong ">Next ♫</button>
         </form>
-        <form action="" method="post"style="display:inline;">
-            <button class="btn btn-sm  btn-default" name="message" value="!nextsong ">Next ♫</button>
+        <form action="" method="post"style="margin-top: 10px;">
+		    <button class="btn btn-sm  btn-default" name="message" value="!currentsong ">Current ♫</button>
 		</form>
-			<br />
-			<br />
+
 	<form action="" method="post">
             <button class="btn btn-sm btn-default" name="message2" value="!song limit ">Limit</button>
             <input id="input1" type="text" name="message3" placeholder="<amount>" value="">
@@ -61,12 +70,35 @@
 		<form action="" method="post" style="display:inline;">
 			<button class="btn btn-sm  btn-default" name="message" value="!song toggle " >Toggle Messages</button>
         </form>
-			<br /><br />
-
-♫ Queue:
-<div style="height:150px;width:318px;border:1px solid #3E3E3E;overflow:auto;font-size:13px;background-color: #24242a;">
-<div id="playlist">Searching for queue.txt...</div>
+			<br />
+			
+			<br />
+		        <form action="" method="post" style="">
+            <button class="btn btn-sm btn-default" name="message2" value="!playsong ">Play </button>
+            <input id="input3" type="text" name="message3" placeholder="<song from playlist>" value="">
+        </form>
+		
+<div class="tabs">
+    
+   <div class="tab">
+       <input type="radio" id="tab-1" name="tab-group-1" checked>
+       <label for="tab-1">Queue</label>
+       
+       <div class="content">
+<div id="queue">Searching for queue files...</div>
 <br />
+       </div> 
+   </div>
+    
+   <div class="tab">
+       <input type="radio" id="tab-2" name="tab-group-1">
+       <label for="tab-2">Default Playlist</label>
+       
+       <div class="content">
+		<div id="playlist">Searching for playlist files...</div>
+		<br />
+       </div> 
+   </div>    
 </div>
 
 
@@ -79,6 +111,15 @@ $(document).ready(function() {
 $.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
 setInterval(function() {
 $('#now-playing').load('nowplaying.php');
+}, 5000); // the "3000" here refers to the time to refresh the div.  it is in milliseconds. 
+});
+// ]]></script>
+
+<script type="text/javascript">// <![CDATA[
+$(document).ready(function() {
+$.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
+setInterval(function() {
+$('#queue').load('queue.php');
 }, 5000); // the "3000" here refers to the time to refresh the div.  it is in milliseconds. 
 });
 // ]]></script>
