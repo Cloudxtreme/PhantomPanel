@@ -88,6 +88,10 @@ if (!isset($_SESSION['expires']) || !isset($_SESSION['iv']) || !isset($_SESSION[
     }
 }
 
+if ($session_data['isloggedin'] == "yes") {
+    $session_data['loggedin'] = true;
+}
+
 if ($session_data['ip'] != $_SERVER['REMOTE_ADDR'] || $session_data['ua'] != substr($_SERVER['HTTP_USER_AGENT'], 0, 64)) {
     create_session();
     $session_data['loggedin'] = false;

@@ -5,6 +5,7 @@ require_once('includes/includes.php');
 if (isset($_GET['login'])) {
     if (CheckLogin($_POST['username'], $_POST['password'])) {
         $session_data['loggedin'] = true;
+        $session_data['isloggedin'] = "yes";
 
         save_session();
     }
