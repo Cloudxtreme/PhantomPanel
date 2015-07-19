@@ -64,6 +64,13 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         </div>
                     </div>
                     <div class="panel-body">
+					<h5>Command Attributes:</h5>
+					<p><b>Note:</b> The Permission command uses a "<b>mode</b>" which is for targeting what groups can use the command.<br />
+					<ul>
+					<li>1: Setting the mode as "<b>1</b>" will set the command to only work for the group you typed.</li>
+					<li>2: Setting the mode as "<b>2</b>" will set the command to work for the group you typed and anything ranked higher than that group.</li>
+					</ul>
+					<br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!aliascom ">Set Alias</button>
                             <input id="input3" type="text" name="message3" placeholder="<command> <alias>" value="">
@@ -127,7 +134,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             <div class="data-box">
 
                                 <?php
-                                $result = curl_get("/inistore/commandperm.ini");
+                                $result = curl_get("/inistore/permcom.ini");
 
                                 if ($result[1] == 200) {
                                     echo $result[0];

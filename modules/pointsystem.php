@@ -33,7 +33,8 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <h3 class="panel-title"><i class="fa fa-users fa-2x"></i>&nbsp;&nbsp; Point System</h3>
                     </div>
                     <div class="panel-body">
-                        <h4>Currency Control:</h4>
+                        <h4>Transactions:</h4>
+						<p>Deposit, Withdraw, or Set the amount of points for viewers.</p>
                         <br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!points all ">Send Points to Everyone</button>
@@ -56,7 +57,8 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         </form>
                     </div>
                     <div class="panel-body">
-                        <h4>Currency Settings:</h4>
+                        <h4>Currency Control:</h4>
+						<p>Full control of the amount of points viewers earn while in chat.</p>
                         <br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!points name ">Change Points Name</button>
@@ -68,11 +70,11 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <br />
                         <br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
-                            <button  class="btn btn-sm btn-default"  name="message2" value="!points gain ">Point Gain</button>
+                            <button  class="btn btn-sm btn-default"  name="message2" value="!points gain ">Point Gain <span style="color:green;">(Online)</span></button>
                             <input id="input1" type="text" name="message3" placeholder="<amount>" value="">
                         </form>
                         <form action="" method="post" style="float: left; padding-right: 5px;">
-                            <button  class="btn btn-sm btn-default"  name="message2" value="!points offlinegain ">Offline Point Gain</button>
+                            <button  class="btn btn-sm btn-default"  name="message2" value="!points offlinegain ">Point Gain <span style="color:red;">(Offline)</span></button>
                             <input id="input1" type="text" name="message3" placeholder="<amount>" value="">
                         </form>
                         <form action="" method="post" style="float: left; padding-right: 5px;">
@@ -83,11 +85,11 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <br />
                         <br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
-                            <button  class="btn btn-sm btn-default"  name="message2" value="!points interval ">Point Gain Interval</button>
+                            <button  class="btn btn-sm btn-default"  name="message2" value="!points interval ">Point Gain Interval <span style="color:green;">(Online)</span></button>
                             <input id="input1" type="text" name="message3" placeholder="<minutes>" value="">
                         </form>
                         <form action="" method="post" style="float: left; padding-right: 5px;">
-                            <button  class="btn btn-sm btn-default"  name="message2" value="!points offlineinterval ">Offline Point Gain Interval</button>
+                            <button  class="btn btn-sm btn-default"  name="message2" value="!points offlineinterval ">Point Gain Interval <span style="color:red;">(Offline)</span></button>
                             <input id="input1" type="text" name="message3" placeholder="<minutes>" value="">
                         </form>
                         <form action="" method="post" style="float: left; padding-right: 5px;">
@@ -97,6 +99,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     </div>
                     <div class="panel-body">
                         <h4>Penalty System:</h4>
+						<p>Prevent certain viewers from earning points for a specific amount of time</p>
                         <br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!penalty ">Set Penalty</button>

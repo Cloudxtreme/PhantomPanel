@@ -39,7 +39,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand">Dashboard <br /> <span style="font-size:12px;padding-left: 10px;color: gray;">version 1.1.7</span></a>
+                    <a class="navbar-brand">Dashboard <br /> <span style="font-size:12px;padding-left: 10px;color: gray;">version 1.1.8</span></a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

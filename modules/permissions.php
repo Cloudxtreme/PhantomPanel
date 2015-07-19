@@ -57,6 +57,10 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
 		Create, Remove, Change and Set groups for viewers.
 		<br />
 		<br />
+		<form action="" method="post">
+		<button class="btn btn-sm btn-default" name="message" value="!group list">Group List</button>
+		</form>
+		<br />
         <form action="" method="post" style="float: left; padding-right: 5px;">
 		<button class="btn btn-sm btn-default" name="message2" value="!group ">Group Level</button>
 		<input id="input1" type="text" name="message3" placeholder="<name>" value="">
