@@ -32,12 +32,11 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <h3 class="panel-title"><i class="fa fa-ticket fa-2x"></i>&nbsp;&nbsp; Notices/Announcements</h3>
                     </div>
                     <div class="panel-body">
-                        <h5>Notice Settings:</h5>
-                        <div class="panel-body">
+                        <h5>Channel Notices:</h5>
+						<p>Create announcements that are automatically shown in chat based in your set intervals and message count.</p>
                             <form action="" method="post">
                                 <button class="btn btn-sm btn-default" name="message" value="!notice toggle">Notices on/off</button>
                             </form>
-                            <br />
                             <br />
                             <form action="" method="post" style="float: left; padding-right: 5px;">
                                 <button  class="btn btn-sm btn-default"  name="message2" value="!addnotice ">Create Notice</button>
@@ -56,8 +55,11 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                                 <input id="input4" type="text" name="message3" placeholder="<Notice ID #> <message>" value="">
                             </form>
                         </div>
-                    </div>
                     <div class="panel-body">
+					<h5>Notice Settings:</h5>
+					<p><b>Message Requirement</b> is the amount of message in chat that will trigger a notice.<br />
+					<b>Notice Interval</b> is amount of time before triggering from the amount of messages in chat.</p>
+					<br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!notice req ">Message Requirement</button>
                             <input id="input1" type="text" name="message3" placeholder="<amount>" value="">

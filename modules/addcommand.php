@@ -70,6 +70,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
 					<li>1: Setting the mode as "<b>1</b>" will set the command to only work for the group you typed.</li>
 					<li>2: Setting the mode as "<b>2</b>" will set the command to work for the group you typed and anything ranked higher than that group.</li>
 					</ul>
+					<p><b>Alias:</b> Alias means another word for the same command. If you set !points with an alias as wallet, the command will respond to !wallet.</p>
 					<br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!aliascom ">Set Alias</button>
@@ -90,9 +91,10 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                           <div class="data-box">
                             <?php
                             $result = curl_get("/inistore/command.ini");
+	
 
                             if ($result[1] == 200) {
-                                echo $result[0];
+                                    echo $result[0];
                             } else {
                                 echo 'Failed to get command list';
                             }

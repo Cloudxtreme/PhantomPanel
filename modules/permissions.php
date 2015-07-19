@@ -57,10 +57,6 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
 		Create, Remove, Change and Set groups for viewers.
 		<br />
 		<br />
-		<form action="" method="post">
-		<button class="btn btn-sm btn-default" name="message" value="!group list">Group List</button>
-		</form>
-		<br />
         <form action="" method="post" style="float: left; padding-right: 5px;">
 		<button class="btn btn-sm btn-default" name="message2" value="!group ">Group Level</button>
 		<input id="input1" type="text" name="message3" placeholder="<name>" value="">
@@ -88,7 +84,26 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
 		<button class="btn btn-sm btn-default" name="message2" value="!group points ">Group Point Gain</button>
 		<input id="input3" type="text" name="message3" placeholder="<group> <multiplier>" value="">
 		</form>
+
 	</div>
+	
+                    <div class="panel-body" >
+                        		<form action="" method="post">
+		<button class="btn btn-sm btn-default" name="message" value="!group list">Group List</button>
+		</form>
+                          <div class="data-box">
+
+                            <?php
+                            $result = curl_get("/inistore/groups.ini");
+
+                            if ($result[1] == 200) {
+                                echo $result[0];
+                            } else {
+                                echo 'Failed to get group list';
+                            }
+                            ?>
+
+                        </div></div>
 </div>
         </div>
     </div>

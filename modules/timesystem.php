@@ -34,11 +34,10 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     <div class="panel-body">
                         <form action="" method="post">
                             <button  class="btn btn-sm btn-default"  name="message" value="!timetoggle ">Toggle Time on/off</button>
-                            <button  class="btn btn-sm btn-default"  name="message" value="!timelevel ">Toggle Promote from Time on/off</button>
                         </form>
                     </div>
                     <div class="panel-body">
-                        <h4>Time Control:</h4>
+                        <h5>Time Control:</h5>
                         <br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!time ">Someone's Time</button>
@@ -59,6 +58,12 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <br />
                         <br />
                         <br />
+						<h5>Promotions from Time:</h5>
+						<p>This feature enables to automatic group level up for viewers. Based on the amount of time set a viewer will become a Regular. (You cannot edit the group for it.)</p>
+						<form action="" method="post">
+                            <button  class="btn btn-sm btn-default"  name="message" value="!timelevel ">Toggle Time Promoter on/off</button>
+                        </form>
+						<br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!timepromotehours ">Group Promote Hours</button>
                             <input id="input1" type="text" name="message3" placeholder="<hours>" value="">

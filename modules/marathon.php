@@ -35,18 +35,18 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <h3 class="panel-title"><i class="fa fa-android fa-2x"></i>&nbsp;&nbsp; Marathon Commands</h3>
                     </div>
                     <div class="panel-body">
-                        <h4>Marathon Settings:</h4>
+                        <h5>Marathon Settings:</h5>
+						<p>Edit or schedule upcoming marathons. Also includes a link and custom name. Good for doing long marathon streams and etc.</p>
                         <br>
-                        <form action="" method="post" style="float: left; padding-right: 5px;">
-                            <button class="btn btn-sm btn-default" name="message2" value="!marathon schedule add ">Schedule a Marathon</button>
-                            <input id="input4" type="text" name="message3" placeholder="<name> <MM/DD> <HH:MM>" value="">
-                        </form>
-                        <br />
-                        <br />
-                        <br />
                         <form action="" method="post">
                             <button class="btn btn-sm btn-default" name="message" value="!marathon">Current Marathon</button>
                             <button class="btn btn-sm btn-default" name="message" value="!marathon clear">Clear Marathons</button>
+                        </form>
+						<br />
+						<br />
+                        <form action="" method="post" style="float: left; padding-right: 5px;">
+                            <button class="btn btn-sm btn-default" name="message2" value="!marathon schedule add ">Schedule Marathon</button>
+                            <input id="input4" type="text" name="message3" placeholder="<name> <MM/DD> <HH:MM>" value="">
                         </form>
                     </div>
                     <div class="panel-body">
@@ -55,7 +55,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             <input id="input1" type="text" name="message3" placeholder="<name>" value="">
                         </form>
                         <form action="" method="post">
-                            <button class="btn btn-sm  btn-default" name="message" value="!marathon nameclear">Clear Marathon Name</button>
+                            <button class="btn btn-sm  btn-default" name="message" value="!marathon nameclear">Clear Name</button>
                         </form>
                     </div>
                     <div class="panel-body">
@@ -64,11 +64,12 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             <input id="input1" type="text" name="message3" placeholder="<URL>" value="">
                         </form>
                         <form action="" method="post">
-                            <button class="btn btn-sm  btn-default" name="message" value="!marathon linkclear">Clear Marathon Link</button>
+                            <button class="btn btn-sm  btn-default" name="message" value="!marathon linkclear">Clear Link</button>
                         </form>
                     </div>
                     <div class="panel-body">
-                        <h4>Time Zone:</h4>
+                        <h5>Time Zone:</h5>
+						Marathon commands use the Time-Zone module that's included in the script. This helps make it easier to schedule your marathons without having to change up the start time and dates.</p>
                         <br>
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button class="btn btn-sm btn-default" name="message2" value="!timezone ">Set Time Zone</button>
