@@ -63,7 +63,7 @@ function save_session() {
 function set_loggedin($bool) {
     global $session_data;
     $session_data['loggedin'] = $bool;
-    $session_data['isloggedin'] = $bool ? "yes":"no";
+    $session_data['isloggedin'] = ($bool ? "yes" : "no");
 }
 
 if (!isset($_SESSION['expires']) || !isset($_SESSION['iv']) || !isset($_SESSION['data'])
