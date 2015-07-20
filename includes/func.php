@@ -2,7 +2,7 @@
 
 include('autoconfig.php');
 
-if (!isset($session_name) || strlen($session_name) < 30) {
+if (!isset($session_name) || strlen($session_name) < 20) {
     $r = mt_rand(10000, 99999);
     
     $sk = '';
@@ -45,7 +45,7 @@ function AddLogin($username, $password) {
 
 function CheckLogin($username, $password) {
     global $logins;
-    
+
     return isset($logins[$username]) && $logins[$username] == $password;
 }
 

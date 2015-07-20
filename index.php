@@ -6,6 +6,9 @@ global $logins;
 if (isset($_GET['login'])) {
     if (CheckLogin($_POST['username'], $_POST['password'])) {
         set_loggedin(true);
+        
+        header('Location: controlpanel.php');
+        die();
     }
 }
 ?>
