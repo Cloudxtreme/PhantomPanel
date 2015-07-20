@@ -61,9 +61,19 @@ function save_session() {
 }
 
 function set_loggedin($bool) {
-    global $session_data;
-    $session_data['loggedin'] = $bool;
-    $session_data['isloggedin'] = ($bool ? "yes" : "no");
+    global $_SESSION;
+    
+    if (!file_exists(__DIR__."/sessions")) {
+        mkdir(__DIR__."/sessions", 0777);
+    }
+    
+    if ($bool) {
+        file_put_contents(__DIR__."/sessions/".session_id(), $_SESSION['hash']);
+    } else {
+        if (file_exists(__DIR__."/sessions/".session_id())) {
+            unlink(__DIR__."/sessions/".session_id());
+        }
+    }
 }
 
 if (!isset($_SESSION['expires']) || !isset($_SESSION['iv']) || !isset($_SESSION['data'])
@@ -83,28 +93,41 @@ if (!isset($_SESSION['expires']) || !isset($_SESSION['iv']) || !isset($_SESSION[
     mcrypt_generic_deinit($mc);
     mcrypt_module_close($mc);
 
-    //$hash = hash_hmac($hmac_algo, session_id().$_SESSION['expires'].$data, $k);
+    $hash = hash_hmac($hmac_algo, session_id().$_SESSION['expires'].$data, $k);
 
-    if ($_SESSION['expires'] < time() /* || $_SESSION['hash'] != $hash */) {
+    if ($_SESSION['expires'] < time() || $_SESSION['hash'] != $hash) {
         create_session();
     } else {
         $session_data = json_decode($data, true);
     }
 }
 
-if ($session_data['isloggedin'] == "yes") {
-    $session_data['loggedin'] = true;
+$dir = scandir(__DIR__."/sessions");
+
+for ($i = 0; $i < count($dir); $i++) {
+    if ($dir[$i] != "." && $dir[$i] != ".." && is_file(__DIR__."/sessions/".$dir[$i]) && filemtime(__DIR__."/sessions/".$dir[$i]) + $expire_time < time()) {
+        unlink(__DIR__."/sessions/".$dir[$i]);
+    }
 }
 
-if ($session_data['ip'] != $_SERVER['REMOTE_ADDR'] || $session_data['ua'] != substr($_SERVER['HTTP_USER_AGENT'], 0, 64)) {
-    create_session();
-    $session_data['loggedin'] = false;
+if (file_exists(__DIR__."/sessions/".session_id())) {
+    $data = file_get_contents(__DIR__."/sessions/".session_id());
+    
+    if ($session_data['ip'] != $_SERVER['REMOTE_ADDR'] || $session_data['ua'] != substr($_SERVER['HTTP_USER_AGENT'], 0, 64) || $_SESSION['hash'] != $data) {
+        create_session();
+        $session_data['loggedin'] = false;
+    } else {
+        save_session();
+        set_loggedin(true);
+        
+        $session_data['loggedin'] = true;
+    }
 }
 
 if (!isset($session_data['loggedin'])) {
     $session_data['loggedin'] = false;
 }
-if (substr($_SERVER['REQUEST_URI'], 0, strlen($login_uri)) != $login_uri) { die('<pre>'.print_r($_SESSION, true).print_r($session_data, true).'</pre>'); }
+
 if ($session_data['loggedin'] == false && substr($_SERVER['REQUEST_URI'], 0, strlen($login_uri)) != $login_uri) {
     header("Location: $login_url");
     die();
