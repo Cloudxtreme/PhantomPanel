@@ -30,6 +30,7 @@ if (!isset($session_name) || strlen($session_name) < 30) {
 
 require_once('autoconfig.php');
 
+global $logins;
 $logins = array();
 
 function AddLogin($username, $password) {

@@ -1,6 +1,8 @@
 <?php
 require_once('includes/includes.php');
 
+global $logins;
+
 if (isset($_GET['login'])) {
     if (CheckLogin($_POST['username'], $_POST['password'])) {
         set_loggedin(true);
