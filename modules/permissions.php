@@ -5,6 +5,7 @@ require_once('../includes/includes.php');
 if (isset($_POST['message'])) {
     $result = curl_put($_POST['message']);
 }
+
 if (isset($_POST['message2']) && isset($_POST['message3'])) {
     $result = curl_put($_POST['message2'] . $_POST['message3']);
 }
@@ -84,9 +85,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             <button class="btn btn-sm btn-default" name="message2" value="!group points ">Group Point Gain</button>
                             <input id="input3" type="text" name="message3" placeholder="<group> <multiplier>" value="">
                         </form>
-
                     </div>
-
                     <div class="panel-body" >
                         <form action="" method="post">
                             <button class="btn btn-sm btn-default" name="message" value="!group list">Group List</button>

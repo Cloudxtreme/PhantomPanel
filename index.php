@@ -8,10 +8,6 @@ if (isset($_GET['login'])) {
         set_loggedin(true);
 
         header('Location: controlpanel.php');
-
-
-
-
         die();
     }
 }
@@ -50,7 +46,7 @@ if (isset($_GET['login'])) {
                         ?>
                         <h5>LOGIN</h5>
                         <?php if ($session_data['loggedin'] == false) { ?>
-                            <form action="?login=1" method="post" class="loginform">
+                            <form action="?login" method="post" class="loginform">
                                 <div class="form-group">
                                     <label class="sr-only">Username</label>
                                     <div class="input-group">

@@ -151,6 +151,12 @@ padding-top: 15px;
     width: 100%;
 	text-align: center;
 }
+.error {
+    width: 50%;
+    text-align: center;
+    color: #AA0000;
+    border: 1px #AA0000 dashed;
+}
 .container {
   margin-right: auto;
   margin-left: auto;
