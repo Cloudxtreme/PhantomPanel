@@ -144,7 +144,7 @@ if (isset($_GET['step'])) {
                                 function addinput(level) {
                                     if (lastlevel < level) {
                                         lastlevel = level;
-                                                                
+                                                                        
                                         document.getElementById('logins').innerHTML += '<div class="input-group">'
                                             + '<input type="text" class="form-control"'
                                             + 'placeholder="Username" name="username[]"'
@@ -156,6 +156,7 @@ if (isset($_GET['step'])) {
                                 }
                             </script>
                             <h6>Create Logins</h6>
+                            <div><em>All usernames must be unique. All usernames and passwords are case sensitive</em></div>
                             <form action="?step=5" method="post" class="installform">
                                 <div class="form-group" id="logins">
                                     <div class="input-group">
@@ -181,14 +182,27 @@ if (isset($_GET['step'])) {
                             }
 
                             $logindata = "";
+                            $users = array();
+                            $badusers = false;
 
                             for ($i = 0; $i < cout($_POST['username']); $i++) {
-                                $logindata .= $newline . 'AddLogin(\'' . $_POST['username'][$i] . '\', \'' . $_POST['password'][$i] . '\');';
+                                if (!in_array($_POST['username'][$i], $users)) {
+                                    $logindata .= $newline . 'AddLogin(\'' . $_POST['username'][$i] . '\', \'' . $_POST['password'][$i] . '\');';
+                                    $users[] = $_POST['username'][$i];
+                                } else {
+                                    $badusers = true;
+                                }
                             }
 
                             $data = substr($data, 0, strpos($data, '/*AddLogin_start*/')) . $logindata . substr($data, strpos($data, '/*AddLogin_end*/'));
 
                             file_put_contents(__DIR__ . '/includes/config.php', $data) or print('<div class="error">Failed to write config data</div>');
+
+                            if ($badusers) {
+                                ?>
+                                <div class="warning">Some usernames were not added due to being duplicates</div>
+                                <?php
+                            }
                             ?>
                             <h6>Bot Settings</h6>
                             <form action="?step=6" method="post" class="installform">

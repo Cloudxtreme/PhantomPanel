@@ -170,6 +170,12 @@ padding-top: 15px;
     color: #AA0000;
     border: 1px #AA0000 dashed;
 }
+.warning {
+    width: 50%;
+    text-align: center;
+    color: #EEEE00;
+    border: 1px #EEEE00 dashed;
+}
 .success {
     width: 50%;
     text-align: center;
