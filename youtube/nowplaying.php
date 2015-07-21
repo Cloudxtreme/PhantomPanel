@@ -2,6 +2,7 @@
 
 
 <?php
+
 $result = curl_get("/addons/youtubePlayer/currentsong.txt");
 
 if ($result[1] == 200) {

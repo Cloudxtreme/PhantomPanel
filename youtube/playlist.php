@@ -2,6 +2,7 @@
 
 
 <?php
+
 $result = curl_get("/web/queue.txt");
 
 if ($result[1] == 200) {

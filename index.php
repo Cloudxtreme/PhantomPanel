@@ -6,7 +6,7 @@ global $logins;
 if (isset($_GET['login'])) {
     if (CheckLogin($_POST['username'], $_POST['password'])) {
         set_loggedin(true);
-        
+
         header('Location: controlpanel.php');
         die();
     }
@@ -39,9 +39,11 @@ if (isset($_GET['login'])) {
                         <div class="fa_user">
                             <img src="http://i.imgur.com/a0h0zM5.png" />
                         </div>
-<?php if (isset($_GET['login']) && $session_data['loggedin'] == false) {
-    echo '<div class="error">Invalid Username or Password</div>';
-} ?>
+                        <?php
+                        if (isset($_GET['login']) && $session_data['loggedin'] == false) {
+                            echo '<div class="error">Invalid Username or Password</div>';
+                        }
+                        ?>
                         <h5>LOGIN</h5>
                         <?php if ($session_data['loggedin'] == false) { ?>
                             <form action="?login" method="post" class="loginform">
