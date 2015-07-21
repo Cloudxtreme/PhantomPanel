@@ -83,29 +83,13 @@ function setURL(url){
 </html>
 
 
-<script type="text/javascript">// <![CDATA[
+<script type="text/javascript">
 $(document).ready(function() {
 $.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
 setInterval(function() {
 $('#now-playing').load('nowplaying.php');
-}, 5000); // the "3000" here refers to the time to refresh the div.  it is in milliseconds.
-});
-// ]]></script>
-
-<script type="text/javascript">// <![CDATA[
-$(document).ready(function() {
-$.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
-setInterval(function() {
 $('#queue').load('queue.php');
-}, 5000); // the "3000" here refers to the time to refresh the div.  it is in milliseconds.
-});
-// ]]></script>
-
-<script type="text/javascript">// <![CDATA[
-$(document).ready(function() {
-$.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
-setInterval(function() {
 $('#playlist').load('playlist.php');
-}, 5000); // the "3000" here refers to the time to refresh the div.  it is in milliseconds.
+}, 5000);
 });
-// ]]></script>
+</script>
