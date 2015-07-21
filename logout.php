@@ -8,5 +8,4 @@ $session_data['loggedin'] = false;
 
 header("Location: $login_url");
 die();
-
 ?>

@@ -32,10 +32,10 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <h3 class="panel-title"><i class="fa fa-check-square-o"></i>&nbsp;&nbsp; Poll/Vote System</h3>
                     </div>
                     <div class="panel-body">
-					<h5>Voting:</h5>
-					<p>A simple poll system for voting on anything. You can enter more than 2 options if needed.<br />
-					To vote type !vote "<b>option</b>" in chat.</p>
-					<br />
+                        <h5>Voting:</h5>
+                        <p>A simple poll system for voting on anything. You can enter more than 2 options if needed.<br />
+                            To vote type !vote "<b>option</b>" in chat.</p>
+                        <br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!poll open ">Start A Poll</button>
                             <input id="input3" type="text" name="message3" placeholder="<option> <option2> " value="">
@@ -44,16 +44,16 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             <button  class="btn btn-sm btn-default"  name="message2" value="!poll open -t ">Start A Timed Poll</button>
                             <input id="input4" type="text" name="message3" placeholder="<seconds> <option> <option2> " value="">
                         </form>
-					<br />
-					<br />
-					<br />
-						  <form action="" method="post">
+                        <br />
+                        <br />
+                        <br />
+                        <form action="" method="post">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!poll close ">End Poll</button>
-						</form>
+                        </form>
                     </div>
 
                     <div class="panel-body">
-										<p>Displays last poll results in chat.</p>
+                        <p>Displays last poll results in chat.</p>
                         <form action="" method="post">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!poll results ">Last Poll Results</button>
                         </form>

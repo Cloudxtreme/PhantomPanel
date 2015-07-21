@@ -33,9 +33,9 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     </div>
 
                     <div class="panel-body">
-					<h5>Bets:</h5>
-					<p>One of the many solutions to wagering on a winner.</p>
-					<br />
+                        <h5>Bets:</h5>
+                        <p>One of the many solutions to wagering on a winner.</p>
+                        <br />
                         <form action="" method="post">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!bet start ">Start Default Bet</button>
                         </form>

@@ -32,9 +32,9 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <h3 class="panel-title"><i class="fa fa-quote-right"></i>&nbsp;&nbsp; Quote System</h3>
                     </div>
                     <div class="panel-body">
-					<h5>Channel Quotes</h5>
-					<p>Save the best messages from the anyone in chat and use it against them or for fun.</p>
-					<br />
+                        <h5>Channel Quotes</h5>
+                        <p>Save the best messages from the anyone in chat and use it against them or for fun.</p>
+                        <br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!addquote ">Add Quote</button>
                             <input id="input1" type="text" name="message3" placeholder="<message>" value="">
@@ -54,7 +54,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     </div>
                     <div class="panel-body" >
                         <h5>Quotes:</h5>
-                          <div class="data-box">
+                        <div class="data-box">
 
                             <?php
                             $result = curl_get("/inistore/quotes.ini");

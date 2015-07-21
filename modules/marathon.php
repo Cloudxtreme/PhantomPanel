@@ -36,14 +36,14 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     </div>
                     <div class="panel-body">
                         <h5>Marathon Settings:</h5>
-						<p>Edit or schedule upcoming marathons. Also includes a link and custom name. Good for doing long marathon streams and etc.</p>
+                        <p>Edit or schedule upcoming marathons. Also includes a link and custom name. Good for doing long marathon streams and etc.</p>
                         <br>
                         <form action="" method="post">
                             <button class="btn btn-sm btn-default" name="message" value="!marathon">Current Marathon</button>
                             <button class="btn btn-sm btn-default" name="message" value="!marathon clear">Clear Marathons</button>
                         </form>
-						<br />
-						<br />
+                        <br />
+                        <br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button class="btn btn-sm btn-default" name="message2" value="!marathon schedule add ">Schedule Marathon</button>
                             <input id="input4" type="text" name="message3" placeholder="<name> <MM/DD> <HH:MM>" value="">
@@ -69,7 +69,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     </div>
                     <div class="panel-body">
                         <h5>Time Zone:</h5>
-						Marathon commands use the Time-Zone module that's included in the script. This helps make it easier to schedule your marathons without having to change up the start time and dates.</p>
+                        Marathon commands use the Time-Zone module that's included in the script. This helps make it easier to schedule your marathons without having to change up the start time and dates.</p>
                         <br>
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button class="btn btn-sm btn-default" name="message2" value="!timezone ">Set Time Zone</button>

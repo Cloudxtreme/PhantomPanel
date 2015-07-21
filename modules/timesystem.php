@@ -58,12 +58,12 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <br />
                         <br />
                         <br />
-						<h5>Promotions from Time:</h5>
-						<p>This feature enables to automatic group level up for viewers. Based on the amount of time set a viewer will become a Regular. (You cannot edit the group for it.)</p>
-						<form action="" method="post">
+                        <h5>Promotions from Time:</h5>
+                        <p>This feature enables to automatic group level up for viewers. Based on the amount of time set a viewer will become a Regular. (You cannot edit the group for it.)</p>
+                        <form action="" method="post">
                             <button  class="btn btn-sm btn-default"  name="message" value="!timelevel ">Toggle Time Promoter on/off</button>
                         </form>
-						<br />
+                        <br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!timepromotehours ">Group Promote Hours</button>
                             <input id="input1" type="text" name="message3" placeholder="<hours>" value="">

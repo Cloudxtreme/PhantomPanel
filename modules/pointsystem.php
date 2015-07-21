@@ -34,7 +34,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     </div>
                     <div class="panel-body">
                         <h4>Transactions:</h4>
-						<p>Deposit, Withdraw, or Set the amount of points for viewers.</p>
+                        <p>Deposit, Withdraw, or Set the amount of points for viewers.</p>
                         <br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!points all ">Send Points to Everyone</button>
@@ -58,7 +58,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     </div>
                     <div class="panel-body">
                         <h4>Currency Control:</h4>
-						<p>Full control of the amount of points viewers earn while in chat.</p>
+                        <p>Full control of the amount of points viewers earn while in chat.</p>
                         <br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!points name ">Change Points Name</button>
@@ -99,7 +99,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     </div>
                     <div class="panel-body">
                         <h4>Penalty System:</h4>
-						<p>Prevent certain viewers from earning points for a specific amount of time</p>
+                        <p>Prevent certain viewers from earning points for a specific amount of time</p>
                         <br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!penalty ">Set Penalty</button>
