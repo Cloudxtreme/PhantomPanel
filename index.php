@@ -1,46 +1,20 @@
 <?php 
 
-session_start();
-$timeout = 3600*6; // Number of seconds until it times out.
- 
-// Check if the timeout field exists.
-if(isset($_SESSION['timeout'])) {
-    // See if the number of seconds since the last
-    // visit is larger than the timeout period.
-    $duration = time() - (int)$_SESSION['timeout'];
-    if($duration > $timeout) {
-        // Destroy the session and restart it.
-        session_destroy();
-        session_start();
+require_once('includes/includes.php');
+
+global $logins;
+
+if (isset($_GET['login'])) {
+    if (CheckLogin($_POST['username'], $_POST['password'])) {
+        set_loggedin(true);
+        
+        header('Location: controlpanel.php');
+
+
+
+
+        die();
     }
-}
- 
-// Update the timout field with the current time.
-$_SESSION['timeout'] = time();
-
-include('includes/config.php');
-
- 
-if ($_GET['login']) {
-     // Only load the code below if the GET
-     // variable 'login' is set. You will
-     // set this when you submit the form
- 
-     if ($_POST['username'] == $loginuser
-         && $_POST['password'] == $loginpass) {
-         // Load code below if both username
-         // and password submitted are correct
- 
-         $_SESSION['loggedin'] = 1;
-          // Set session variable
-
-         header("Location: controlpanel.php");
-         exit;
-         // Redirect to a protected page
- 
-     } else echo "Wrong details";
-     // Otherwise, echo the error message
- 
 }
  
 ?>
@@ -71,7 +45,11 @@ if ($_GET['login']) {
         <div class="fa_user">
           <img src="http://i.imgur.com/a0h0zM5.png" />
         </div>
+<?php if (isset($_GET['login']) && $session_data['loggedin'] == false) {
+    echo '<div class="error">Invalid Username or Password</div>';
+} ?>
         <h5>LOGIN</h5>
+		<?php if ($session_data['loggedin'] == false) { ?>
         <form action="?login=1" method="post" class="loginform">
           <div class="form-group">
             <label class="sr-only">Username</label>
@@ -89,6 +67,11 @@ if ($_GET['login']) {
           </div>
           <button type="submit" class="btn btn-default">LOG IN</button>
         </form><br />
+        <?php } else { ?>
+            <meta http-equiv="refresh" content="5;url=controlpanel.php">
+            Login Successful.<br />
+            Redirecting in 5 seconds. Click <a href="controlpanel.php" target="_self">here</a> if the redirect does not go
+        <?php } ?>
         <h6>web-gui v0.x</h6>
       </div>
     </div>

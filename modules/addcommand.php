@@ -29,7 +29,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
             <div class="col-lg">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-ticket fa-2x"></i>&nbsp;&nbsp; Custom Commands</h3>
+                        <h3 class="panel-title"><i class="fa fa-wrench"></i>&nbsp;&nbsp; Custom Commands</h3>
                     </div>
                     <div class="panel-body">
                         <h5>Command Creation Tags:</h5>
@@ -90,6 +90,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <h5>Custom Commands:</h5>
                           <div class="data-box">
                             <?php
+
                             $result = curl_get("/inistore/command.ini");
 	
 

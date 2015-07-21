@@ -29,7 +29,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
             <div class="col-lg">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-users fa-2x"></i>&nbsp;&nbsp; Misc Commands</h3>
+                        <h3 class="panel-title"><i class="fa fa-cog"></i>&nbsp;&nbsp; Misc Commands</h3>
                     </div>
                     <div class="panel-body">
                         This panel is only for enabling the bot to write logs to help with debugging issues.<br /><br />

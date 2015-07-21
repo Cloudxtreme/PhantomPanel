@@ -14,7 +14,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
 
 <head>
     <meta charset="utf-8" />
-    <title>PhantomBot Dashboard</title>
+    <title>PhantomBot Control Panel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/sandstone/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand">Dashboard <br /> <span style="font-size:12px;padding-left: 10px;color: gray;">version 1.1.8</span></a>
+                    <a class="navbar-brand">Control Panel <br /> <span style="font-size:12px;padding-left: 10px;color: gray;">version 1.1.9</span></a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -48,31 +48,31 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Commands <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <!--<li class="divider"></li>-->
-                                <li><a target="main" href="modules/addcommand.php">Custom Commands</a>
+                                <li><a target="main" href="modules/addcommand.php"><i class="fa fa-wrench"></i>&nbsp;Custom Commands</a>
                                 </li>
-                                <li><a target="main" href="modules/pointsystem.php">Point Commands</a>
+                                <li><a target="main" href="modules/pointsystem.php"><i class="fa fa-money"></i>&nbsp; Point Commands</a>
                                 </li>
-                                <li><a target="main" href="modules/timesystem.php">Time Commands</a>
+                                <li><a target="main" href="modules/timesystem.php"><i class="fa fa-clock-o"></i>&nbsp;Time Commands</a>
                                 </li>
-                                <li><a target="main" href="modules/permissions.php">Group Commands</a>
+                                <li><a target="main" href="modules/permissions.php"><i class="fa fa-users"></i>&nbsp;Group Commands</a>
                                 </li>
-                                <li><a target="main" href="modules/notices.php">Notice Commands</a>
+                                <li><a target="main" href="modules/notices.php"><i class="fa fa-bullhorn"></i>&nbsp;Notice Commands</a>
                                 </li>
-                                <li><a target="main" href="modules/chatmod.php">ChatMod Commands</a>
+                                <li><a target="main" href="modules/chatmod.php"><i class="fa fa-eye"></i>&nbsp;ChatMod Commands</a>
                                 </li>
-                                <li><a target="main" href="modules/follows.php">Follow Commands</a>
+                                <li><a target="main" href="modules/follows.php"><i class="fa fa-heart"></i>&nbsp;Follow Commands</a>
                                 </li>
-                                <li><a target="main" href="modules/subscribers.php">Subscriber Commands</a>
+                                <li><a target="main" href="modules/subscribers.php"><i class="fa fa-credit-card"></i>&nbsp;Subscriber Commands</a>
                                 </li>
-                                <li><a target="main" href="modules/hosting.php">Host Commands</a>
+                                <li><a target="main" href="modules/hosting.php"><i class="fa fa-share"></i>&nbsp;Host Commands</a>
                                 </li>
-                                <li><a target="main" href="modules/greeting.php">Greeting Commands</a>
+                                <li><a target="main" href="modules/greeting.php"><i class="fa fa-exclamation-circle"></i>&nbsp;Greeting Commands</a>
                                 </li>
-                                <li><a target="main" href="modules/marathon.php">Marathon Commands</a>
+                                <li><a target="main" href="modules/marathon.php"><i class="fa fa-flag"></i>&nbsp;Marathon Commands</a>
                                 </li>
-                                <li><a target="main" href="modules/quote.php">Quote Commands</a>
+                                <li><a target="main" href="modules/quote.php"><i class="fa fa-quote-right"></i>&nbsp;Quote Commands</a>
                                 </li>
-                                <li><a target="main" href="modules/misc.php">Misc Commands</a>
+                                <li><a target="main" href="modules/misc.php"><i class="fa fa-cog"></i>&nbsp;Misc Commands</a>
                                 </li>
                             </ul>
                         </li>
@@ -80,19 +80,19 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Games<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <!--<li class="divider"></li>-->
-                                <li><a target="main" href="games/bankheist.php">BankHeist Commands</a>
+                                <li><a target="main" href="games/bankheist.php"><i class="fa fa-gamepad"></i>&nbsp;BankHeist Commands</a>
                                 </li>
-                                <li><a target="main" href="games/rafflesystem.php">Raffle Commands</a>
+                                <li><a target="main" href="games/rafflesystem.php"><i class="fa fa-ticket"></i>&nbsp;Raffle Commands</a>
                                 </li>
-                                <li><a target="main" href="games/betsystem.php">Bet Commands</a>
+                                <li><a target="main" href="games/betsystem.php"><i class="fa fa-usd"></i>&nbsp;Bet Commands</a>
                                 </li>
-                                <li><a target="main" href="games/polls.php">Poll Commands</a>
+                                <li><a target="main" href="games/polls.php"><i class="fa fa-check-square-o"></i>&nbsp;Poll Commands</a>
                                 </li>
-                                <li><a target="main" href="games/bids.php">Bid Commands</a>
+                                <li><a target="main" href="games/bids.php"><i class="fa fa-gavel"></i>&nbsp;Bid Commands</a>
                                 </li>
-                                <li><a target="main" href="games/slot.php">Slot Commands</a>
+                                <li><a target="main" href="games/slot.php"><i class="fa fa-gift"></i>&nbsp;Slot Commands</a>
                                 </li>
-                                <li><a target="main" href="games/roll.php">Roll Commands</a>
+                                <li><a target="main" href="games/roll.php"><i class="fa fa-trophy"></i>&nbsp;Roll Commands</a>
                                 </li>
                                 <li><a target="main" href="http://www.challonge.com">Challonge</a>
                                 </li>
@@ -148,15 +148,26 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <div class="panel-heading" role="tab" id="headingOne">
                             <h4 class="panel-title">
 	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-	          Video Stream
+			<i class="fa fa-twitch "></i>&nbsp;&nbsp;Video Stream
 	        </a>  
-			<span id="followers" style="float:right;"><img src="images/followers.png" style="height: 15px;padding-left: 5px;padding-right: 5px;display:inline;" /> 0</span>
-			<span id="viewers" style="float:right;padding-right: 10px;"><img src="images/viewers.png" style="height: 20px;padding-left: 5px;padding-right: 5px;display:inline;" /> 0</span>
+			<span id="followers" style="color:#a68ed2;float:right;"><img src="images/followers.png" style="height: 15px;padding-left: 5px;padding-right: 5px;display:inline;" />	
+			<!-- FOLLOWER/VIEWER COUNT -->
+<?php		
+$json = file_get_contents('https://api.twitch.tv/kraken/channels/'.$owner.'/follows.json?limit=100');
+$obj = json_decode($json);
+echo $obj->_total;
+?>
+	</span>
+			<span id="viewers" style="float:right;padding-right: 10px;"><img src="images/viewers.png" style="height: 20px;padding-left: 5px;padding-right: 5px;display:inline;" />			
+		<div id="viewer_counter" style="color:#a68ed2;display:inline;">0</div>
+</span>
 
 	      </h4>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+						       
                             <div class="panel-body" id="dashboard">
+							
                                 <iframe id="video" src="http://www.twitch.tv/<?php echo $owner ?>/embed" frameborder="0" scrolling="no"></iframe>
                             </div>
                         </div>
@@ -178,6 +189,8 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
     <div id="musicsidebar">
         <iframe name="music" src="youtube/youtubeplayer.html" frameborder="0" scrolling="no" height="100%" width="350px"> </iframe>
     </div>
+
+	
         <div class="footer">
 		<hr>
             <img src="images/pblogo2.png" style="width:300px;padding-bottom: 20px;" />
@@ -244,4 +257,33 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
         });
 
     });
+
 </script>
+
+<script type="text/javascript">
+			var username = "<?php echo $owner; ?>";
+			
+		// JMR's Viewer Counter
+		$(document).ready(function() {
+			loadViewers();
+		function loadViewers(){
+			$.getJSON('https://api.twitch.tv/kraken/streams/'+encodeURIComponent(username)+"?callback=?", function(data) {
+
+			if(data["stream"]!=null){
+				if(data['streams']){
+					$('#viewer_counter').html("0");
+				}else{
+						var viewer_count = data['stream']['viewers'];
+						$('#viewer_counter').html(viewer_count);
+						console.log(data);
+				}
+			}else{
+					$('#viewer_counter').html("0");
+			}
+			});
+		}
+			setInterval(function(){
+				loadViewers();
+			}, 10000);
+		});
+		</script>

@@ -32,7 +32,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
             <div class="col-lg">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-android fa-2x"></i>&nbsp;&nbsp; Marathon Commands</h3>
+                        <h3 class="panel-title"><i class="fa fa-flag"></i>&nbsp;&nbsp; Marathon Commands</h3>
                     </div>
                     <div class="panel-body">
                         <h5>Marathon Settings:</h5>

@@ -32,23 +32,25 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <h3 class="panel-title"><i class="fa fa-ticket fa-2x"></i>&nbsp;&nbsp; Raffles</h3>
                     </div>
                     <div class="panel-body">
+					<h5>Raffle/Give-away:</h5>
+					<p>Raffle system can also be used for Give-aways.<br />
+					<b>Note:</b> "<b>prize</b>" Can either be the amount of points or a word & for messages use quotes.</p>
+					<br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
-                            <button  class="btn btn-sm btn-default"  name="message2" value="!raffle start ">Start Custom Raffle</button>
-                            <input id="input5" type="text" name="message3" placeholder="[-followers] <price> <keyword> <reward>" value="">
-                        </form>
-                    </div>
-                    <div class="panel-body">
-                        <form action="" method="post" style="float: left; padding-right: 5px;">
-                            <button class="btn btn-sm  btn-default" name="message2" value="!raffle start -followers 0 signmeup ">Start Free Raffle (for followers)</button>
-                            <input id="input1" type="text" name="message3" placeholder="<prize>" value="">
+                            <button class="btn btn-sm  btn-default" name="message2" value="!raffle start -followers ">Start Raffle (for followers)</button>
+                            <input id="input4" type="text" name="message3" placeholder="<ticket price> <keyword> <prize>" value="">
                         </form>
                         <form action="" method="post" style="float: left; padding-right: 5px;">
-                            <button class="btn btn-sm  btn-default" name="message2" value="!raffle start 0 signmeup ">Start Free Raffle (for anyone)</button>
-                            <input id="input1" type="text" name="message3" placeholder="<prize>" value="">
+                            <button class="btn btn-sm  btn-default" name="message2" value="!raffle start  ">Start Raffle </button>
+                            <input id="input4" type="text" name="message3" placeholder="<ticket price> <keyword> <prize>" value="">
                         </form>
+						<br />
+						<br />
+						<br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button id="raffleend" class="btn btn-sm  btn-default" name="message" value="!raffle end">End The Raffle</button>
                             <button id="rafflerepick" class="btn btn-sm  btn-default" name="message" value="!raffle repick">Repick Winner</button>
+							<button id="rafflerepick" class="btn btn-sm  btn-default" name="message" value="!raffle limit">Toggle Entry Limit On/Off</button>
 
                         </form>
                     </div>
