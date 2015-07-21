@@ -20,7 +20,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
         <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.min.css" />
         <link rel="stylesheet" type="text/css" href="../css/main.css" />
 
-        <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
     </head>
 
