@@ -1,6 +1,6 @@
 <?php require_once('../includes/includes.php'); ?>
 
-
+<div style="width: 100%;display: block;float: left;height: 12px;">
 <?php
 
 $result = curl_get("/addons/youtubePlayer/currentsong.txt");
@@ -11,3 +11,4 @@ if ($result[1] == 200) {
     echo 'Failed to get current song';
 }
 ?>
+</div>

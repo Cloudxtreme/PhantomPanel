@@ -37,7 +37,7 @@ margin-top: 20px;
 #video {
 	width: 100%;
 	height: 480px;
-	display: block; 
+	display: block;
 	margin: auto;
 }
 #chatsidebar {
@@ -60,7 +60,7 @@ width: 350px;
 }
 
 #chat {
-	height: 100%; 
+	height: 100%;
 	width: 350px;
 }
 
@@ -108,7 +108,9 @@ form.loginform input[type="username"], form.loginform input[type="password"] {
 }
 .navbar-default  {
   background-color: #29292F;
+  margin: 0 auto;
 }
+
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus  {
   background-color: #19191f;
 }

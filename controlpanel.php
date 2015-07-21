@@ -13,7 +13,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
 
     <head>
         <meta charset="utf-8" />
-        <title>PB WebPanel v1.1.3</title>
+        <title>PhantomBot Control Panel v1.2.0</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/sandstone/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +37,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand">PhantomBot</a>
+                        <a class="navbar-brand">PhantomBot Control Panel <br /> <span style="font-size:12px;padding-left: 10px;color: gray;">version 1.2.0</span></a>
                     </div>
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -94,24 +94,13 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                                     </li>
                                     <li><a target="main" href="http://www.challonge.com">Challonge</a>
                                     </li>
+
                                 </ul>
                             </li>
                             <li><a onClick=" hide2();">Toggle Music</a>
                             </li>
-
                             <li><a href="#" onClick=" hide();">Toggle Chat</a>
                             </li>
-                        </ul>
-
-
-
-                        <!--      <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form> -->
-                        <ul class="nav navbar-nav navbar-right">
                             <li><a href="logout.php">logout</a>
                             </li>
                             <li class="dropdown">
