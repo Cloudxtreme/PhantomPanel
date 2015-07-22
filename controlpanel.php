@@ -134,11 +134,22 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <div class="panel panel-primary">
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Video
-                                    </a>
-                                </h4>
-                            </div>
+									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+										<i class="fa fa-twitch "></i>&nbsp;&nbsp;Video Stream
+									</a>  
+									<span id="followers" style="color:#a68ed2;float:right;"><img src="images/followers.png" style="height: 15px;padding-left: 5px;padding-right: 5px;display:inline;" />	
+									<!-- FOLLOWER/VIEWER COUNT -->
+									<?php		
+										$json = file_get_contents('https://api.twitch.tv/kraken/channels/'.$owner.'/follows.json?limit=100');
+										$obj = json_decode($json);
+										echo $obj->_total;
+									?>
+									</span>
+									<span id="viewers" style="float:right;padding-right: 10px;"><img src="images/viewers.png" style="height: 20px;padding-left: 5px;padding-right: 5px;display:inline;" />			
+										<div id="viewer_counter" style="color:#a68ed2;display:inline;">0</div>
+									</span>
+								</h4>
+									</div>
                             <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                 <div class="panel-body" id="dashboard">
                                     <iframe id="video" src="http://www.twitch.tv/<?php echo $owner ?>/embed" frameborder="0" scrolling="no"></iframe>
@@ -224,4 +235,32 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
         });
 
     });
+</script>
+
+<script type="text/javascript">
+		var username = "<?php echo $owner; ?>";
+			
+		// JMR's Viewer Counter
+		$(document).ready(function() {
+			loadViewers();
+		function loadViewers(){
+			$.getJSON('https://api.twitch.tv/kraken/streams/'+encodeURIComponent(username)+"?callback=?", function(data) {
+
+			if(data["stream"]!=null){
+				if(data['streams']){
+					$('#viewer_counter').html("0");
+				}else{
+						var viewer_count = data['stream']['viewers'];
+						$('#viewer_counter').html(viewer_count);
+						console.log(data);
+				}
+			}else{
+					$('#viewer_counter').html("0");
+			}
+			});
+		}
+			setInterval(function(){
+				loadViewers();
+			}, 10000);
+		});
 </script>
