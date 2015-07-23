@@ -90,7 +90,7 @@ if (isset($_GET['step'])) {
                             <h6>Security Settings</h6>
                             <form action="?step=4" method="post" class="installform">
                                 <div class="form-group">
-                                    <label class="sr-only">Session expire time, in hours</label>
+                                    <label class="sr-only">The number of hours after which a user is automatically logged out</label>
                                     <div class="input-group">
                                         <input type="text" class="form-control"
                                                value="6" name="expire_time"
@@ -131,11 +131,21 @@ if (isset($_GET['step'])) {
 
                             $uri .= 'index.php';
 
-                            $data = substr($data, 0, strpos($data, '/*expire_time_start*/')) . $expire_time_val . ' * 60 * 60' . substr($data, strpos($data, '/*expire_time_end*/'));
-                            $data = substr($data, 0, strpos($data, '/*session_name_start*/')) . '\'phantompanelsession' . $r . '\'' . substr($data, strpos($data, '/*session_name_end*/'));
-                            $data = substr($data, 0, strpos($data, '/*domain_start*/')) . '\'' . $_SERVER['HTTP_HOST'] . '\'' . substr($data, strpos($data, '/*domain_end*/'));
-                            $data = substr($data, 0, strpos($data, '/*sk_start*/')) . '\'' . $sk . '\'' . substr($data, strpos($data, '/*sk_end*/'));
-                            $data = substr($data, 0, strpos($data, '/*login_uri_start*/')) . '\'' . $uri . '\'' . substr($data, strpos($data, '/*login_uri_end*/'));
+                            $data1 = substr($data, 0, strpos($data, '/*expire_time_start*/'));
+                            $data2 = substr($data, strpos($data, '/*expire_time_end*/'));
+                            $data = $data1 . $expire_time_val . ' * 60 * 60' . $data2;
+                            $data1 = substr($data, 0, strpos($data, '/*session_name_start*/'));
+                            $data2 = substr($data, strpos($data, '/*session_name_end*/'));
+                            $data = $data1 . '\'phantompanelsession' . $r . '\'' . $data2;
+                            $data1 = substr($data, 0, strpos($data, '/*domain_start*/'));
+                            $data2 = substr($data, strpos($data, '/*domain_end*/'));
+                            $data = $data1 . '\'' . $_SERVER['HTTP_HOST'] . '\'' . $data2;
+                            $data1 = substr($data, 0, strpos($data, '/*sk_start*/'));
+                            $data2 = substr($data, strpos($data, '/*sk_end*/'));
+                            $data = $data1 . '\'' . $sk . '\'' . $data2;
+                            $data1 = substr($data, 0, strpos($data, '/*login_uri_start*/'));
+                            $data2 = substr($data, strpos($data, '/*login_uri_end*/'));
+                            $data = $data1 . '\'' . $uri . '\'' . $data2;
 
                             file_put_contents(__DIR__ . '/includes/config.php', $data) or print('<div class="error">Failed to write config data</div>');
                             ?>
@@ -144,7 +154,7 @@ if (isset($_GET['step'])) {
                                 function addinput(level) {
                                     if (lastlevel < level) {
                                         lastlevel = level;
-                                                                        
+                                                                            
                                         document.getElementById('logins').innerHTML += '<div class="input-group">'
                                             + '<input type="text" class="form-control"'
                                             + 'placeholder="Username" name="username[]"'
@@ -185,8 +195,8 @@ if (isset($_GET['step'])) {
                             $users = array();
                             $badusers = false;
 
-                            for ($i = 0; $i < cout($_POST['username']); $i++) {
-                                if (!in_array($_POST['username'][$i], $users)) {
+                            for ($i = 0; $i < count($_POST['username']); $i++) {
+                                if (!empty($_POST['username'][$i]) && !in_array($_POST['username'][$i], $users)) {
                                     $logindata .= $newline . 'AddLogin(\'' . $_POST['username'][$i] . '\', \'' . $_POST['password'][$i] . '\');';
                                     $users[] = $_POST['username'][$i];
                                 } else {
@@ -194,7 +204,11 @@ if (isset($_GET['step'])) {
                                 }
                             }
 
-                            $data = substr($data, 0, strpos($data, '/*AddLogin_start*/')) . $logindata . substr($data, strpos($data, '/*AddLogin_end*/'));
+                            $logindata .= $newline;
+
+                            $data1 = substr($data, 0, strpos($data, '/*AddLogin_start*/'));
+                            $data2 = substr($data, strpos($data, '/*AddLogin_end*/'));
+                            $data = $data1 . $logindata . $data2;
 
                             file_put_contents(__DIR__ . '/includes/config.php', $data) or print('<div class="error">Failed to write config data</div>');
 
@@ -247,10 +261,18 @@ if (isset($_GET['step'])) {
                                 $baseport_val = intval($_POST['baseport']);
                             }
 
-                            $data = substr($data, 0, strpos($data, '/*baseport_start*/')) . $baseport_val . substr($data, strpos($data, '/*baseport_end*/'));
-                            $data = substr($data, 0, strpos($data, '/*owner_start*/')) . '\'' . $_POST['owner'] . '\'' . substr($data, strpos($data, '/*owner_end*/'));
-                            $data = substr($data, 0, strpos($data, '/*url_start*/')) . '\'' . $_POST['url'] . '\'' . substr($data, strpos($data, '/*url_end*/'));
-                            $data = substr($data, 0, strpos($data, '/*oauth_start*/')) . '\'' . $_POST['oauth'] . '\'' . substr($data, strpos($data, '/*oauth_end*/'));
+                            $data1 = substr($data, 0, strpos($data, '/*baseport_start*/'));
+                            $data2 = substr($data, strpos($data, '/*baseport_end*/'));
+                            $data = $data1 . $baseport_val . $data2;
+                            $data1 = substr($data, 0, strpos($data, '/*owner_start*/'));
+                            $data2 = substr($data, strpos($data, '/*owner_end*/'));
+                            $data = $data1 . '\'' . $_POST['owner'] . '\'' . $data2;
+                            $data1 = substr($data, 0, strpos($data, '/*url_start*/'));
+                            $data2 = substr($data, strpos($data, '/*url_end*/'));
+                            $data = $data1 . '\'' . $_POST['url'] . '\'' . $data2;
+                            $data1 = substr($data, 0, strpos($data, '/*oauth_start*/'));
+                            $data2 = substr($data, strpos($data, '/*oauth_end*/'));
+                            $data = $data1 . '\'' . $_POST['oauth'] . '\'' . $data2;
 
                             file_put_contents(__DIR__ . '/includes/config.php', $data) or print('<div class="error">Failed to write config data</div>');
 
@@ -267,6 +289,18 @@ if (isset($_GET['step'])) {
                                         Success! Config file written and bot can be contacted
                                     </div>
                                     <button type="submit" class="btn btn-default">NEXT</button>
+                                </form>
+                                <?php
+                            } else {
+                                ?>
+                                <form action="?step=6" method="post" class="installform">
+                                    <div class="warning">
+                                        Config file was written but bot could not be contacted
+                                    </div>
+                                    <button type="submit" class="btn btn-default">TRY AGAIN</button>
+                                </form>
+                                <form action="?step=7" method="post" class="installform">
+                                    <button type="submit" class="btn btn-default">SKIP TEST</button>
                                 </form>
                                 <?php
                             }
