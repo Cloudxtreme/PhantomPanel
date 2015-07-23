@@ -1,6 +1,6 @@
 <?php require_once('../includes/includes.php'); ?>
 
-<div style="width: 100%;display: block;float: left;height: 12px;">
+<div style="width: 100%;display: block;float: left;height: 20px;">
 <?php
 
 $result = curl_get("/addons/youtubePlayer/currentsong.txt");

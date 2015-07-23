@@ -14,7 +14,9 @@ kbd {
   text-transform: uppercase;
   font-size: 100%;
 }
-
+#killbot:hover {
+background-color: #C22121;
+}
 iframe {
 width: 100%;
 }
@@ -190,7 +192,18 @@ padding-top: 15px;
   padding-left: 0px;
   padding-right: 0px;
 }
-
+.btn:hover {
+ background-color: #29292F;
+}
+a:-webkit-any-link {
+text-decoration: none;
+color: #fff;
+}
+a:-webkit-any-link:hover {
+before {content:"Reply!"};
+text-decoration: none;
+color: #a68ed2;
+}
 .btn-hover {
     font-weight: normal;
     color: #6441a5;
@@ -253,4 +266,42 @@ height: 2050px;
 }
 .iframe3 {
 height: 320px;
+}
+.tooltip {
+    display: inline;
+    position: relative;
+}
+
+.tooltip:hover {
+    color: #c00;
+    text-decoration: none;
+}
+
+.tooltip:hover:after {
+    background: #111;
+    background: rgba(0,0,0,.8);
+    border-radius: .5em;
+    bottom: 1.35em;
+    color: #fff;
+    content: attr(title);
+    display: block;
+    left: 1em;
+    padding: .3em 1em;
+    position: absolute;
+    text-shadow: 0 1px 0 #000;
+    white-space: nowrap;
+    z-index: 98;
+}
+
+.tooltip:hover:before {
+    border: solid;
+    border-color: #111 transparent;
+    border-color: rgba(0,0,0,.8) transparent;
+    border-width: .4em .4em 0 .4em;
+    bottom: 1em;
+    content: "";
+    display: block;
+    left: 2em;
+    position: absolute;
+    z-index: 99;
 }
