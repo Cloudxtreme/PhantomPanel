@@ -67,7 +67,7 @@ if (isset($_GET['step'])) {
                             <?php
                             if (!is_writable(__DIR__ . '/includes/config.php') && !chmod(__DIR__ . '/includes/config.php', 0777)) {
                                 ?>
-                                <form action="?step=2" method="post" class="installform">
+                                <form action="?step=2&tryagain" method="post" class="installform">
                                     <div class="error">
                                         Unable to change permissions on config file. Please change the permissions of <strong>includes/config.php</strong> 
                                         to allow writing by all (on linux this is <em>chmod 0777 includes/config.php</em>)
@@ -255,28 +255,30 @@ if (isset($_GET['step'])) {
                             </form>
                             <?php
                         } else if ($step == 6) {
-                            $data = file_get_contents(__DIR__ . '/includes/config.php') or print('<div class="error">Failed to read config data</div>');
+                            if (!isset($_GET['tryagain'])) {
+                                $data = file_get_contents(__DIR__ . '/includes/config.php') or print('<div class="error">Failed to read config data</div>');
 
-                            $baseport_val = 25000;
+                                $baseport_val = 25000;
 
-                            if (isset($_POST['baseport']) && is_numeric($_POST['baseport']) && intval($_POST['baseport']) > 0) {
-                                $baseport_val = intval($_POST['baseport']);
+                                if (isset($_POST['baseport']) && is_numeric($_POST['baseport']) && intval($_POST['baseport']) > 0) {
+                                    $baseport_val = intval($_POST['baseport']);
+                                }
+
+                                $data1 = substr($data, 0, strpos($data, '/*baseport_start*/'));
+                                $data2 = substr($data, strpos($data, '/*baseport_end*/'));
+                                $data = $data1 . $baseport_val . $data2;
+                                $data1 = substr($data, 0, strpos($data, '/*owner_start*/'));
+                                $data2 = substr($data, strpos($data, '/*owner_end*/'));
+                                $data = $data1 . '\'' . $_POST['owner'] . '\'' . $data2;
+                                $data1 = substr($data, 0, strpos($data, '/*url_start*/'));
+                                $data2 = substr($data, strpos($data, '/*url_end*/'));
+                                $data = $data1 . '\'' . $_POST['url'] . '\'' . $data2;
+                                $data1 = substr($data, 0, strpos($data, '/*oauth_start*/'));
+                                $data2 = substr($data, strpos($data, '/*oauth_end*/'));
+                                $data = $data1 . '\'' . $_POST['oauth'] . '\'' . $data2;
+
+                                file_put_contents(__DIR__ . '/includes/config.php', $data) or print('<div class="error">Failed to write config data</div>');
                             }
-
-                            $data1 = substr($data, 0, strpos($data, '/*baseport_start*/'));
-                            $data2 = substr($data, strpos($data, '/*baseport_end*/'));
-                            $data = $data1 . $baseport_val . $data2;
-                            $data1 = substr($data, 0, strpos($data, '/*owner_start*/'));
-                            $data2 = substr($data, strpos($data, '/*owner_end*/'));
-                            $data = $data1 . '\'' . $_POST['owner'] . '\'' . $data2;
-                            $data1 = substr($data, 0, strpos($data, '/*url_start*/'));
-                            $data2 = substr($data, strpos($data, '/*url_end*/'));
-                            $data = $data1 . '\'' . $_POST['url'] . '\'' . $data2;
-                            $data1 = substr($data, 0, strpos($data, '/*oauth_start*/'));
-                            $data2 = substr($data, strpos($data, '/*oauth_end*/'));
-                            $data = $data1 . '\'' . $_POST['oauth'] . '\'' . $data2;
-
-                            file_put_contents(__DIR__ . '/includes/config.php', $data) or print('<div class="error">Failed to write config data</div>');
 
                             require_once(__DIR__ . '/includes/config.php');
                             require_once(__DIR__ . '/includes/curl.php');
@@ -295,7 +297,7 @@ if (isset($_GET['step'])) {
                                 <?php
                             } else {
                                 ?>
-                                <form action="?step=6" method="post" class="installform">
+                                <form action="?step=6&tryagain" method="post" class="installform">
                                     <div class="warning">
                                         Config file was written but bot could not be contacted
                                     </div>
@@ -312,7 +314,7 @@ if (isset($_GET['step'])) {
                             <?php
                             if (is_writable(__DIR__ . '/includes/config.php') && !chmod(__DIR__ . '/includes/config.php', 0644)) {
                                 ?>
-                                <form action="?step=7" method="post" class="installform">
+                                <form action="?step=7&tryagain" method="post" class="installform">
                                     <div class="error">
                                         Unable to change permissions on config file. Please change the permissions of <strong>includes/config.php</strong> 
                                         to block writing by all (on linux this is <em>chmod 0644 includes/config.php</em>)
