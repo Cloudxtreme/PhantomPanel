@@ -5,7 +5,18 @@
     display: inline-block;
     margin-top: 18px;
 }
-
+a {
+color: #a68ed2;
+}
+a:hover {
+color: #6441a5;
+}
+#now-playing {
+color: #a68ed2;
+}
+#now-playing:hover {
+color: #6441a5;
+}
 input {
 	background-color: #24242a;
 	border: 1px solid #3E3E3E;
