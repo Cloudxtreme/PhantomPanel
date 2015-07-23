@@ -39,8 +39,8 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         </form>
                         <br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
-                            <button  class="btn btn-sm btn-default"  name="message2" value="!addnotice ">Create Notice</button>
-                            <input id="input1" type="text" name="message3" placeholder="<message>" value="">
+                            <button  class="btn btn-sm btn-default" style="display:inline;"  name="message2" value="!addnotice ">Create Notice</button>
+                            <textarea id="input1" type="text" name="message3" placeholder="<message>" value="" style="display:inline;max-height: 28px;margin-bottom: -10px;max-width: 800px;" ></textarea>
                         </form>
                     </div>
                     <div class="panel-body">
@@ -51,8 +51,8 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     </div>
                     <div class="panel-body">
                         <form action="" method="post" style="float: left; padding-right: 5px;">
-                            <button  class="btn btn-sm btn-default"  name="message2" value="!notice insert ">Notice Order</button>
-                            <input id="input4" type="text" name="message3" placeholder="<Notice ID #> <message>" value="">
+                            <button  class="btn btn-sm btn-default"  name="message2" value="!notice insert ">Insert Notice by Order</button>
+                            <textarea id="input1" type="text" name="message3" placeholder="<ID> <message>" value="" style="display:inline;width:150px;max-height: 28px;margin-bottom: -10px;max-width: 800px;" ></textarea>
                         </form>
                     </div>
                     <div class="panel-body">
