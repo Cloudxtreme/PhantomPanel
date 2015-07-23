@@ -159,11 +159,13 @@ if (isset($_GET['step'])) {
                                         + '<input type="password" class="form-control"'
                                         + 'placeholder="Password" name="password[' + index + ']">'
                                         + '</div>';
+                                    document.getElementById("count").value = index + 1;
                                 }
                             </script>
                             <h6>Create Logins</h6>
                             <div><em>All usernames must be unique. All usernames and passwords are case sensitive</em></div>
                             <form action="?step=5" method="post" class="installform">
+                                <input type="hidden" name="count" id="count" value="1">
                                 <div class="form-group" id="logins">
                                     <div class="input-group">
                                         <input type="text" class="form-control"
@@ -191,14 +193,14 @@ if (isset($_GET['step'])) {
                             $users = array();
                             $badusers = false;
 
-                            for ($i = 0; $i < count($_POST['username']); $i++) {
-                                if (!empty($_POST['username'][$i])) {
+                            for ($i = 0; $i < intval($_POST['count']); $i++) {
+                                if (!empty($_POST['username[' . $i . ']'])) {
                                     continue;
                                 }
 
-                                if (!in_array($_POST['username'][$i], $users)) {
-                                    $logindata .= $newline . 'AddLogin(\'' . $_POST['username'][$i] . '\', \'' . $_POST['password'][$i] . '\');';
-                                    $users[] = $_POST['username'][$i];
+                                if (!in_array($_POST['username[' . $i . ']'], $users)) {
+                                    $logindata .= $newline . 'AddLogin(\'' . $_POST['username[' . $i . ']'] . '\', \'' . $_POST['password[' . $i . ']'] . '\');';
+                                    $users[] = $_POST['username[' . $i . ']'];
                                 } else {
                                     $badusers = true;
                                 }
