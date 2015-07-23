@@ -150,12 +150,14 @@ if (isset($_GET['step'])) {
                             file_put_contents(__DIR__ . '/includes/config.php', $data) or print('<div class="error">Failed to write config data</div>');
                             ?>
                             <script type="text/javascript">
+                                var index = 0;
                                 function addinput() {
+                                    index++;
                                     document.getElementById('logins').innerHTML += '<div class="input-group">'
                                         + '<input type="text" class="form-control"'
-                                        + 'placeholder="Username" name="username[]"> '
+                                        + 'placeholder="Username" name="username[' + index + ']"> '
                                         + '<input type="password" class="form-control"'
-                                        + 'placeholder="Password" name="password[]">'
+                                        + 'placeholder="Password" name="password[' + index + ']">'
                                         + '</div>';
                                 }
                             </script>
@@ -165,9 +167,9 @@ if (isset($_GET['step'])) {
                                 <div class="form-group" id="logins">
                                     <div class="input-group">
                                         <input type="text" class="form-control"
-                                               placeholder="Username" name="username[]"> 
+                                               placeholder="Username" name="username[0]"> 
                                         <input type="password" class="form-control"
-                                               placeholder="Password" name="password[]">
+                                               placeholder="Password" name="password[0]">
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-default" onclick="addinput(); return false;">ADD MORE</button>&nbsp;&nbsp;&nbsp;
