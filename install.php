@@ -150,19 +150,13 @@ if (isset($_GET['step'])) {
                             file_put_contents(__DIR__ . '/includes/config.php', $data) or print('<div class="error">Failed to write config data</div>');
                             ?>
                             <script type="text/javascript">
-                                var lastlevel = 0;
-                                function addinput(level) {
-                                    if (lastlevel < level) {
-                                        lastlevel = level;
-                                                                            
-                                        document.getElementById('logins').innerHTML += '<div class="input-group">'
-                                            + '<input type="text" class="form-control"'
-                                            + 'placeholder="Username" name="username[]"'
-                                            + 'onfocus="addinput(' + (level + 1) + ');"> '
-                                            + '<input type="password" class="form-control"'
-                                            + 'placeholder="Password" name="password[]">'
-                                            + '</div>';
-                                    }
+                                function addinput() {
+                                    document.getElementById('logins').innerHTML += '<div class="input-group">'
+                                        + '<input type="text" class="form-control"'
+                                        + 'placeholder="Username" name="username[]"> '
+                                        + '<input type="password" class="form-control"'
+                                        + 'placeholder="Password" name="password[]">'
+                                        + '</div>';
                                 }
                             </script>
                             <h6>Create Logins</h6>
@@ -171,13 +165,13 @@ if (isset($_GET['step'])) {
                                 <div class="form-group" id="logins">
                                     <div class="input-group">
                                         <input type="text" class="form-control"
-                                               placeholder="Username" name="username[]"
-                                               onfocus="addinput(1);"> 
+                                               placeholder="Username" name="username[]"> 
                                         <input type="password" class="form-control"
                                                placeholder="Password" name="password[]">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-default">NEXT</button>
+                                <button type="button" class="btn btn-default" onclick="addinput(); return false;">ADD MORE</button>&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;<button type="submit" class="btn btn-default">NEXT</button>
                             </form>
                             <?php
                         } else if ($step == 5) {
@@ -199,7 +193,7 @@ if (isset($_GET['step'])) {
                                 if (!empty($_POST['username'][$i])) {
                                     continue;
                                 }
-                                
+
                                 if (!in_array($_POST['username'][$i], $users)) {
                                     $logindata .= $newline . 'AddLogin(\'' . $_POST['username'][$i] . '\', \'' . $_POST['password'][$i] . '\');';
                                     $users[] = $_POST['username'][$i];
