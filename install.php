@@ -196,7 +196,11 @@ if (isset($_GET['step'])) {
                             $badusers = false;
 
                             for ($i = 0; $i < count($_POST['username']); $i++) {
-                                if (!empty($_POST['username'][$i]) && !in_array($_POST['username'][$i], $users)) {
+                                if (!empty($_POST['username'][$i])) {
+                                    continue;
+                                }
+                                
+                                if (!in_array($_POST['username'][$i], $users)) {
                                     $logindata .= $newline . 'AddLogin(\'' . $_POST['username'][$i] . '\', \'' . $_POST['password'][$i] . '\');';
                                     $users[] = $_POST['username'][$i];
                                 } else {
