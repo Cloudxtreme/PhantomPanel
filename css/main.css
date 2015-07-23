@@ -4,7 +4,10 @@ height: 100%;
 h5 {
 font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 color: #666;
-
+}
+h6 {
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+color: #666;
 }
 kbd {
   padding: 5px 6px 3px 5px;
@@ -106,6 +109,16 @@ form.loginform input[type="username"], form.loginform input[type="password"] {
     color: #6C6C6C;
     text-align: center;
 }
+
+form.installform div.input-group {
+    width: 100%;
+}
+
+form.installform input[type="text"], form.installform input[type="password"] {
+    color: #6C6C6C;
+    text-align: center;
+}
+
 .navbar-default  {
   background-color: #29292F;
   margin: 0 auto;
@@ -158,6 +171,18 @@ padding-top: 15px;
     text-align: center;
     color: #AA0000;
     border: 1px #AA0000 dashed;
+}
+.warning {
+    width: 50%;
+    text-align: center;
+    color: #EEEE00;
+    border: 1px #EEEE00 dashed;
+}
+.success {
+    width: 50%;
+    text-align: center;
+    color: #00AA00;
+    border: 1px #00AA00 dashed;
 }
 .container {
   margin-right: auto;

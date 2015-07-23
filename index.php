@@ -1,8 +1,6 @@
 <?php
 require_once('includes/includes.php');
 
-global $logins;
-
 if (isset($_GET['login'])) {
     if (CheckLogin($_POST['username'], $_POST['password'])) {
         set_loggedin(true);
@@ -15,7 +13,6 @@ if (isset($_GET['login'])) {
 
 <!DOCTYPE html>
 <html>
-
     <head>
         <meta charset="utf-8" />
         <title>PhantomBot</title>
@@ -29,9 +26,7 @@ if (isset($_GET['login'])) {
         <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     </head>
 
-
     <body>
-
         <div class="container" style="margin-top:5%">
             <div class="col-md-3 col-md-offset-4">
                 <div class="panel member_signin">
@@ -62,18 +57,15 @@ if (isset($_GET['login'])) {
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-default">LOG IN</button>
-                            </form><br />
+                            </form>
                         <?php } else { ?>
                             <meta http-equiv="refresh" content="5;url=controlpanel.php">
                             Login Successful.<br />
                             Redirecting in 5 seconds. Click <a href="controlpanel.php" target="_self">here</a> if the redirect does not go
                         <?php } ?>
-                        <h6>web-gui v0.x</h6>
                     </div>
                 </div>
             </div>
         </div>
-
     </body>
-
 </html>
