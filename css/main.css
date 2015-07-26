@@ -19,6 +19,7 @@ background-color: #C22121;
 }
 iframe {
 width: 100%;
+
 }
 #input1 {
 width: 100px;
@@ -62,6 +63,7 @@ left: 0;
 bottom: 0;
 height: 100%;
 width: 350px;
+ -webkit-animation: fade 1s;
 }
 
 #chat {
@@ -71,6 +73,7 @@ width: 350px;
 
 #dashboard {
 	background: #19191f;
+
 }
 
 /* Login Page */
@@ -186,12 +189,7 @@ padding-top: 15px;
     color: #00AA00;
     border: 1px #00AA00 dashed;
 }
-.container {
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 0px;
-  padding-right: 0px;
-}
+
 .btn:hover {
  background-color: #29292F;
 }
@@ -228,9 +226,14 @@ color: #a68ed2;
   overflow:scroll;
   font-size:13px;
 }
+form {
+  -webkit-animation: fade 1s;
+}
 .panel-primary {
   border-color: #CCC;
   background-color: #f2f2f2;
+ -webkit-animation: fade 1s;
+
 }
 .panel-primary > .panel-heading .badge {
   color: #6441a5;
@@ -253,6 +256,10 @@ border-top-color: #000;
 
 .container {
   width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0px;
+  padding-right: 0px;
 
 }
 .panel .panel-heading, .panel .panel-title {
@@ -267,41 +274,27 @@ height: 2050px;
 .iframe3 {
 height: 320px;
 }
-.tooltip {
-    display: inline;
-    position: relative;
-}
 
-.tooltip:hover {
-    color: #c00;
-    text-decoration: none;
-}
+@-webkit-keyframes animate {
+	0% {
+		opacity: 0;
+		height: 0px;
+		}
+	20% {
+		opacity: 1; 
+	}
+	80% {
 
-.tooltip:hover:after {
-    background: #111;
-    background: rgba(0,0,0,.8);
-    border-radius: .5em;
-    bottom: 1.35em;
-    color: #fff;
-    content: attr(title);
-    display: block;
-    left: 1em;
-    padding: .3em 1em;
-    position: absolute;
-    text-shadow: 0 1px 0 #000;
-    white-space: nowrap;
-    z-index: 98;
-}
-
-.tooltip:hover:before {
-    border: solid;
-    border-color: #111 transparent;
-    border-color: rgba(0,0,0,.8) transparent;
-    border-width: .4em .4em 0 .4em;
-    bottom: 1em;
-    content: "";
-    display: block;
-    left: 2em;
-    position: absolute;
-    z-index: 99;
-}
+		}
+		}
+		
+@-webkit-keyframes fade {
+	0% {
+		opacity: 0; 
+		}
+		
+	50% {
+		opacity: 1; 
+		}
+		
+		}
