@@ -155,9 +155,9 @@ if (isset($_GET['step'])) {
                                     index++;
                                     document.getElementById('logins').innerHTML += '<div class="input-group">'
                                         + '<input type="text" class="form-control"'
-                                        + 'placeholder="Username" name="username[' + index + ']"> '
+                                        + 'placeholder="Username" name="username' + index + '"> '
                                         + '<input type="password" class="form-control"'
-                                        + 'placeholder="Password" name="password[' + index + ']">'
+                                        + 'placeholder="Password" name="password' + index + '">'
                                         + '</div>';
                                     document.getElementById("count").value = index + 1;
                                 }
@@ -169,9 +169,9 @@ if (isset($_GET['step'])) {
                                 <div class="form-group" id="logins">
                                     <div class="input-group">
                                         <input type="text" class="form-control"
-                                               placeholder="Username" name="username[0]"> 
+                                               placeholder="Username" name="username0"> 
                                         <input type="password" class="form-control"
-                                               placeholder="Password" name="password[0]">
+                                               placeholder="Password" name="password0">
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-default" onclick="addinput(); return false;">ADD MORE</button>&nbsp;&nbsp;&nbsp;
@@ -194,13 +194,13 @@ if (isset($_GET['step'])) {
                             $badusers = false;
 
                             for ($i = 0; $i < intval($_POST['count']); $i++) {
-                                if (empty($_POST['username'][$i])) {
+                                if (empty($_POST['username' . $i])) {
                                     continue;
                                 }
 
-                                if (!in_array($_POST['username'][$i], $users)) {
-                                    $logindata .= $newline . 'AddLogin(\'' . $_POST['username'][$i] . '\', \'' . $_POST['password'][$i] . '\');';
-                                    $users[] = $_POST['username'][$i];
+                                if (!in_array($_POST['username' . $i], $users)) {
+                                    $logindata .= $newline . 'AddLogin(\'' . $_POST['username' . $i] . '\', \'' . $_POST['password' . $i] . '\');';
+                                    $users[] = $_POST['username' . $i];
                                 } else {
                                     $badusers = true;
                                 }
