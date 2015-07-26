@@ -194,7 +194,7 @@ if (isset($_GET['step'])) {
                             $badusers = false;
 
                             for ($i = 0; $i < intval($_POST['count']); $i++) {
-                                if (empty($_POST['username' . $i])) {
+                                if (empty($_POST['username' . $i]) || empty($_POST['password' . $i])) {
                                     continue;
                                 }
 
