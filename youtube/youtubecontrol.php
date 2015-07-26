@@ -36,7 +36,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
             <button class="btn btn-sm  btn-default" name="message" value="!nextsong ">Next ♫</button>
         </form>
         <form action="" method="post"style="margin-top: 10px;">
-            <button class="btn btn-sm  btn-default" name="message" value="!song ">Current ♫</button>
+            <button class="btn btn-sm  btn-default" name="message" value="!currentsong ">Current ♫</button>
         </form>
 
         <form action="" method="post">
