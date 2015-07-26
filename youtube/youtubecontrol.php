@@ -31,16 +31,16 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
     <body>
         <form action="" method="post" style="display:inline;">
             <button class="btn btn-sm btn-default" name="message" value="!skipsong ">Skip ♫</button>
-            <button class="btn btn-sm  btn-default" name="message" value="!song shuffle ">Shuffle ♫</button>
+            <button class="btn btn-sm  btn-default" name="message" value="!musicplayer shuffle ">Shuffle ♫</button>
             <button class="btn btn-sm  btn-default" name="message" value="!stealsong ">Steal ♫</button>
             <button class="btn btn-sm  btn-default" name="message" value="!nextsong ">Next ♫</button>
         </form>
         <form action="" method="post"style="margin-top: 10px;">
-            <button class="btn btn-sm  btn-default" name="message" value="!currentsong ">Current ♫</button>
+            <button class="btn btn-sm  btn-default" name="message" value="!song ">Current ♫</button>
         </form>
 
         <form action="" method="post">
-            <button class="btn btn-sm btn-default" name="message2" value="!song limit ">Limit</button>
+            <button class="btn btn-sm btn-default" name="message2" value="!musicplayer limit ">Limit</button>
             <input id="input1" type="text" name="message3" placeholder="<amount>" value="">
         </form>
         <form action="" method="post">
@@ -60,10 +60,10 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
         <br />
         <br />
         <form action="" method="post" style="display:inline;">
-            <button class="btn btn-sm  btn-default" name="message" value="!song titles ">Toggle Titles</button>
+            <button class="btn btn-sm  btn-default" name="message" value="!musicplayer titles ">Toggle Titles</button>
         </form>	
         <form action="" method="post" style="display:inline;">
-            <button class="btn btn-sm  btn-default" name="message" value="!song toggle " >Toggle Messages</button>
+            <button class="btn btn-sm  btn-default" name="message" value="!musicplayer toggle " >Toggle Messages</button>
         </form>
         <br />
 
