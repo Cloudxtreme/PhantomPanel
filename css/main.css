@@ -19,8 +19,8 @@ background-color: #C22121;
 }
 iframe {
 width: 100%;
-
 }
+
 #input1 {
 width: 100px;
 }
@@ -53,7 +53,7 @@ right: 0;
 bottom: 0;
 height: 100%;
 width: 350px;
-
+ -webkit-animation: fade 1s;
 }
 
 #musicsidebar {
@@ -69,13 +69,121 @@ width: 350px;
 #chat {
 	height: 100%;
 	width: 350px;
+-webkit-animation: fade 1s;
 }
 
-#dashboard {
-	background: #19191f;
-
+.btn:hover {
+ background-color: #29292F;
+}
+a:-webkit-any-link {
+text-decoration: none;
+color: #fff;
+}
+a:-webkit-any-link:hover {
+before {content:"Reply!"};
+text-decoration: none;
+color: #a68ed2;
+}
+.btn-hover {
+    font-weight: normal;
+    color: #6441a5;
+    cursor: pointer;
+    background-color: inherit;
+    border-color: transparent;
 }
 
+.btn-hover-alt {
+    font-weight: normal;
+    color: #ffffff;
+    cursor: pointer;
+    background-color: inherit;
+    border-color: transparent;
+
+}
+.data-box {
+  border-radius: 4px;
+  background-color: #fff;
+  height:200px;
+  width: 400px;
+  max-height:600px;
+  max-width: 400px;
+  border:1px solid #ccc;
+  overflow-x:hidden;
+font-size:13px;
+}
+form {
+  -webkit-animation: fade 1s;
+}
+.panel-primary {
+  border-color: #CCC;
+  background-color: #f2f2f2;
+ -webkit-animation: fade 1s;
+
+}
+.panel-primary > .panel-heading .badge {
+  color: #6441a5;
+  background-color: #ffffff;
+}
+.panel-primary>.panel-heading {
+  color: #ffffff;
+  background-color: #6441a5;
+  border-color: #CCC;
+}
+.panel-primary>.panel-heading+.panel-collapse>.panel-body {
+border-top-color: #000;
+ }
+
+.page-header {
+  padding-bottom: 0px;
+  margin: 0px 0 20px;
+  border-bottom: 1px solid #f8f5f0;
+}
+
+.container {
+  width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+
+}
+.panel .panel-heading, .panel .panel-title {
+  font-size: 14px;
+}
+.iframe1 {
+height: 575px;
+}
+.iframe2 {
+height: 2050px;
+}
+.iframe3 {
+height: 320px;
+}
+
+@-webkit-keyframes animate {
+	0% {
+		opacity: 0;
+		height: 0px;
+		}
+	20% {
+		opacity: 1; 
+	}
+	80% {
+
+		}
+		}
+		
+@-webkit-keyframes fade {
+	0% {
+		opacity: 0; 
+		}
+		
+	50% {
+		opacity: 1; 
+		}
+		
+		}
+		
 /* Login Page */
 
 div.member_signin {
@@ -189,112 +297,3 @@ padding-top: 15px;
     color: #00AA00;
     border: 1px #00AA00 dashed;
 }
-
-.btn:hover {
- background-color: #29292F;
-}
-a:-webkit-any-link {
-text-decoration: none;
-color: #fff;
-}
-a:-webkit-any-link:hover {
-before {content:"Reply!"};
-text-decoration: none;
-color: #a68ed2;
-}
-.btn-hover {
-    font-weight: normal;
-    color: #6441a5;
-    cursor: pointer;
-    background-color: inherit;
-    border-color: transparent;
-}
-
-.btn-hover-alt {
-    font-weight: normal;
-    color: #ffffff;
-    cursor: pointer;
-    background-color: inherit;
-    border-color: transparent;
-}
-.data-box {
-  border-radius: 4px;
-  background-color: #fff;
-  height:200px;
-  width:400px;
-  border:1px solid #ccc;
-  overflow:scroll;
-  font-size:13px;
-}
-form {
-  -webkit-animation: fade 1s;
-}
-.panel-primary {
-  border-color: #CCC;
-  background-color: #f2f2f2;
- -webkit-animation: fade 1s;
-
-}
-.panel-primary > .panel-heading .badge {
-  color: #6441a5;
-  background-color: #ffffff;
-}
-.panel-primary>.panel-heading {
-  color: #ffffff;
-  background-color: #6441a5;
-  border-color: #CCC;
-}
-.panel-primary>.panel-heading+.panel-collapse>.panel-body {
-border-top-color: #000;
- }
-
-.page-header {
-  padding-bottom: 0px;
-  margin: 0px 0 20px;
-  border-bottom: 1px solid #f8f5f0;
-}
-
-.container {
-  width: 1000px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 0px;
-  padding-right: 0px;
-
-}
-.panel .panel-heading, .panel .panel-title {
-  font-size: 14px;
-}
-.iframe1 {
-height: 575px;
-}
-.iframe2 {
-height: 2050px;
-}
-.iframe3 {
-height: 320px;
-}
-
-@-webkit-keyframes animate {
-	0% {
-		opacity: 0;
-		height: 0px;
-		}
-	20% {
-		opacity: 1; 
-	}
-	80% {
-
-		}
-		}
-		
-@-webkit-keyframes fade {
-	0% {
-		opacity: 0; 
-		}
-		
-	50% {
-		opacity: 1; 
-		}
-		
-		}

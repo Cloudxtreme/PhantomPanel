@@ -29,7 +29,10 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
             <div class="col-lg">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-clock-o"></i>&nbsp;&nbsp; Time System</h3>
+                        <h3 class="panel-title"><i class="fa fa-clock-o"></i>&nbsp;&nbsp; Time System
+						<form action="" method="post" style="float:right;margin-top: -4px;margin-right: -8px;">
+						<button id="killbot" class="btn btn-sm  btn-danger" name="message" style=" height: 30px;"value="!module disable ./systems/timesystem.js">Disable</button>
+						</form></h3>
                     </div>
                     <div class="panel-body">
                         <form action="" method="post">

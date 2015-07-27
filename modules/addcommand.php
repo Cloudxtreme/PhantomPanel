@@ -29,7 +29,10 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
             <div class="col-lg">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-wrench"></i>&nbsp;&nbsp; Custom Commands</h3>
+                        <h3 class="panel-title"><i class="fa fa-wrench"></i>&nbsp;&nbsp; Custom Commands
+						<form action="" method="post" style="float:right;margin-top: -4px;margin-right: -8px;">
+						<button id="killbot" class="btn btn-sm  btn-danger" name="message" style=" height: 30px;"value="!module disable ./commands/addCommand.js">Disable</button>
+						</form></h3>
                     </div>
                     <div class="panel-body">
                         <h5>Command Creation Tags:</h5>
@@ -88,7 +91,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     <div class="panel-body" style="float:left;">
 
                         <h5>Custom Commands:</h5>
-                        <div class="data-box">
+                        <textarea class="data-box">
                             <?php
                             $result = curl_get("/inistore/command.ini");
 
@@ -99,11 +102,11 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                                 echo 'Failed to get command list';
                             }
                             ?>
-                        </div></div>
+                        </textarea></div>
                     <div class="panel-body" >
                         <div style="float:right;">
                             <h5>Alias Commands:</h5>
-                            <div class="data-box">
+                            <textarea class="data-box">
                                 <?php
                                 $result = curl_get("/inistore/aliases.ini");
 
@@ -113,12 +116,12 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                                     echo 'Failed to get alias list';
                                 }
                                 ?>
-                            </div>
+                            </textarea>
                         </div></div>
                     <div class="panel-body" style="float:left;">
 
                         <h5>Price Commands:</h5>
-                        <div class="data-box">
+                        <textarea class="data-box">
                             <?php
                             $result = curl_get("/inistore/pricecom.ini");
 
@@ -129,11 +132,11 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             }
                             ?>
 
-                        </div></div>
+                        </textarea></div>
                     <div class="panel-body">
                         <div style="float:right;">
                             <h5>Permission Commands:</h5>
-                            <div class="data-box">
+                            <textarea class="data-box">
 
                                 <?php
                                 $result = curl_get("/inistore/permcom.ini");
@@ -144,7 +147,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                                     echo 'Failed to get commandperm list';
                                 }
                                 ?>
-                            </div>
+                            </textarea>
                         </div></div>
                 </div>
 

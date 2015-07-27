@@ -30,7 +30,10 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
             <div class="col-lg">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-heart"></i>&nbsp;&nbsp; Follow Handler</h3>
+                        <h3 class="panel-title"><i class="fa fa-heart"></i>&nbsp;&nbsp; Follow Commands
+						<form action="" method="post" style="float:right;margin-top: -4px;margin-right: -8px;">
+						<button id="killbot" class="btn btn-sm  btn-danger" name="message" style=" height: 30px;"value="!module disable ./handlers/followHandler.js">Disable</button>
+						</form></h3>
                     </div>
                     <div class="panel-body">
                         <h5>Follow Message Tags:</h5>
@@ -59,7 +62,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     </div>
                     <div class="panel-body" >
                         <h5>Followers:</h5>
-                        <div class="data-box">
+                        <textarea class="data-box">
 
                             <?php
                             $result = curl_get("/inistore/followed.ini");
@@ -71,7 +74,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             }
                             ?>
 
-                        </div></div>
+                        </textarea></div>
                 </div>
             </div>
         </div>

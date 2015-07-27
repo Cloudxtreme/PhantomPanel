@@ -61,7 +61,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         </form>
                     </div>
                     <div class="panel-body">
-                        <h5>Hightlights:</h5>
+                        <h5>Highlights:</h5>
                         <br>
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button class="btn btn-sm btn-default" name="message2" value="!highlight ">Highlight</button>

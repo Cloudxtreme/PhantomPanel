@@ -38,7 +38,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand">Control Panel <br /> <span style="font-size:12px;padding-left: 20px;color: gray;">version 1.2.0</span></a>
+                    <a class="navbar-brand">Control Panel <br /> <span style="font-size:12px;padding-left: 20px;color: gray;">version 1.2.1</span></a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -148,7 +148,7 @@ echo $obj->_total;
 ?>
 	</span>
 			<span id="viewers" style="float:right;padding-right: 10px;"><i class="fa fa-eye" style="color:#a68ed2" ></i>&nbsp;&nbsp;			
-		<div id="viewer_counter" style="color:#fff;display:inline;">0</div>
+		<div id="viewer_counter" style="color:#fff;display:inline;"></div>
 </span>
 
 	      </h4>
@@ -269,7 +269,7 @@ echo $obj->_total;
 						console.log(data);
 				}
 			}else{
-					$('#viewer_counter').html("0");
+					$('#viewer_counter').html("Offline");
 			}
 			});
 		}

@@ -78,4 +78,3 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
     </body>
 
 </html>
-

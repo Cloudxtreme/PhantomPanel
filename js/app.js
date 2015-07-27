@@ -8,8 +8,8 @@ var player;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-        height: '200',
-        width: '320',
+        height: '179',
+        width: '318',
         videoId: '',
         playerVars: {
             iv_load_policy: 3,
