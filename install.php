@@ -67,7 +67,7 @@ if (isset($_GET['step'])) {
                             <?php
                             if (!is_writable(__DIR__ . '/includes/config.php') && !chmod(__DIR__ . '/includes/config.php', 0777)) {
                                 ?>
-                                <form action="?step=2&tryagain" method="post" class="installform">
+                                <form action="?step=2&tryagain=1" method="post" class="installform">
                                     <div class="error">
                                         Unable to change permissions on config file. Please change the permissions of <strong>includes/config.php</strong> 
                                         to allow writing by all (on linux this is <em>chmod 0777 includes/config.php</em>)
@@ -297,7 +297,7 @@ if (isset($_GET['step'])) {
                                 <?php
                             } else {
                                 ?>
-                                <form action="?step=6&tryagain" method="post" class="installform">
+                                <form action="?step=6&tryagain=1" method="post" class="installform">
                                     <div class="warning">
                                         Config file was written but bot could not be contacted
                                     </div>
@@ -314,7 +314,7 @@ if (isset($_GET['step'])) {
                             <?php
                             if (is_writable(__DIR__ . '/includes/config.php') && !chmod(__DIR__ . '/includes/config.php', 0644)) {
                                 ?>
-                                <form action="?step=7&tryagain" method="post" class="installform">
+                                <form action="?step=7&tryagain=1" method="post" class="installform">
                                     <div class="error">
                                         Unable to change permissions on config file. Please change the permissions of <strong>includes/config.php</strong> 
                                         to block writing by all (on linux this is <em>chmod 0644 includes/config.php</em>)
