@@ -4,6 +4,8 @@ require_once('func.php');
 
 /*
  * Security settings
+ * 
+ * NEVER REVEAL THE $sk SETTING OR SECURITY IS LOST
  */
 
 //Session timeout, in seconds (after this time of not having the page open, you are automatically logged out)
