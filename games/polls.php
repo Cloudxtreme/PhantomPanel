@@ -51,14 +51,14 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <br />
                         <br />
                         <form action="" method="post">
-                            <button  class="btn btn-sm btn-default"  name="message2" value="!poll close ">End Poll</button>
+                            <button  class="btn btn-sm btn-default"  name="message" value="!poll close">End Poll</button>
                         </form>
                     </div>
 
                     <div class="panel-body">
                         <p>Displays last poll results in chat.</p>
                         <form action="" method="post">
-                            <button  class="btn btn-sm btn-default"  name="message2" value="!poll results ">Last Poll Results</button>
+                            <button  class="btn btn-sm btn-default"  name="message" value="!poll results ">Last Poll Results</button>
                         </form>
                     </div>
 
