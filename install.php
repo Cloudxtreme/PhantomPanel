@@ -4,6 +4,14 @@ $step = 1;
 if (isset($_GET['step'])) {
     $step = intval($_GET['step']);
 }
+
+function echopost() {
+    global $_POST;
+
+    foreach ($_POST as $k => $v) {
+        echo '<input type="hidden" name="' . $k . '" value="' . $v . '" />';
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -119,7 +127,7 @@ if (isset($_GET['step'])) {
                                 ?>
                                 <form action="?step=2&tryagain=1" method="post" class="installform">
                                     <div class="error">
-                                        Unable to change permissions on config file. Please change the permissions of <strong>includes/config.php</strong> 
+                                        Unable to change permissions on config file. Please change the permissions of <strong>includes/config.php</strong>
                                         to allow writing by all (on linux this is <em>chmod 0777 includes/config.php</em>)
                                     </div>
                                     <button type="submit" class="btn btn-default">TRY AGAIN</button>
@@ -136,6 +144,9 @@ if (isset($_GET['step'])) {
                                 <?php
                             }
                         } else if ($step == 3) {
+                            ?>
+                            <h6>Security Settings</h6>
+                            <?php
                             $domain = $_SERVER['HTTP_HOST'];
 
                             $uri = substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['REQUEST_URI'], '/'));
@@ -146,7 +157,6 @@ if (isset($_GET['step'])) {
 
                             $uri .= 'index.php';
                             ?>
-                            <h6>Security Settings</h6>
                             <form action="?step=4" method="post" class="installform">
                                 <div class="form-group">
                                     <label class="sr-only">The number of hours after which a user is automatically logged out</label>
@@ -174,89 +184,8 @@ if (isset($_GET['step'])) {
                             </form>
                             <?php
                         } else if ($step == 4) {
-                            $data = file_get_contents(__DIR__ . '/includes/config.php') or print('<div class="error">Failed to read config data</div>');
-
-                            $expire_time_val = 6;
-
-                            if (isset($_POST['expire_time']) && is_numeric($_POST['expire_time']) && intval($_POST['expire_time']) > 0) {
-                                $expire_time_val = intval($_POST['expire_time']);
-                            }
-
-                            $r = mt_rand(10000, 99999);
-
-                            $sk = '';
-
-                            for ($i = 0; $i < 36; $i++) {
-                                $n = mt_rand(1, 2);
-
-                                if ($n == 1) {
-                                    $sk .= chr(mt_rand(97, 122));
-                                } else {
-                                    $sk .= mt_rand(0, 9);
-                                }
-                            }
-
-                            $domain = $_SERVER['HTTP_HOST'];
-
-                            if (isset($_POST['domain']) && !empty($_POST['domain'])) {
-                                $domain = $_POST['domain'];
-
-                                $domain = str_replace('http://', '', $domain);
-                                $domain = str_replace('https://', '', $domain);
-
-                                if (strpos($domain, '/') !== false) {
-                                    $domain = substr($domain, 0, strpos($domain, '/'));
-                                }
-                            }
-
-                            $uri = substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['REQUEST_URI'], '/'));
-
-                            if (substr($uri, -1) != '/') {
-                                $uri .= '/';
-                            }
-
-                            $uri .= 'index.php';
-
-                            if (isset($_POST['uri']) && !empty($_POST['uri'])) {
-                                $uri = $_POST['uri'];
-
-                                $uri = str_replace('\\', '/', $uri);
-
-                                if (substr($uri, 0, 7) != 'http://' && substr($uri, 0, 8) != 'https://') {
-                                    $uri = 'http://' . $uri;
-                                }
-
-                                if (substr($uri, -10) != '/index.php') {
-                                    if (substr($uri, -4) == '.php' || substr($uri, -4) == '.htm' || substr($uri, -5) == '.html') {
-                                        $uri = substr($uri, 0, strrpos($uri, '/'));
-                                    }
-
-                                    if (substr($uri, -1) != '/') {
-                                        $uri .= '/';
-                                    }
-
-                                    $uri .= 'index.php';
-                                }
-                            }
-
-                            $data1 = substr($data, 0, strpos($data, '/*expire_time_start*/'));
-                            $data2 = substr($data, strpos($data, '/*expire_time_end*/'));
-                            $data = $data1 . $expire_time_val . ' * 60 * 60' . $data2;
-                            $data1 = substr($data, 0, strpos($data, '/*session_name_start*/'));
-                            $data2 = substr($data, strpos($data, '/*session_name_end*/'));
-                            $data = $data1 . '\'phantompanelsession' . $r . '\'' . $data2;
-                            $data1 = substr($data, 0, strpos($data, '/*domain_start*/'));
-                            $data2 = substr($data, strpos($data, '/*domain_end*/'));
-                            $data = $data1 . '\'' . $domain . '\'' . $data2;
-                            $data1 = substr($data, 0, strpos($data, '/*sk_start*/'));
-                            $data2 = substr($data, strpos($data, '/*sk_end*/'));
-                            $data = $data1 . '\'' . $sk . '\'' . $data2;
-                            $data1 = substr($data, 0, strpos($data, '/*login_uri_start*/'));
-                            $data2 = substr($data, strpos($data, '/*login_uri_end*/'));
-                            $data = $data1 . '\'' . $uri . '\'' . $data2;
-
-                            file_put_contents(__DIR__ . '/includes/config.php', $data) or print('<div class="error">Failed to write config data</div>');
                             ?>
+                            <h6>Create Logins</h6>
                             <script type="text/javascript">
                                 var index = 0;
                                 function addinput() {
@@ -270,14 +199,14 @@ if (isset($_GET['step'])) {
                                     document.getElementById("count").value = index + 1;
                                 }
                             </script>
-                            <h6>Create Logins</h6>
                             <div><em>All usernames must be unique. All usernames and passwords are case sensitive</em></div>
                             <form action="?step=5" method="post" class="installform">
+                                <?php echopost(); ?>
                                 <input type="hidden" name="count" id="count" value="1">
                                 <div class="form-group" id="logins">
                                     <div class="input-group">
                                         <input type="text" class="form-control"
-                                               placeholder="Username" name="username0"> 
+                                               placeholder="Username" name="username0">
                                         <input type="password" class="form-control"
                                                placeholder="Password" name="password0">
                                     </div>
@@ -287,40 +216,20 @@ if (isset($_GET['step'])) {
                             </form>
                             <?php
                         } else if ($step == 5) {
-                            $data = file_get_contents(__DIR__ . '/includes/config.php') or print('<div class="error">Failed to read config data</div>');
-
-                            $newline = "\n";
-
-                            if (strpos($data, "\r\n") !== false) {
-                                $newline = "\r\n";
-                            } else if (strpos($data, "\r") !== false) {
-                                $newline = "\r";
-                            }
-
-                            $logindata = "";
-                            $users = array();
-                            $badusers = false;
-
+                            ?>
+                            <h6>Bot Settings</h6>
+                            <?php
                             for ($i = 0; $i < intval($_POST['count']); $i++) {
                                 if (empty($_POST['username' . $i]) || empty($_POST['password' . $i])) {
                                     continue;
                                 }
 
                                 if (!in_array($_POST['username' . $i], $users)) {
-                                    $logindata .= $newline . 'AddLogin(\'' . $_POST['username' . $i] . '\', \'' . $_POST['password' . $i] . '\');';
                                     $users[] = $_POST['username' . $i];
                                 } else {
                                     $badusers = true;
                                 }
                             }
-
-                            $logindata .= $newline;
-
-                            $data1 = substr($data, 0, strpos($data, '/*AddLogin_start*/'));
-                            $data2 = substr($data, strpos($data, '/*AddLogin_end*/'));
-                            $data = $data1 . $logindata . $data2;
-
-                            file_put_contents(__DIR__ . '/includes/config.php', $data) or print('<div class="error">Failed to write config data</div>');
 
                             if ($badusers) {
                                 ?>
@@ -328,8 +237,8 @@ if (isset($_GET['step'])) {
                                 <?php
                             }
                             ?>
-                            <h6>Bot Settings</h6>
                             <form action="?step=6" method="post" class="installform">
+                                <?php echopost(); ?>
                                 <div class="form-group">
                                     <label class="sr-only">Bot baseport setting (HTTP server port)</label>
                                     <div class="input-group">
@@ -363,8 +272,168 @@ if (isset($_GET['step'])) {
                             </form>
                             <?php
                         } else if ($step == 6) {
-                            if (!isset($_GET['tryagain'])) {
-                                $data = file_get_contents(__DIR__ . '/includes/config.php') or print('<div class="error">Failed to read config data</div>');
+                            ?>
+                            <h6>Write Config</h6>
+                            <?php
+                            $data = file_get_contents(__DIR__ . '/includes/config.php');
+                            $w = false;
+                            $badfile = false;
+
+                            if ($data !== false) {
+                                $expire_time_val = 6;
+
+                                if (isset($_POST['expire_time']) && is_numeric($_POST['expire_time']) && intval($_POST['expire_time']) > 0) {
+                                    $expire_time_val = intval($_POST['expire_time']);
+                                }
+
+                                $r = mt_rand(10000, 99999);
+
+                                $sk = '';
+
+                                for ($i = 0; $i < 36; $i++) {
+                                    $n = mt_rand(1, 2);
+
+                                    if ($n == 1) {
+                                        $sk .= chr(mt_rand(97, 122));
+                                    } else {
+                                        $sk .= mt_rand(0, 9);
+                                    }
+                                }
+
+                                $domain = $_SERVER['HTTP_HOST'];
+
+                                if (isset($_POST['domain']) && !empty($_POST['domain'])) {
+                                    $domain = $_POST['domain'];
+
+                                    $domain = str_replace('http://', '', $domain);
+                                    $domain = str_replace('https://', '', $domain);
+
+                                    if (strpos($domain, '/') !== false) {
+                                        $domain = substr($domain, 0, strpos($domain, '/'));
+                                    }
+                                }
+
+                                $uri = substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['REQUEST_URI'], '/'));
+
+                                if (substr($uri, -1) != '/') {
+                                    $uri .= '/';
+                                }
+
+                                $uri .= 'index.php';
+
+                                if (isset($_POST['uri']) && !empty($_POST['uri'])) {
+                                    $uri = $_POST['uri'];
+
+                                    $uri = str_replace('\\', '/', $uri);
+
+                                    if (substr($uri, 0, 7) != 'http://' && substr($uri, 0, 8) != 'https://') {
+                                        $uri = 'http://' . $uri;
+                                    }
+
+                                    if (substr($uri, -10) != '/index.php') {
+                                        if (substr($uri, -4) == '.php' || substr($uri, -4) == '.htm' || substr($uri, -5) == '.html') {
+                                            $uri = substr($uri, 0, strrpos($uri, '/'));
+                                        }
+
+                                        if (substr($uri, -1) != '/') {
+                                            $uri .= '/';
+                                        }
+
+                                        $uri .= 'index.php';
+                                    }
+                                }
+
+                                $pos = strpos($data, '/*expire_time_start*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data1 = substr($data, 0, $pos);
+                                $pos = strpos($data, '/*expire_time_end*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data2 = substr($data, $pos);
+                                $data = $data1 . $expire_time_val . ' * 60 * 60' . $data2;
+                                $pos = strpos($data, '/*session_name_start*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data1 = substr($data, 0, $pos);
+                                $pos = strpos($data, '/*session_name_end*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data2 = substr($data, $pos);
+                                $data = $data1 . '\'phantompanelsession' . $r . '\'' . $data2;
+                                $pos = strpos($data, '/*domain_start*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data1 = substr($data, 0, $pos);
+                                $pos = strpos($data, '/*domain_end*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data2 = substr($data, $pos);
+                                $data = $data1 . '\'' . $domain . '\'' . $data2;
+                                $pos = strpos($data, '/*sk_start*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data1 = substr($data, 0, $pos);
+                                $pos = strpos($data, '/*sk_end*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data2 = substr($data, $pos);
+                                $data = $data1 . '\'' . $sk . '\'' . $data2;
+                                $pos = strpos($data, '/*login_uri_start*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data1 = substr($data, 0, $pos);
+                                $pos = strpos($data, '/*login_uri_end*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data2 = substr($data, $pos);
+                                $data = $data1 . '\'' . $uri . '\'' . $data2;
+
+                                $newline = "\n";
+
+                                if (strpos($data, "\r\n") !== false) {
+                                    $newline = "\r\n";
+                                } else if (strpos($data, "\r") !== false) {
+                                    $newline = "\r";
+                                }
+
+                                $logindata = "";
+                                $users = array();
+
+                                for ($i = 0; $i < intval($_POST['count']); $i++) {
+                                    if (empty($_POST['username' . $i]) || empty($_POST['password' . $i])) {
+                                        continue;
+                                    }
+
+                                    if (!in_array($_POST['username' . $i], $users)) {
+                                        $logindata .= $newline . 'AddLogin(\'' . $_POST['username' . $i] . '\', \'' . $_POST['password' . $i] . '\');';
+                                        $users[] = $_POST['username' . $i];
+                                    }
+                                }
+
+                                $logindata .= $newline;
+
+                                $pos = strpos($data, '/*AddLogin_start*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data1 = substr($data, 0, $pos);
+                                $pos = strpos($data, '/*AddLogin_end*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data2 = substr($data, $pos);
+                                $data = $data1 . $logindata . $data2;
 
                                 $baseport_val = 25000;
 
@@ -372,68 +441,180 @@ if (isset($_GET['step'])) {
                                     $baseport_val = intval($_POST['baseport']);
                                 }
 
-                                $data1 = substr($data, 0, strpos($data, '/*baseport_start*/'));
-                                $data2 = substr($data, strpos($data, '/*baseport_end*/'));
+                                $pos = strpos($data, '/*baseport_start*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data1 = substr($data, 0, $pos);
+                                $pos = strpos($data, '/*baseport_end*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data2 = substr($data, $pos);
                                 $data = $data1 . $baseport_val . $data2;
-                                $data1 = substr($data, 0, strpos($data, '/*owner_start*/'));
-                                $data2 = substr($data, strpos($data, '/*owner_end*/'));
+                                $pos = strpos($data, '/*owner_start*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data1 = substr($data, 0, $pos);
+                                $pos = strpos($data, '/*owner_end*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data2 = substr($data, $pos);
                                 $data = $data1 . '\'' . $_POST['owner'] . '\'' . $data2;
-                                $data1 = substr($data, 0, strpos($data, '/*url_start*/'));
-                                $data2 = substr($data, strpos($data, '/*url_end*/'));
+                                $pos = strpos($data, '/*url_start*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data1 = substr($data, 0, $pos);
+                                $pos = strpos($data, '/*url_end*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data2 = substr($data, $pos);
                                 $data = $data1 . '\'' . $_POST['url'] . '\'' . $data2;
-                                $data1 = substr($data, 0, strpos($data, '/*oauth_start*/'));
-                                $data2 = substr($data, strpos($data, '/*oauth_end*/'));
+                                $pos = strpos($data, '/*oauth_start*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data1 = substr($data, 0, $pos);
+                                $pos = strpos($data, '/*oauth_end*/');
+                                if ($pos === false) {
+                                    $badfile = true;
+                                }
+                                $data2 = substr($data, $pos);
                                 $data = $data1 . '\'' . $_POST['oauth'] . '\'' . $data2;
 
-                                file_put_contents(__DIR__ . '/includes/config.php', $data) or print('<div class="error">Failed to write config data</div>');
+                                $w = file_put_contents(__DIR__ . '/includes/config.php', $data);
                             }
 
-                            require_once(__DIR__ . '/includes/config.php');
-                            require_once(__DIR__ . '/includes/curl.php');
-
-
-                            $result = curl_get('/inistore/init.ini');
-
-                            if ($result[1] == 200) {
-                                ?>
-                                <form action="?step=7" method="post" class="installform">
-                                    <div class="success">
-                                        Success! Config file written and bot can be contacted
-                                    </div>
-                                    <button type="submit" class="btn btn-default">NEXT</button>
-                                </form>
-                                <?php
-                            } else {
+                            if ($data === false) {
                                 ?>
                                 <form action="?step=6&tryagain=1" method="post" class="installform">
+                                    <?php echopost(); ?>
                                     <div class="warning">
-                                        Config file was written but bot could not be contacted
+                                        Unable to read the config file. Please check that the file <strong>includes/config.php</strong> exists and has full read/write permissions
+                                    </div>
+                                    <button type="submit" class="btn btn-default">TRY AGAIN</button>
+                                </form>
+                                <?php
+                            } else if ($badfile) {
+                                ?>
+                                <form action="?step=6&tryagain=1" method="post" class="installform">
+                                    <?php echopost(); ?>
+                                    <div class="warning">
+                                        The file <strong>includes/config.php</strong> is corrupt, please replace it with an unedited copy and chmod it to 0777
+                                    </div>
+                                    <button type="submit" class="btn btn-default">TRY AGAIN</button>
+                                </form>
+                                <?php
+                            } else if ($w === false) {
+                                ?>
+                                <form action="?step=6&tryagain=1" method="post" class="installform">
+                                    <?php echopost(); ?>
+                                    <div class="warning">
+                                        Unable to write the config file. Please check that the file <strong>includes/config.php</strong> exists and has full write permissions<br />
+                                        <br />
+                                        Alternatively, follow these instructions to edit the file manually
+                                        <ol>
+                                            <li>Open <strong>includes/config.php</strong> in your favorite text editor (vim, notepad, etc)</li>
+                                            <li>Erase all existing text in the file</li>
+                                            <li>Paste the text in the box below into the file</li>
+                                            <li>Save the file</li>
+                                            <li>Click the <strong>I HAVE EDITED THE FILE MANUALLY</strong> button</li>
+                                        </ol>
+                                        <textarea name="alt_data"><?php echo str_replace('<', '&lt;', str_replace('&', '&amp;', $data)); ?></textarea>
                                     </div>
                                     <button type="submit" class="btn btn-default">TRY AGAIN</button>
                                 </form>
                                 <form action="?step=7" method="post" class="installform">
-                                    <button type="submit" class="btn btn-default">SKIP TEST</button>
+                                    <button type="submit" class="btn btn-default">I HAVE EDITED THE FILE MANUALLY</button>
+                                </form>
+                                <?php
+                            } else {
+                                ?>
+                                <form action="?step=7" method="post" class="installform">
+                                    <div class="success">
+                                        Success! Config file written
+                                    </div>
+                                    <button type="submit" class="btn btn-default">NEXT</button>
                                 </form>
                                 <?php
                             }
                         } else if ($step == 7) {
                             ?>
-                            <h6>Delete install.php and make config file read only</h6>
+                            <h6>Test Bot Connection</h6>
+                            <?php
+                            require_once(__DIR__ . '/includes/config.php');
+                            require_once(__DIR__ . '/includes/curl.php');
+
+                            $result = curl_get('/inistore/init.ini');
+
+                            if ($result[1] == 200) {
+                                ?>
+                                <form action="?step=8" method="post" class="installform">
+                                    <div class="success">
+                                        Success! Bot can be contacted
+                                    </div>
+                                    <button type="submit" class="btn btn-default">NEXT</button>
+                                </form>
+                                <?php
+                            } else {
+                                require_once(__DIR__ . '/includes/func.php');
+                                ?>
+                                <form action="?step=7&tryagain=1" method="post" class="installform">
+                                    <div class="warning">
+                                        Bot could not be contacted<br />
+                                        <?php if ($result[1] > 0) { ?>
+                                            HTTP <?php echo $result[1] . ' ' . http_status_code_string($result[1]); ?><br />
+                                            <?php echo $result[0]; ?>
+                                        <?php } else { ?>
+                                            Error #: <?php echo $result[2]; ?><br />
+                                            <?php echo $result[3]; ?>
+                                        <?php } ?>
+                                    </div>
+                                    <button type="submit" class="btn btn-default">TRY AGAIN</button>
+                                </form>
+                                <form action="?step=8" method="post" class="installform">
+                                    <button type="submit" class="btn btn-default">SKIP TEST</button>
+                                </form>
+                                <?php
+                            }
+                        } else if ($step == 8) {
+                            ?>
+                            <h6>Make config file read only</h6>
                             <?php
                             if (is_writable(__DIR__ . '/includes/config.php') && !chmod(__DIR__ . '/includes/config.php', 0644)) {
                                 ?>
-                                <form action="?step=7&tryagain=1" method="post" class="installform">
+                                <form action="?step=8&tryagain=1" method="post" class="installform">
                                     <div class="error">
-                                        Unable to change permissions on config file. Please change the permissions of <strong>includes/config.php</strong> 
+                                        Unable to change permissions on config file. Please change the permissions of <strong>includes/config.php</strong>
                                         to block writing by all (on linux this is <em>chmod 0644 includes/config.php</em>)
                                     </div>
                                     <button type="submit" class="btn btn-default">TRY AGAIN</button>
                                 </form>
                                 <?php
-                            } else if (!unlink(__DIR__ . '/install.php')) {
+                            } else {
+                                ?>
+                                <form action="?step=9" method="post" class="installform">
+                                    <div class="success">
+                                        Success! Config file is now read only
+                                    </div>
+                                    <button type="submit" class="btn btn-default">NEXT</button>
+                                </form>
+                                <?php
+                            }
+                        } else if ($step == 9) {
+                            ?>
+                            <h6>Delete install.php</h6>
+                            <?php
+                            if (!unlink(__DIR__ . '/install.php')) {
+                                require_once(__DIR__ . '/includes/config.php');
                                 ?>
                                 <div class="error">
-                                    Unable to delete install.php, please do this now otherwise security may be compromised
+                                    Unable to delete install.php, please do this now otherwise security may be compromised <br />
+                                    Once this is done, PhantomPanel is ready for use, click <a href="<?php echo $login_uri; ?>" target="_self">here</a> to login
                                 </div>
                                 <?php
                             } else {
