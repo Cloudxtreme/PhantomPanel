@@ -33,7 +33,7 @@ if (isset($_GET['step'])) {
                             <h6>Pre-Requisite Check</h6>
                             <?php
                             $missing = false;
-                            
+
                             if (!defined('PHP_VERSION_ID')) {
                                 ?>
                                 <div class="error">
@@ -47,7 +47,7 @@ if (isset($_GET['step'])) {
                                 </div>
                                 <?php
                             }
-                            
+
                             if (!function_exists('curl_init')) {
                                 ?>
                                 <div class="error">
@@ -61,7 +61,7 @@ if (isset($_GET['step'])) {
                                 </div>
                                 <?php
                             }
-                            
+
                             if (!function_exists("mcrypt_generic")) {
                                 ?>
                                 <div class="error">
@@ -75,7 +75,7 @@ if (isset($_GET['step'])) {
                                 </div>
                                 <?php
                             }
-                            
+
                             if ($missing) {
                                 ?>
                                 <form action="?step=1&tryagain=1" method="post" class="installform">
@@ -137,7 +137,7 @@ if (isset($_GET['step'])) {
                             }
                         } else if ($step == 3) {
                             $domain = $_SERVER['HTTP_HOST'];
-                            
+
                             $uri = substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['REQUEST_URI'], '/'));
 
                             if (substr($uri, -1) != '/') {
@@ -194,16 +194,16 @@ if (isset($_GET['step'])) {
                                 } else {
                                     $sk .= mt_rand(0, 9);
                                 }
-                            }                            
+                            }
 
                             $domain = $_SERVER['HTTP_HOST'];
-                            
+
                             if (isset($_POST['domain']) && !empty($_POST['domain'])) {
                                 $domain = $_POST['domain'];
-                                
+
                                 $domain = str_replace('http://', '', $domain);
                                 $domain = str_replace('https://', '', $domain);
-                                
+
                                 if (strpos($domain, '/') !== false) {
                                     $domain = substr($domain, 0, strpos($domain, '/'));
                                 }

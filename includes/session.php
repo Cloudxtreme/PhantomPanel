@@ -13,7 +13,7 @@ $hmac_algo = "sha256";
 
 $login_url = $login_uri;
 
-session_register_shutdown();
+register_shutdown_function('session_write_close');
 session_name($session_name);
 session_set_cookie_params($lifetime, $path, $domain, $secure, $httponly);
 session_start();
