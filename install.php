@@ -32,23 +32,73 @@ if (isset($_GET['step'])) {
                             ?>
                             <h6>Pre-Requisite Check</h6>
                             <?php
+                            $missing = false;
+                            
                             if (!defined('PHP_VERSION_ID')) {
                                 ?>
                                 <div class="error">
                                     You must have PHP version 5.2.7 or later
                                 </div>
                                 <?php
-                            } else if (!function_exists('curl_init')) {
+                            } else {
+                                ?>
+                                <div class="success">
+                                    You are using PHP version 5.2.7 or later
+                                </div>
+                                <?php
+                            }
+                            
+                            if (!function_exists('curl_init')) {
                                 ?>
                                 <div class="error">
                                     You must have cURL for PHP installed and enabled
                                 </div>
                                 <?php
-                            } else if (!function_exists("mcrypt_generic")) {
+                            } else {
+                                ?>
+                                <div class="success">
+                                    cURL for PHP is installed and enabled
+                                </div>
+                                <?php
+                            }
+                            
+                            if (!function_exists("mcrypt_generic")) {
                                 ?>
                                 <div class="error">
                                     You must have Mcrypt for PHP installed and enabled
                                 </div>
+                                <?php
+                            } else {
+                                ?>
+                                <div class="success">
+                                    Mcrypt for PHP is installed and enabled
+                                </div>
+                                <?php
+                            }
+                            
+                            if ($missing) {
+                                ?>
+                                <form action="?step=1&tryagain=1" method="post" class="installform">
+                                    <div class="error">
+                                        One or more pre-requisites have failed the test. Please correct the issue then try again. <br />
+                                        <br />
+                                        Common fixes:<br />
+                                        <ul>
+                                            <li>Update your PHP version from http://php.net or use your package manager</li>
+                                            <li>Install missing modules through your package manager</li>
+                                            <li>Check your PHP configuration to ensure required modules are enabled</li>
+                                            <li>After performing any of the above steps, restart your server software (lighttpd, httpd, nginx, etc)</li>
+                                            <li>Resources
+                                                <ul>
+                                                    <li>Install/Update: http://php.net/manual/en/install.php</li>
+                                                    <li>cURL: http://php.net/manual/en/curl.installation.php</li>
+                                                    <li>Mcrypt: http://php.net/manual/en/mcrypt.installation.php</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button type="submit" class="btn btn-default">TRY AGAIN</button>
+                                </form>
                                 <?php
                             } else {
                                 ?>
@@ -86,6 +136,15 @@ if (isset($_GET['step'])) {
                                 <?php
                             }
                         } else if ($step == 3) {
+                            $domain = $_SERVER['HTTP_HOST'];
+                            
+                            $uri = substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['REQUEST_URI'], '/'));
+
+                            if (substr($uri, -1) != '/') {
+                                $uri .= '/';
+                            }
+
+                            $uri .= 'index.php';
                             ?>
                             <h6>Security Settings</h6>
                             <form action="?step=4" method="post" class="installform">
@@ -95,6 +154,20 @@ if (isset($_GET['step'])) {
                                         <input type="text" class="form-control"
                                                value="6" name="expire_time"
                                                onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">The domain name or IP address to this PhantomPanel installation</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control"
+                                               value="<?php echo $domain; ?>" name="domain">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">The url to this PhantomPanel installation</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control"
+                                               value="<?php echo $uri; ?>" name="uri">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-default">NEXT</button>
@@ -121,6 +194,19 @@ if (isset($_GET['step'])) {
                                 } else {
                                     $sk .= mt_rand(0, 9);
                                 }
+                            }                            
+
+                            $domain = $_SERVER['HTTP_HOST'];
+                            
+                            if (isset($_POST['domain']) && !empty($_POST['domain'])) {
+                                $domain = $_POST['domain'];
+                                
+                                $domain = str_replace('http://', '', $domain);
+                                $domain = str_replace('https://', '', $domain);
+                                
+                                if (strpos($domain, '/') !== false) {
+                                    $domain = substr($domain, 0, strpos($domain, '/'));
+                                }
                             }
 
                             $uri = substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['REQUEST_URI'], '/'));
@@ -131,6 +217,28 @@ if (isset($_GET['step'])) {
 
                             $uri .= 'index.php';
 
+                            if (isset($_POST['uri']) && !empty($_POST['uri'])) {
+                                $uri = $_POST['uri'];
+
+                                $uri = str_replace('\\', '/', $uri);
+
+                                if (substr($uri, 0, 7) != 'http://' && substr($uri, 0, 8) != 'https://') {
+                                    $uri = 'http://' . $uri;
+                                }
+
+                                if (substr($uri, -10) != '/index.php') {
+                                    if (substr($uri, -4) == '.php' || substr($uri, -4) == '.htm' || substr($uri, -5) == '.html') {
+                                        $uri = substr($uri, 0, strrpos($uri, '/'));
+                                    }
+
+                                    if (substr($uri, -1) != '/') {
+                                        $uri .= '/';
+                                    }
+
+                                    $uri .= 'index.php';
+                                }
+                            }
+
                             $data1 = substr($data, 0, strpos($data, '/*expire_time_start*/'));
                             $data2 = substr($data, strpos($data, '/*expire_time_end*/'));
                             $data = $data1 . $expire_time_val . ' * 60 * 60' . $data2;
@@ -139,7 +247,7 @@ if (isset($_GET['step'])) {
                             $data = $data1 . '\'phantompanelsession' . $r . '\'' . $data2;
                             $data1 = substr($data, 0, strpos($data, '/*domain_start*/'));
                             $data2 = substr($data, strpos($data, '/*domain_end*/'));
-                            $data = $data1 . '\'' . $_SERVER['HTTP_HOST'] . '\'' . $data2;
+                            $data = $data1 . '\'' . $domain . '\'' . $data2;
                             $data1 = substr($data, 0, strpos($data, '/*sk_start*/'));
                             $data2 = substr($data, strpos($data, '/*sk_end*/'));
                             $data = $data1 . '\'' . $sk . '\'' . $data2;
