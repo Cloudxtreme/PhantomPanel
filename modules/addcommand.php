@@ -10,6 +10,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
     $result = curl_put($_POST['message2'] . $_POST['message3']);
 }
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -91,8 +92,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     <div class="panel-body" style="float:left;">
 
                         <h5>Custom Commands:</h5>
-                        <textarea class="data-box">
-                            <?php
+                        <textarea class="data-box" readonly><?php
                             $result = curl_get("/inistore/command.ini");
 
 
@@ -101,13 +101,11 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             } else {
                                 echo 'Failed to get command list';
                             }
-                            ?>
-                        </textarea></div>
+                            ?></textarea></div>
                     <div class="panel-body" >
                         <div style="float:right;">
                             <h5>Alias Commands:</h5>
-                            <textarea class="data-box">
-                                <?php
+                            <textarea class="data-box" readonly><?php
                                 $result = curl_get("/inistore/aliases.ini");
 
                                 if ($result[1] == 200) {
@@ -115,14 +113,12 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                                 } else {
                                     echo 'Failed to get alias list';
                                 }
-                                ?>
-                            </textarea>
+                                ?></textarea>
                         </div></div>
                     <div class="panel-body" style="float:left;">
 
                         <h5>Price Commands:</h5>
-                        <textarea class="data-box">
-                            <?php
+                        <textarea class="data-box" readonly><?php
                             $result = curl_get("/inistore/pricecom.ini");
 
                             if ($result[1] == 200) {
@@ -130,15 +126,11 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             } else {
                                 echo 'Failed to get pricecom list';
                             }
-                            ?>
-
-                        </textarea></div>
+                            ?></textarea></div>
                     <div class="panel-body">
                         <div style="float:right;">
                             <h5>Permission Commands:</h5>
-                            <textarea class="data-box">
-
-                                <?php
+                            <textarea class="data-box" readonly><?php
                                 $result = curl_get("/inistore/permcom.ini");
 
                                 if ($result[1] == 200) {
@@ -146,8 +138,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                                 } else {
                                     echo 'Failed to get commandperm list';
                                 }
-                                ?>
-                            </textarea>
+                                ?></textarea>
                         </div></div>
                 </div>
 

@@ -93,19 +93,14 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <form action="" method="post">
                             <button class="btn btn-sm btn-default" name="message" value="!group list">Group List</button>
                         </form>
-                        <div class="data-box">
-
-                            <?php
-                            $result = curl_get("/inistore/groups.ini");
+                        <textarea class="data-box" readonly><?php $result = curl_get("/inistore/groups.ini");
 
                             if ($result[1] == 200) {
                                 echo $result[0];
                             } else {
                                 echo 'Failed to get group list';
                             }
-                            ?>
-
-                        </div></div>
+                            ?></textarea></div>
                 </div>
             </div>
         </div>

@@ -118,6 +118,6 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
         success: function(json_result) {
             $('#stream_title').text(json_result.status);
             $('#stream_game').text(json_result.game);
-        }
+        } 
     });
 </script>
