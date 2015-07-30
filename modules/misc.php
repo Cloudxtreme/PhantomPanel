@@ -31,6 +31,13 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     <div class="panel-heading">
                         <h3 class="panel-title"><i class="fa fa-cog"></i>&nbsp;&nbsp; Misc Commands</h3>
                     </div>
+					 <div class="panel-body">
+                        Enable or Disable the response of the bot. <br /><br />
+                        <form action="" method="post">
+                            <button class="btn btn-sm  btn-default" name="message" value="!response disable">Mute Bot</button>
+                            <button class="btn btn-sm  btn-default" name="message" value="!response enable">Un-Mute Bot</button>
+                        </form>
+                    </div>
                     <div class="panel-body">
                         This panel is only for enabling the bot to write logs to help with debugging issues.<br /><br />
                         <form action="" method="post">
@@ -43,14 +50,6 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             <input id="input1" type="text" name="message3" placeholder="<days>" value="">
                         </form>
                     </div>
-                    <div class="panel-body">
-                        Enable or Disable the response of the bot. <br /><br />
-                        <form action="" method="post">
-                            <button class="btn btn-sm  btn-default" name="message" value="!response disable">Mute Bot</button>
-                            <button class="btn btn-sm  btn-default" name="message" value="!response enable">Un-Mute Bot</button>
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
     </body>
