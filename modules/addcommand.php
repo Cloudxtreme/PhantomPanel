@@ -38,13 +38,13 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     <div class="panel-body">
                         <h5>Command Creation Tags:</h5>
                         <ul>
-                            <li>(sender) the user of the command</li>
-                            <li>(count) times the command is used</li>
-                            <li>(random) chooses a random person in the channel</li>
-                            <li>(code) generates a 8 character code using A-Z and 1-9</li>
-                            <li>(#) a random number</li>
-                            <li>(1) this targets the first argument in a command.</li>
-                            <li>(2) this targets the second argument in a command.</li>
+                            <li>(sender) - displays the user of the command</li>
+                            <li>(count) - displays the amount of times the command has been used</li>
+                            <li>(random) - chooses a random person in the channel</li>
+                            <li>(code) - generates a 8 character code using A-Z and 1-9</li>
+                            <li>(#) - generates a random number 1-100</li>
+                            <li>(1) - this targets the first argument in a command.</li>
+                            <li>(2) - this targets the second argument in a command.</li>
                         </ul>
                         <br />
                         <h5>Command Creation Panel:</h5>
@@ -68,11 +68,11 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         </div>
                     </div>
                     <div class="panel-body">
-                        <h5>Command Attributes:</h5>
-                        <p><b>Note:</b> The Permission command uses a "<b>mode</b>" which is for targeting what groups can use the command.<br />
+                        <h5>Command Attributes Guide:</h5>
+                        <p><b>Note:</b> !Permcom uses a "<b>mode</b>" system, which is for targeting what groups has access to the command.<br />
                         <ul>
-                            <li>1: Setting the mode as "<b>1</b>" will set the command to only work for the group you typed.</li>
-                            <li>2: Setting the mode as "<b>2</b>" will set the command to work for the group you typed and anything ranked higher than that group.</li>
+                            <li>1: Setting the mode as "<b>1</b>" will set the command to be accessible by <u>ONLY</u> the chosen group.</li>
+                            <li>2: Setting the mode as "<b>2</b>" will set the command to be accessible by the chosen group you and any group ranked higher.</li>
                         </ul>
                         <p><b>Alias:</b> Alias means another word for the same command. If you set !points with an alias as wallet, the command will respond to !wallet.</p>
                         <br />
@@ -104,7 +104,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             ?></textarea></div>
                     <div class="panel-body" >
                         <div style="float:right;">
-                            <h5>Alias Commands:</h5>
+                            <h5>Command Aliases:</h5>
                             <textarea class="data-box" readonly><?php
                                 $result = curl_get("/inistore/aliases.ini");
 
@@ -117,7 +117,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         </div></div>
                     <div class="panel-body" style="float:left;">
 
-                        <h5>Price Commands:</h5>
+                        <h5>Command Prices:</h5>
                         <textarea class="data-box" readonly><?php
                             $result = curl_get("/inistore/pricecom.ini");
 
@@ -129,7 +129,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             ?></textarea></div>
                     <div class="panel-body">
                         <div style="float:right;">
-                            <h5>Permission Commands:</h5>
+                            <h5>Command Permissions:</h5>
                             <textarea class="data-box" readonly><?php
                                 $result = curl_get("/inistore/permcom.ini");
 
