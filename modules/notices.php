@@ -82,6 +82,16 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             } else {
                                 echo 'Failed to get notice list';
                             }
+                            ?> </textarea>
+						 <h5>Settings:</h5>
+                        <textarea style="width: 150px;height: 80px;"class="data-box" readonly><?php
+                            $result = curl_get("/inistore/notice.ini");
+
+                            if ($result[1] == 200) {
+                                echo $result[0];
+                            } else {
+                                echo 'Failed to get notice setttings';
+                            }
                             ?> </textarea></div>
                 </div>
             </div>
