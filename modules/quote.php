@@ -57,9 +57,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     </div>
                     <div class="panel-body" >
                         <h5>Quotes:</h5>
-                        <textarea class="data-box">
-
-                            <?php
+                        <textarea class="data-box" readonly><?php
                             $result = curl_get("/inistore/quotes.ini");
 
                             if ($result[1] == 200) {
@@ -67,10 +65,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             } else {
                                 echo 'Failed to get quotes list';
                             }
-                            ?>
-
-                        </textarea></div>
-
+                            ?></textarea></div>
                 </div>
             </div>
         </div>

@@ -146,7 +146,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
                                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        <i class="fa fa-twitch "></i>&nbsp;&nbsp;Video Stream
+                                       <span style="color: #ffffff;"> <i class="fa fa-twitch "></i>&nbsp;&nbsp;Video Stream</span>
                                     </a>  
                                     <span id="followers" style="color:#fff;float:right;"><i class="fa fa-heart" style="color:#a68ed2;"></i>&nbsp;&nbsp;
                                         <!-- FOLLOWER/VIEWER COUNT -->

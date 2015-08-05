@@ -113,6 +113,20 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             <input id="input1" type="text" name="message3" placeholder="<amounts>" value="">
                         </form>
                     </div>
+					                    <div class="panel-body">
+                      
+                            <h5>Player Points:</h5>
+                            <textarea class="data-box" readonly><?php
+                                $result = curl_get("/inistore/points.ini");
+
+                                if ($result[1] == 200) {
+                                    echo $result[0];
+                                } else {
+                                    echo 'Failed to get points list';
+                                }
+                                ?>
+                            </textarea>
+                        </div>
                 </div>
             </div>
         </div>

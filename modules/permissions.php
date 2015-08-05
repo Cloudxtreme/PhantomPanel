@@ -58,8 +58,9 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                     </div>
                     <div class="panel-body">
                         <h5>Group Settings:</h5>
-                        Create, Remove, Change and Set groups for viewers.
-                        <br />
+                        <p>Create, Remove, Change and Set Groups for your channel.<br />
+						In order to set command permissions for each group you must use the <a target="main"  style="color: #6441a5;" href="../modules/addcommand.php"><i class="fa fa-wrench"></i>&nbsp;Custom Commands</a> panel.
+						</p>
                         <br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button class="btn btn-sm btn-default" name="message2" value="!group ">Group Level</button>
@@ -90,22 +91,17 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         </form>
                     </div>
                     <div class="panel-body" >
-                        <form action="" method="post">
-                            <button class="btn btn-sm btn-default" name="message" value="!group list">Group List</button>
-                        </form>
-                        <div class="data-box">
+                            <h5>Group List:</h5>
 
-                            <?php
-                            $result = curl_get("/inistore/groups.ini");
+						<p>Groups are ranked up to 0. Making 0 the highest rank.</p>
+                        <textarea class="data-box" readonly><?php $result = curl_get("/inistore/groups.ini");
 
                             if ($result[1] == 200) {
                                 echo $result[0];
                             } else {
                                 echo 'Failed to get group list';
                             }
-                            ?>
-
-                        </div></div>
+                            ?></textarea></div>
                 </div>
             </div>
         </div>

@@ -61,10 +61,8 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         </form>
                     </div>
                     <div class="panel-body" >
-                        <h5>Followers:</h5>
-                        <textarea class="data-box">
-
-                            <?php
+                        <h5>Recorded Follows:</h5>
+                        <textarea class="data-box" readonly><?php
                             $result = curl_get("/inistore/followed.ini");
 
                             if ($result[1] == 200) {
@@ -72,9 +70,7 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             } else {
                                 echo 'Failed to get followed list';
                             }
-                            ?>
-
-                        </textarea></div>
+                            ?></textarea></div>
                 </div>
             </div>
         </div>

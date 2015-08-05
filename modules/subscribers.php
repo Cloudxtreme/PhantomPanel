@@ -51,6 +51,17 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                             <input id="input1" type="text" name="message3" placeholder="<amount>" value="">
                         </form>
                     </div>
+					<div class="panel-body" >
+                        <h5>Subscribers:</h5>
+                        <textarea class="data-box" readonly><?php
+                            $result = curl_get("/inistore/subscribed.ini");
+
+                            if ($result[1] == 200) {
+                                echo $result[0];
+                            } else {
+                                echo 'Failed to get subscribe list';
+                            }
+                            ?></textarea></div>
                 </div>
             </div>
         </div>
