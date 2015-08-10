@@ -33,7 +33,7 @@ $login_uri = /*login_uri_start*/'/index.php'/*login_uri_end*/;
 $baseport = /*baseport_start*/25000/*baseport_end*/;
 //The bot owner
 $owner = /*owner_start*/'channel owner'/*owner_end*/;
-//The IP address or url to the bot itself (not this control panel)
+//The IP address or url to the bot server itself (not this control panel)
 $url = /*url_start*/'url to your bot'/*url_end*/;
 //The oauth key used by the bot to login to chat (used so only this script can access the bot)
 $oauth = /*oauth_start*/'your oauth key'/*oauth_end*/;

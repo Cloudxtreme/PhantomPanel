@@ -255,7 +255,7 @@ function echopost() {
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="sr-only">Bot IP address or hostname</label>
+                                    <label class="sr-only">Bot IP address or hostname (The server running the actual bot program)</label>
                                     <div class="input-group">
                                         <input type="text" class="form-control"
                                                placeholder="IP address or hostname of the bot" name="url">
