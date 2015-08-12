@@ -156,6 +156,10 @@ function echopost() {
                             }
 
                             $uri .= 'index.php';
+
+                            $uri = str_replace('http://', '', str_replace('https://', '', $uri));
+
+                            $uri = (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $uri;
                             ?>
                             <form action="?step=4" method="post" class="installform">
                                 <div class="form-group">
@@ -191,11 +195,11 @@ function echopost() {
                                 function addinput() {
                                     index++;
                                     document.getElementById('logins').innerHTML += '<div class="input-group">'
-                                        + '<input type="text" class="form-control"'
-                                        + 'placeholder="Username" name="username' + index + '"> '
-                                        + '<input type="password" class="form-control"'
-                                        + 'placeholder="Password" name="password' + index + '">'
-                                        + '</div>';
+                                            + '<input type="text" class="form-control"'
+                                            + 'placeholder="Username" name="username' + index + '"> '
+                                            + '<input type="password" class="form-control"'
+                                            + 'placeholder="Password" name="password' + index + '">'
+                                            + '</div>';
                                     document.getElementById("count").value = index + 1;
                                 }
                             </script>
@@ -211,7 +215,8 @@ function echopost() {
                                                placeholder="Password" name="password0">
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-default" onclick="addinput(); return false;">ADD MORE</button>&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-default" onclick="addinput();
+                                        return false;">ADD MORE</button>&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;<button type="submit" class="btn btn-default">NEXT</button>
                             </form>
                             <?php
@@ -238,7 +243,7 @@ function echopost() {
                             }
                             ?>
                             <form action="?step=6" method="post" class="installform">
-                                <?php echopost(); ?>
+    <?php echopost(); ?>
                                 <div class="form-group">
                                     <label class="sr-only">Bot baseport setting (HTTP server port)</label>
                                     <div class="input-group">
@@ -320,6 +325,10 @@ function echopost() {
                                 }
 
                                 $uri .= 'index.php';
+
+                                $uri = str_replace('http://', '', str_replace('https://', '', $uri));
+
+                                $uri = (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $uri;
 
                                 if (isset($_POST['uri']) && !empty($_POST['uri'])) {
                                     $uri = $_POST['uri'];
@@ -492,7 +501,7 @@ function echopost() {
                             if ($data === false) {
                                 ?>
                                 <form action="?step=6&tryagain=1" method="post" class="installform">
-                                    <?php echopost(); ?>
+        <?php echopost(); ?>
                                     <div class="warning">
                                         Unable to read the config file. Please check that the file <strong>includes/config.php</strong> exists and has full read/write permissions
                                     </div>
@@ -502,7 +511,7 @@ function echopost() {
                             } else if ($badfile) {
                                 ?>
                                 <form action="?step=6&tryagain=1" method="post" class="installform">
-                                    <?php echopost(); ?>
+        <?php echopost(); ?>
                                     <div class="warning">
                                         The file <strong>includes/config.php</strong> is corrupt, please replace it with an unedited copy and chmod it to 0777
                                     </div>
@@ -512,7 +521,7 @@ function echopost() {
                             } else if ($w === false) {
                                 ?>
                                 <form action="?step=6&tryagain=1" method="post" class="installform">
-                                    <?php echopost(); ?>
+        <?php echopost(); ?>
                                     <div class="warning">
                                         Unable to write the config file. Please check that the file <strong>includes/config.php</strong> exists and has full write permissions<br />
                                         <br />
@@ -572,7 +581,7 @@ function echopost() {
                                         <?php } else { ?>
                                             Error #: <?php echo $result[2]; ?><br />
                                             <?php echo $result[3]; ?>
-                                        <?php } ?>
+        <?php } ?>
                                     </div>
                                     <button type="submit" class="btn btn-default">TRY AGAIN</button>
                                 </form>
