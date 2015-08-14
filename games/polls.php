@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '../includes/includes.php');
+require_once(__DIR__ . '/../includes/includes.php');
 ?>
 <?php
 if (isset($_POST['message'])) {

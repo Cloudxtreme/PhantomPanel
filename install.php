@@ -216,7 +216,7 @@ function echopost() {
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-default" onclick="addinput();
-                                        return false;">ADD MORE</button>&nbsp;&nbsp;&nbsp;
+                                            return false;">ADD MORE</button>&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;<button type="submit" class="btn btn-default">NEXT</button>
                             </form>
                             <?php
@@ -243,7 +243,7 @@ function echopost() {
                             }
                             ?>
                             <form action="?step=6" method="post" class="installform">
-    <?php echopost(); ?>
+                                <?php echopost(); ?>
                                 <div class="form-group">
                                     <label class="sr-only">Bot baseport setting (HTTP server port)</label>
                                     <div class="input-group">
@@ -340,8 +340,7 @@ function echopost() {
                                     }
 
                                     if (substr($uri, -10) != '/index.php') {
-                                        if (strtolower(substr($uri, -4)) == '.php' || strtolower(substr($uri, -4)) == '.htm'
-                                                || strtolower(substr($uri, -5)) == '.html') {
+                                        if (strtolower(substr($uri, -4)) == '.php' || strtolower(substr($uri, -4)) == '.htm' || strtolower(substr($uri, -5)) == '.html') {
                                             $uri = substr($uri, 0, strrpos($uri, '/'));
                                         }
 
@@ -352,20 +351,20 @@ function echopost() {
                                         $uri .= 'index.php';
                                     }
                                 }
-                                
+
                                 if (strtolower(substr($uri, 0, 7)) == 'http://') {
                                     $uri = substr($uri, 7);
                                 }
-                                
+
                                 if (strtolower(substr($uri, 0, 8)) == 'https://') {
                                     $uri = substr($uri, 8);
                                 }
-                                
+
                                 if (strtolower(substr($uri, 0, strlen($domain))) == strtolower($domain)) {
                                     $uri = substr($uri, strlen($domain));
                                 }
 
-                                $pos = strpos($data, '/*expire_time_start*/');
+                                $pos = strpos($data, '/*expire_time_start*/') + 21;
                                 if ($pos === false) {
                                     $badfile = true;
                                 }
@@ -376,7 +375,7 @@ function echopost() {
                                 }
                                 $data2 = substr($data, $pos);
                                 $data = $data1 . $expire_time_val . ' * 60 * 60' . $data2;
-                                $pos = strpos($data, '/*session_name_start*/');
+                                $pos = strpos($data, '/*session_name_start*/') + 22;
                                 if ($pos === false) {
                                     $badfile = true;
                                 }
@@ -387,7 +386,7 @@ function echopost() {
                                 }
                                 $data2 = substr($data, $pos);
                                 $data = $data1 . '\'phantompanelsession' . $r . '\'' . $data2;
-                                $pos = strpos($data, '/*domain_start*/');
+                                $pos = strpos($data, '/*domain_start*/') + 16;
                                 if ($pos === false) {
                                     $badfile = true;
                                 }
@@ -398,7 +397,7 @@ function echopost() {
                                 }
                                 $data2 = substr($data, $pos);
                                 $data = $data1 . '\'' . $domain . '\'' . $data2;
-                                $pos = strpos($data, '/*sk_start*/');
+                                $pos = strpos($data, '/*sk_start*/') + 12;
                                 if ($pos === false) {
                                     $badfile = true;
                                 }
@@ -409,7 +408,7 @@ function echopost() {
                                 }
                                 $data2 = substr($data, $pos);
                                 $data = $data1 . '\'' . $sk . '\'' . $data2;
-                                $pos = strpos($data, '/*login_uri_start*/');
+                                $pos = strpos($data, '/*login_uri_start*/') + 19;
                                 if ($pos === false) {
                                     $badfile = true;
                                 }
@@ -445,7 +444,7 @@ function echopost() {
 
                                 $logindata .= $newline;
 
-                                $pos = strpos($data, '/*AddLogin_start*/');
+                                $pos = strpos($data, '/*AddLogin_start*/') + 18;
                                 if ($pos === false) {
                                     $badfile = true;
                                 }
@@ -463,7 +462,7 @@ function echopost() {
                                     $baseport_val = intval($_POST['baseport']);
                                 }
 
-                                $pos = strpos($data, '/*baseport_start*/');
+                                $pos = strpos($data, '/*baseport_start*/') + 18;
                                 if ($pos === false) {
                                     $badfile = true;
                                 }
@@ -474,7 +473,7 @@ function echopost() {
                                 }
                                 $data2 = substr($data, $pos);
                                 $data = $data1 . $baseport_val . $data2;
-                                $pos = strpos($data, '/*owner_start*/');
+                                $pos = strpos($data, '/*owner_start*/') + 15;
                                 if ($pos === false) {
                                     $badfile = true;
                                 }
@@ -485,7 +484,7 @@ function echopost() {
                                 }
                                 $data2 = substr($data, $pos);
                                 $data = $data1 . '\'' . $_POST['owner'] . '\'' . $data2;
-                                $pos = strpos($data, '/*url_start*/');
+                                $pos = strpos($data, '/*url_start*/') + 13;
                                 if ($pos === false) {
                                     $badfile = true;
                                 }
@@ -496,7 +495,7 @@ function echopost() {
                                 }
                                 $data2 = substr($data, $pos);
                                 $data = $data1 . '\'' . $_POST['url'] . '\'' . $data2;
-                                $pos = strpos($data, '/*oauth_start*/');
+                                $pos = strpos($data, '/*oauth_start*/') + 15;
                                 if ($pos === false) {
                                     $badfile = true;
                                 }
@@ -514,7 +513,7 @@ function echopost() {
                             if ($data === false) {
                                 ?>
                                 <form action="?step=6&tryagain=1" method="post" class="installform">
-        <?php echopost(); ?>
+                                    <?php echopost(); ?>
                                     <div class="warning">
                                         Unable to read the config file. Please check that the file <strong>includes/config.php</strong> exists and has full read/write permissions
                                     </div>
@@ -524,7 +523,7 @@ function echopost() {
                             } else if ($badfile) {
                                 ?>
                                 <form action="?step=6&tryagain=1" method="post" class="installform">
-        <?php echopost(); ?>
+                                    <?php echopost(); ?>
                                     <div class="warning">
                                         The file <strong>includes/config.php</strong> is corrupt, please replace it with an unedited copy and chmod it to 0777
                                     </div>
@@ -534,7 +533,7 @@ function echopost() {
                             } else if ($w === false) {
                                 ?>
                                 <form action="?step=6&tryagain=1" method="post" class="installform">
-        <?php echopost(); ?>
+                                    <?php echopost(); ?>
                                     <div class="warning">
                                         Unable to write the config file. Please check that the file <strong>includes/config.php</strong> exists and has full write permissions<br />
                                         <br />
@@ -594,7 +593,7 @@ function echopost() {
                                         <?php } else { ?>
                                             Error #: <?php echo $result[2]; ?><br />
                                             <?php echo $result[3]; ?>
-        <?php } ?>
+                                        <?php } ?>
                                     </div>
                                     <button type="submit" class="btn btn-default">TRY AGAIN</button>
                                 </form>
