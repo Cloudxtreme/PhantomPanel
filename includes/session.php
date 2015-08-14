@@ -1,8 +1,8 @@
 <?php
 
-require_once('nocache.php');
-require_once('func.php');
-require_once('config.php');
+require_once(__DIR__ . 'nocache.php');
+require_once(__DIR__ . 'func.php');
+require_once(__DIR__ . 'config.php');
 
 $lifetime = 0;
 $path = "/";

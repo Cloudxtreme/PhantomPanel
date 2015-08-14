@@ -1,4 +1,4 @@
-<?php require_once('../includes/includes.php'); ?>
+<?php require_once(__DIR__ . '../includes/includes.php'); ?>
 <?php
 if (isset($_POST['message'])) {
     $result = curl_put($_POST['message']);

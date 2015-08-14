@@ -1,5 +1,5 @@
 <?php
-require_once('../includes/includes.php');
+require_once(__DIR__ . '../includes/includes.php');
 $result = curl_get("default.html");
 $currentsong = curl_get("/addons/youtubePlayer/currentsong.txt");
 ?>

@@ -1,5 +1,5 @@
 <?php
-require_once('includes/includes.php');
+require_once(__DIR__ . 'includes/includes.php');
 
 if (isset($_GET['login'])) {
     if (CheckLogin($_POST['username'], $_POST['password'])) {

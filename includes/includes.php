@@ -1,7 +1,7 @@
 <?php
-require_once('nocache.php');
-require_once('session.php');
-require_once('config.php');
-require_once('func.php');
-require_once('curl.php');
+require_once(__DIR__ . 'nocache.php');
+require_once(__DIR__ . 'session.php');
+require_once(__DIR__ . 'config.php');
+require_once(__DIR__ . 'func.php');
+require_once(__DIR__ . 'curl.php');
 ?>

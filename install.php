@@ -157,7 +157,7 @@ function echopost() {
 
                             $uri .= 'index.php';
 
-                            $uri = str_replace('http://', '', str_replace('https://', '', $uri));
+                            $uri = str_ireplace('http://', '', str_ireplace('https://', '', $uri));
 
                             $uri = (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $uri;
                             ?>
@@ -310,8 +310,8 @@ function echopost() {
                                 if (isset($_POST['domain']) && !empty($_POST['domain'])) {
                                     $domain = $_POST['domain'];
 
-                                    $domain = str_replace('http://', '', $domain);
-                                    $domain = str_replace('https://', '', $domain);
+                                    $domain = str_ireplace('http://', '', $domain);
+                                    $domain = str_ireplace('https://', '', $domain);
 
                                     if (strpos($domain, '/') !== false) {
                                         $domain = substr($domain, 0, strpos($domain, '/'));
@@ -326,21 +326,22 @@ function echopost() {
 
                                 $uri .= 'index.php';
 
-                                $uri = str_replace('http://', '', str_replace('https://', '', $uri));
+                                $uri = str_ireplace('http://', '', str_ireplace('https://', '', $uri));
 
                                 $uri = (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $uri;
 
                                 if (isset($_POST['uri']) && !empty($_POST['uri'])) {
                                     $uri = $_POST['uri'];
 
-                                    $uri = str_replace('\\', '/', $uri);
+                                    $uri = str_ireplace('\\', '/', $uri);
 
                                     if (substr($uri, 0, 7) != 'http://' && substr($uri, 0, 8) != 'https://') {
                                         $uri = 'http://' . $uri;
                                     }
 
                                     if (substr($uri, -10) != '/index.php') {
-                                        if (substr($uri, -4) == '.php' || substr($uri, -4) == '.htm' || substr($uri, -5) == '.html') {
+                                        if (strtolower(substr($uri, -4)) == '.php' || strtolower(substr($uri, -4)) == '.htm'
+                                                || strtolower(substr($uri, -5)) == '.html') {
                                             $uri = substr($uri, 0, strrpos($uri, '/'));
                                         }
 
@@ -350,6 +351,18 @@ function echopost() {
 
                                         $uri .= 'index.php';
                                     }
+                                }
+                                
+                                if (strtolower(substr($uri, 0, 7)) == 'http://') {
+                                    $uri = substr($uri, 7);
+                                }
+                                
+                                if (strtolower(substr($uri, 0, 8)) == 'https://') {
+                                    $uri = substr($uri, 8);
+                                }
+                                
+                                if (strtolower(substr($uri, 0, strlen($domain))) == strtolower($domain)) {
+                                    $uri = substr($uri, strlen($domain));
                                 }
 
                                 $pos = strpos($data, '/*expire_time_start*/');
