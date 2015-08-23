@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/../includes/includes.php');
+require_once('../includes/includes.php');
 ?>
 <?php
 if (isset($_POST['message'])) {
@@ -41,6 +41,10 @@ if (isset($_POST['message2']) && isset($_POST['message3'])) {
                         <br />
                         <form action="" method="post" style="float: left; padding-right: 5px;">
                             <button  class="btn btn-sm btn-default"  name="message2" value="!points all ">Send Points to Everyone</button>
+                            <input id="input1" type="text" name="message3" placeholder="<amount>" value="">
+                        </form>
+                        <form action="" method="post" style="float: left; padding-right: 5px;">
+                            <button  class="btn btn-sm btn-default"  name="message2" value="!letitrain ">Let it Rain!</button>
                             <input id="input1" type="text" name="message3" placeholder="<amount>" value="">
                         </form>
                         <br />
