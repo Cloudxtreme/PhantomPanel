@@ -74,7 +74,7 @@ function set_loggedin($bool) {
 
 if (!isset($_SESSION['expires']) || !isset($_SESSION['iv']) || !isset($_SESSION['data']) || !isset($_SESSION['hash']) || strlen($_SESSION['iv']) == 0) {
     $debugdata .= '<br>>>cs1 ' . (isset($_SESSION['expires']) ? 't' : 'f') . (isset($_SESSION['iv']) ? 't' : 'f')
-            . (isset($_SESSION['data']) ? 't' : 'f') . (isset($_SESSION['hash']) ? 't' : 'f') . ' ' . strlen($_SESSION['iv']);
+            . (isset($_SESSION['data']) ? 't' : 'f') . (isset($_SESSION['hash']) ? 't' : 'f') . ' ' . (isset($_SESSION['iv']) ? strlen($_SESSION['iv']) : '0');
     create_session();
 } else {
     $k = hash_hmac($hmac_algo, session_id() . $_SESSION['expires'], $sk);
