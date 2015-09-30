@@ -17,6 +17,9 @@ $debugdata = "";
 
 global $session_data;
 
+ini_set("session.use_cookies", 1);
+ini_set("session.use_only_cookies", 1);
+
 register_shutdown_function('session_write_close');
 session_name($session_name);
 session_set_cookie_params($lifetime, $path, $domain, $secure, $httponly);
