@@ -38,7 +38,7 @@ function create_session() {
 
     $session_data['ip'] = $_SERVER['REMOTE_ADDR'];
     $session_data['ua'] = substr($_SERVER['HTTP_USER_AGENT'], 0, 64);
-    $_SESSION['iv'] = mcrypt_create_iv(mcrypt_enc_get_iv_size($mc), MCRYPT_DEV_URANDOM);
+    $_SESSION['iv'] = base64_encode(mcrypt_create_iv(mcrypt_enc_get_iv_size($mc), MCRYPT_DEV_URANDOM));
 
     mcrypt_module_close($mc);
 
@@ -55,9 +55,9 @@ function save_session() {
 
     $mc = mcrypt_module_open(MCRYPT_RIJNDAEL_256, "", MCRYPT_MODE_CBC, "");
 
-    mcrypt_generic_init($mc, substr($k, 0, mcrypt_enc_get_key_size($mc)), $_SESSION['iv']);
+    mcrypt_generic_init($mc, substr($k, 0, mcrypt_enc_get_key_size($mc)), base64_decode($_SESSION['iv']));
 
-    $_SESSION['data'] = mcrypt_generic($mc, $data);
+    $_SESSION['data'] = base64_encode(mcrypt_generic($mc, $data));
 
     mcrypt_generic_deinit($mc);
     mcrypt_module_close($mc);
@@ -84,9 +84,9 @@ if (!isset($_SESSION['expires']) || !isset($_SESSION['iv']) || !isset($_SESSION[
 
     $mc = mcrypt_module_open(MCRYPT_RIJNDAEL_256, "", MCRYPT_MODE_CBC, "");
 
-    mcrypt_generic_init($mc, substr($k, 0, mcrypt_enc_get_key_size($mc)), $_SESSION['iv']);
+    mcrypt_generic_init($mc, substr($k, 0, mcrypt_enc_get_key_size($mc)), base64_decode($_SESSION['iv']));
 
-    $data = mdecrypt_generic($mc, $_SESSION['data']);
+    $data = mdecrypt_generic($mc, base64_decode($_SESSION['data']));
 
     $data = rtrim($data, chr(0));
 
