@@ -5,54 +5,56 @@ require_once(__DIR__ . '/func.php');
 require_once(__DIR__ . '/config.php');
 
 $session_errors = "";
+$error_reporting_level = error_reporting();
 
 function FriendlyErrorType($type) {
-	switch($type) {
-		case E_ERROR:
-			return 'E_ERROR';
-		case E_WARNING:
-			return 'E_WARNING';
-		case E_PARSE:
-			return 'E_PARSE';
-		case E_NOTICE:
-			return 'E_NOTICE';
-		case E_CORE_ERROR:
-			return 'E_CORE_ERROR';
-		case E_CORE_WARNING:
-			return 'E_CORE_WARNING';
-		case E_COMPILE_ERROR:
-			return 'E_COMPILE_ERROR';
-		case E_COMPILE_WARNING:
-			return 'E_COMPILE_WARNING';
-		case E_USER_ERROR:
-			return 'E_USER_ERROR';
-		case E_USER_WARNING:
-			return 'E_USER_WARNING';
-		case E_USER_NOTICE:
-			return 'E_USER_NOTICE';
-		case E_STRICT:
-			return 'E_STRICT';
-		case E_RECOVERABLE_ERROR:
-			return 'E_RECOVERABLE_ERROR';
-		case E_DEPRECATED:
-			return 'E_DEPRECATED';
-		case E_USER_DEPRECATED:
-			return 'E_USER_DEPRECATED';
-	}
+    switch ($type) {
+        case E_ERROR:
+            return 'E_ERROR';
+        case E_WARNING:
+            return 'E_WARNING';
+        case E_PARSE:
+            return 'E_PARSE';
+        case E_NOTICE:
+            return 'E_NOTICE';
+        case E_CORE_ERROR:
+            return 'E_CORE_ERROR';
+        case E_CORE_WARNING:
+            return 'E_CORE_WARNING';
+        case E_COMPILE_ERROR:
+            return 'E_COMPILE_ERROR';
+        case E_COMPILE_WARNING:
+            return 'E_COMPILE_WARNING';
+        case E_USER_ERROR:
+            return 'E_USER_ERROR';
+        case E_USER_WARNING:
+            return 'E_USER_WARNING';
+        case E_USER_NOTICE:
+            return 'E_USER_NOTICE';
+        case E_STRICT:
+            return 'E_STRICT';
+        case E_RECOVERABLE_ERROR:
+            return 'E_RECOVERABLE_ERROR';
+        case E_DEPRECATED:
+            return 'E_DEPRECATED';
+        case E_USER_DEPRECATED:
+            return 'E_USER_DEPRECATED';
+    }
 
-	return "";
-} 
+    return "";
+}
 
 function session_error_handler($errno, $errstr, $errfile, $errline) {
     global $session_errors;
-    
+
     $session_errors .= "<br />" . FriendlyErrorType($errno) . " ($errfile#$errline): $errstr";
-    
+
     return false;
 }
 
 if ($session_debug === true) {
     set_error_handler("session_error_handler");
+    error_reporting(E_ALL);
 }
 
 $lifetime = 0;
@@ -70,6 +72,8 @@ global $session_data;
 
 ini_set("session.use_cookies", 1);
 ini_set("session.use_only_cookies", 1);
+ini_set("session.cookie_domain", "");
+ini_set("session.save_path", "");
 
 register_shutdown_function('session_write_close');
 session_name($session_name);
@@ -181,9 +185,10 @@ if ($session_data['loggedin'] == false && substr($_SERVER['REQUEST_URI'], 0, str
     $debugdata .= '<br>>>rdr (' . substr($_SERVER['REQUEST_URI'], 0, strlen($login_uri)) . ' vs ' . $login_uri . ')';
 
     if ($session_debug === true) {
+        error_reporting($error_reporting_level);
         restore_error_handler();
-        
-        die($debugdata.$session_errors);
+
+        die($debugdata . $session_errors);
     }
 
     header("Location: $login_url");
@@ -191,8 +196,9 @@ if ($session_data['loggedin'] == false && substr($_SERVER['REQUEST_URI'], 0, str
 }
 
 if ($session_debug === true) {
+    error_reporting($error_reporting_level);
     restore_error_handler();
-    
-    echo($debugdata.$session_errors);
+
+    echo($debugdata . $session_errors);
 }
 ?>
