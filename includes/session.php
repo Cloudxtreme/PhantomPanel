@@ -7,6 +7,21 @@ require_once(__DIR__ . '/config.php');
 $session_errors = "";
 $error_reporting_level = error_reporting();
 
+function url_origin($s, $use_forwarded_host=false) {
+    $ssl = (!empty($s['HTTPS']) && $s['HTTPS'] == 'on') ? true:false;
+    $sp = strtolower($s['SERVER_PROTOCOL']);
+    $protocol = substr($sp, 0, strpos($sp, '/')) . (($ssl) ? 's' : '');
+    $port = $s['SERVER_PORT'];
+    $port = ((!$ssl && $port=='80') || ($ssl && $port=='443')) ? '' : ':'.$port;
+    $host = ($use_forwarded_host && isset($s['HTTP_X_FORWARDED_HOST'])) ? $s['HTTP_X_FORWARDED_HOST'] : (isset($s['HTTP_HOST']) ? $s['HTTP_HOST'] : null);
+    $host = isset($host) ? $host : $s['SERVER_NAME'] . $port;
+    return $protocol . '://' . $host;
+}
+
+function full_url($s, $use_forwarded_host=false){
+    return url_origin($s, $use_forwarded_host) . $s['REQUEST_URI'];
+}
+
 function FriendlyErrorType($type) {
     switch ($type) {
         case E_ERROR:
@@ -172,7 +187,7 @@ if ($session_data['ip'] != $_SERVER['REMOTE_ADDR'] || $session_data['ua'] != sub
 if (strlen($debugdata) > 0) {
     $debugdata = '>>>Session Debug Start<<<<br>sn=' . $session_name . '<br>lt=' . $lifetime . '<br>p=' . $path . '<br>dn=' . $domain
             . '<br>s=' . ($secure ? 't' : 'f') . '<br>ho=' . ($httponly ? 't' : 'f') . '<br>ha=' . $hmac_algo . '<br>et=' . $expire_time
-            . '<br>sk=' . $sk . '<br>lu=' . $login_uri . '<br><br>' . print_r($_SESSION, true) . '<br><br>' . print_r($session_data, true)
+            . '<br>sk=' . $sk . '<br>lu=' . $login_uri . '<br>uri=' . full_url($_SERVER) . '<br><br>' . print_r($_SESSION, true) . '<br><br>' . print_r($session_data, true)
             . '<br>' . $debugdata;
 }
 
