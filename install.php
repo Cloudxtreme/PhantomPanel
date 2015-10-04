@@ -145,7 +145,8 @@ function echopost() {
                             }
                         } else if ($step == 3) {
                             ?>
-                            <h6>Security Settings</h6>
+                            <h6>Security Settings</h6><br />
+                            <em>NOTE: The url/ip settings requested on this page are for the website hosting this PhantomPanel installation, and not for the bot</em>
                             <?php
                             $domain = $_SERVER['HTTP_HOST'];
 
