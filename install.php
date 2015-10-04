@@ -45,13 +45,13 @@
                                 if (!defined('PHP_VERSION_ID')) {
                                     $missing = true;
                                     ?>
-                                    <div class="error" style="width: 100%;>
+                                    <div class="error" style="width: 100%;">
                                         You must have PHP version 5.2.7 or later
                                     </div>
                                     <?php
                                 } else {
                                     ?>
-                                    <div class="success" style="width: 100%;>
+                                    <div class="success" style="width: 100%;">
                                         You are using PHP version 5.2.7 or later
                                     </div>
                                     <?php
@@ -60,13 +60,13 @@
                                 if (!function_exists('curl_init')) {
                                     $missing = true;
                                     ?>
-                                    <div class="error" style="width: 100%;>
+                                    <div class="error" style="width: 100%;">
                                         You must have cURL for PHP installed and enabled
                                     </div>
                                     <?php
                                 } else {
                                     ?>
-                                    <div class="success" style="width: 100%;>
+                                    <div class="success" style="width: 100%;">
                                         cURL for PHP is installed and enabled
                                     </div>
                                     <?php
@@ -75,13 +75,13 @@
                                 if (!function_exists("mcrypt_generic")) {
                                     $missing = true;
                                     ?>
-                                    <div class="error" style="width: 100%;>
+                                    <div class="error" style="width: 100%;">
                                         You must have Mcrypt for PHP installed and enabled
                                     </div>
                                     <?php
                                 } else {
                                     ?>
-                                    <div class="success" style="width: 100%;>
+                                    <div class="success" style="width: 100%;">
                                         Mcrypt for PHP is installed and enabled
                                     </div>
                                     <?php
@@ -90,7 +90,7 @@
                                 if ($missing) {
                                     ?>
                                     <form action="?step=1&tryagain=1" method="post" class="installform">
-                                        <div class="error" style="width: 100%;>
+                                        <div class="error" style="width: 100%;">
                                             One or more pre-requisites have failed the test. Please correct the issue then try again. <br />
                                             <br />
                                             Common fixes:<br />
@@ -114,7 +114,7 @@
                                 } else {
                                     ?>
                                     <form action="?step=2" method="post" class="installform">
-                                        <div class="success" style="width: 100%;>
+                                        <div class="success" style="width: 100%;">
                                             Success! Pre-requisites met<br />
                                             Before continuing, please make sure the bot is running and your server firewall will allow connections from this website
                                         </div>
@@ -129,7 +129,7 @@
                                 if (!is_writable(__DIR__ . '/includes/config.php') && !chmod(__DIR__ . '/includes/config.php', 0777)) {
                                     ?>
                                     <form action="?step=2&tryagain=1" method="post" class="installform">
-                                        <div class="error" style="width: 100%;>
+                                        <div class="error" style="width: 100%;">
                                             Unable to change permissions on config file. Please change the permissions of <strong>includes/config.php</strong>
                                             to allow writing by all (on linux this is <em>chmod 0777 includes/config.php</em>)
                                         </div>
@@ -139,7 +139,7 @@
                                 } else {
                                     ?>
                                     <form action="?step=3" method="post" class="installform">
-                                        <div class="success" style="width: 100%;>
+                                        <div class="success" style="width: 100%;">
                                             Success! Config file is writable
                                         </div>
                                         <button type="submit" class="btn btn-default">NEXT</button>
@@ -242,7 +242,7 @@
     
                                 if ($badusers) {
                                     ?>
-                                    <div class="warning" style="width: 100%;>Some usernames were not added due to being duplicates</div>
+                                    <div class="warning" style="width: 100%;">Some usernames were not added due to being duplicates</div>
                                     <?php
                                 }
                                 ?>
@@ -518,7 +518,7 @@
                                     ?>
                                     <form action="?step=6&tryagain=1" method="post" class="installform">
                                         <?php echopost(); ?>
-                                        <div class="warning" style="width: 100%;>
+                                        <div class="warning" style="width: 100%;">
                                             Unable to read the config file. Please check that the file <strong>includes/config.php</strong> exists and has full read/write permissions
                                         </div>
                                         <button type="submit" class="btn btn-default">TRY AGAIN</button>
@@ -528,7 +528,7 @@
                                     ?>
                                     <form action="?step=6&tryagain=1" method="post" class="installform">
                                         <?php echopost(); ?>
-                                        <div class="warning" style="width: 100%;>
+                                        <div class="warning" style="width: 100%;">
                                             The file <strong>includes/config.php</strong> is corrupt, please replace it with an unedited copy and chmod it to 0777
                                         </div>
                                         <button type="submit" class="btn btn-default">TRY AGAIN</button>
@@ -538,7 +538,7 @@
                                     ?>
                                     <form action="?step=6&tryagain=1" method="post" class="installform">
                                         <?php echopost(); ?>
-                                        <div class="warning" style="width: 100%;>
+                                        <div class="warning" style="width: 100%;">
                                             Unable to write the config file. Please check that the file <strong>includes/config.php</strong> exists and has full write permissions<br />
                                             <br />
                                             Alternatively, follow these instructions to edit the file manually
@@ -560,7 +560,7 @@
                                 } else {
                                     ?>
                                     <form action="?step=7" method="post" class="installform">
-                                        <div class="success" style="width: 100%;>
+                                        <div class="success" style="width: 100%;">
                                             Success! Config file written
                                         </div>
                                         <button type="submit" class="btn btn-default">NEXT</button>
@@ -579,7 +579,7 @@
                                 if ($result[1] == 200) {
                                     ?>
                                     <form action="?step=8" method="post" class="installform">
-                                        <div class="success" style="width: 100%;>
+                                        <div class="success" style="width: 100%;">
                                             Success! Bot can be contacted
                                         </div>
                                         <button type="submit" class="btn btn-default">NEXT</button>
@@ -589,7 +589,7 @@
                                     require_once(__DIR__ . '/includes/func.php');
                                     ?>
                                     <form action="?step=7&tryagain=1" method="post" class="installform">
-                                        <div class="warning" style="width: 100%;>
+                                        <div class="warning" style="width: 100%;">
                                             Bot could not be contacted<br />
                                             <?php if ($result[1] > 0) { ?>
                                                 HTTP <?php echo $result[1] . ' ' . http_status_code_string($result[1]); ?><br />
@@ -613,7 +613,7 @@
                                 if (is_writable(__DIR__ . '/includes/config.php') && !chmod(__DIR__ . '/includes/config.php', 0644)) {
                                     ?>
                                     <form action="?step=8&tryagain=1" method="post" class="installform">
-                                        <div class="error" style="width: 100%;>
+                                        <div class="error" style="width: 100%;">
                                             Unable to change permissions on config file. Please change the permissions of <strong>includes/config.php</strong>
                                             to block writing by all (on linux this is <em>chmod 0644 includes/config.php</em>)
                                         </div>
@@ -623,7 +623,7 @@
                                 } else {
                                     ?>
                                     <form action="?step=9" method="post" class="installform">
-                                        <div class="success" style="width: 100%;>
+                                        <div class="success" style="width: 100%;">
                                             Success! Config file is now read only
                                         </div>
                                         <button type="submit" class="btn btn-default">NEXT</button>
@@ -637,7 +637,7 @@
                                 if (!unlink(__DIR__ . '/install.php')) {
                                     require_once(__DIR__ . '/includes/config.php');
                                     ?>
-                                    <div class="error" style="width: 100%;>
+                                    <div class="error" style="width: 100%;">
                                         Unable to delete install.php, please do this now otherwise security may be compromised <br />
                                         Once this is done, PhantomPanel is ready for use, click <a href="<?php echo $login_uri; ?>" target="_self">here</a> to login
                                     </div>
@@ -645,7 +645,7 @@
                                 } else {
                                     require_once(__DIR__ . '/includes/config.php');
                                     ?>
-                                    <div class="success" style="width: 100%;>
+                                    <div class="success" style="width: 100%;">
                                         Success! PhantomPanel is now ready for use, click <a href="<?php echo $login_uri; ?>" target="_self">here</a> to login
                                     </div>
                                     <?php
