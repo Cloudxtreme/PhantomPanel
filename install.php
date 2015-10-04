@@ -43,6 +43,7 @@ function echopost() {
                             $missing = false;
 
                             if (!defined('PHP_VERSION_ID')) {
+                                $missing = true;
                                 ?>
                                 <div class="error">
                                     You must have PHP version 5.2.7 or later
@@ -57,6 +58,7 @@ function echopost() {
                             }
 
                             if (!function_exists('curl_init')) {
+                                $missing = true;
                                 ?>
                                 <div class="error">
                                     You must have cURL for PHP installed and enabled
@@ -71,6 +73,7 @@ function echopost() {
                             }
 
                             if (!function_exists("mcrypt_generic")) {
+                                $missing = true;
                                 ?>
                                 <div class="error">
                                     You must have Mcrypt for PHP installed and enabled
