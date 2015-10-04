@@ -55,6 +55,9 @@ if (isset($_GET['login'])) {
                                 </div>
                                 <button type="submit" class="btn btn-default">LOG IN</button>
                             </form>
+                        <?php } else if ($session_debug === true) { ?>
+                            Login Successful.<br />
+                            Click <a href="controlpanel.php" target="_self">here</a> to go to the post-login debug info page
                         <?php } else { ?>
                             <meta http-equiv="refresh" content="5;url=controlpanel.php">
                             Login Successful.<br />
