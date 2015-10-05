@@ -7,18 +7,18 @@ require_once(__DIR__ . '/config.php');
 $session_errors = "";
 $error_reporting_level = error_reporting();
 
-function url_origin($s, $use_forwarded_host=false) {
-    $ssl = (!empty($s['HTTPS']) && $s['HTTPS'] == 'on') ? true:false;
+function url_origin($s, $use_forwarded_host = false) {
+    $ssl = (!empty($s['HTTPS']) && $s['HTTPS'] == 'on') ? true : false;
     $sp = strtolower($s['SERVER_PROTOCOL']);
     $protocol = substr($sp, 0, strpos($sp, '/')) . (($ssl) ? 's' : '');
     $port = $s['SERVER_PORT'];
-    $port = ((!$ssl && $port=='80') || ($ssl && $port=='443')) ? '' : ':'.$port;
+    $port = ((!$ssl && $port == '80') || ($ssl && $port == '443')) ? '' : ':' . $port;
     $host = ($use_forwarded_host && isset($s['HTTP_X_FORWARDED_HOST'])) ? $s['HTTP_X_FORWARDED_HOST'] : (isset($s['HTTP_HOST']) ? $s['HTTP_HOST'] : null);
     $host = isset($host) ? $host : $s['SERVER_NAME'] . $port;
     return $protocol . '://' . $host;
 }
 
-function full_url($s, $use_forwarded_host=false){
+function full_url($s, $use_forwarded_host = false) {
     return url_origin($s, $use_forwarded_host) . $s['REQUEST_URI'];
 }
 
@@ -96,8 +96,31 @@ session_set_cookie_params($lifetime, $path, $domain, $secure, $httponly);
 session_start();
 $session_data = array();
 
+function load_session() {
+    global $session_data, $_SESSION, $_SERVER, $expire_time, $sk, $iv, $hmac_algo;
+
+    $data = file_get_contents(__DIR__ . '/.sessions');
+
+    $mc = mcrypt_module_open(MCRYPT_RIJNDAEL_256, "", MCRYPT_MODE_CBC, "");
+
+    mcrypt_generic_init($mc, substr($k, 0, mcrypt_enc_get_key_size($mc)), base64_decode($iv));
+
+    $data = mdecrypt_generic($mc, base64_decode($data));
+
+    $data = rtrim($data, chr(0));
+
+    mcrypt_generic_deinit($mc);
+    mcrypt_module_close($mc);
+
+    $jdata = json_decode($data, true);
+
+    if (array_key_exists(session_id(), $jdata)) {
+        $_SESSION = $jdata[session_id()];
+    }
+}
+
 function create_session() {
-    global $session_data, $_SESSION, $_SERVER, $expire_time, $sk, $hmac_algo;
+    global $session_data, $_SESSION, $_SERVER, $expire_time, $sk, $iv, $hmac_algo;
 
     $_SESSION = array();
     $session_data = array();
@@ -116,7 +139,7 @@ function create_session() {
 }
 
 function save_session() {
-    global $session_data, $_SESSION, $_SERVER, $expire_time, $sk, $hmac_algo;
+    global $session_data, $_SESSION, $_SERVER, $expire_time, $sk, $iv, $hmac_algo;
 
     $_SESSION['expires'] = time() + $expire_time;
     $data = json_encode($session_data);
@@ -135,15 +158,54 @@ function save_session() {
     $hash = hash_hmac($hmac_algo, session_id() . $_SESSION['expires'] . $data, $k);
 
     $_SESSION['hash'] = $hash;
+
+    $data = file_get_contents(__DIR__ . '/.sessions');
+    $fh = fopen(__DIR__ . '/.sessions', 'c');
+
+    flock($fh, LOCK_EX);
+
+    $mc = mcrypt_module_open(MCRYPT_RIJNDAEL_256, "", MCRYPT_MODE_CBC, "");
+
+    mcrypt_generic_init($mc, substr($k, 0, mcrypt_enc_get_key_size($mc)), base64_decode($iv));
+
+    $data = mdecrypt_generic($mc, base64_decode($data));
+
+    $data = rtrim($data, chr(0));
+
+    mcrypt_generic_deinit($mc);
+    mcrypt_module_close($mc);
+
+    $jdata = json_decode($data, true);
+
+    $jdata[session_id()] = $_SESSION;
+
+    $data = json_encode($jdata);
+
+    $mc = mcrypt_module_open(MCRYPT_RIJNDAEL_256, "", MCRYPT_MODE_CBC, "");
+
+    mcrypt_generic_init($mc, substr($k, 0, mcrypt_enc_get_key_size($mc)), base64_decode($iv));
+
+    $data = base64_encode(mcrypt_generic($mc, $data));
+
+    mcrypt_generic_deinit($mc);
+    mcrypt_module_close($mc);
+
+    ftruncate($fh, 0);
+    fwrite($fh, $data);
+    fflush($fh);
+    flock($fh, LOCK_UN);
+    fclose($fh);
 }
 
 function set_loggedin($bool) {
-    global $session_data, $_SESSION, $_SERVER, $expire_time, $sk, $hmac_algo;
+    global $session_data, $_SESSION, $_SERVER, $expire_time, $sk, $iv, $hmac_algo;
 
     $session_data['loggedin'] = $bool;
 
     save_session();
 }
+
+load_session();
 
 if (!isset($_SESSION['expires']) || !isset($_SESSION['iv']) || !isset($_SESSION['data']) || !isset($_SESSION['hash']) || strlen($_SESSION['iv']) == 0) {
     $debugdata .= '<br>>>cs1 ' . (isset($_SESSION['expires']) ? 't' : 'f') . (isset($_SESSION['iv']) ? 't' : 'f')

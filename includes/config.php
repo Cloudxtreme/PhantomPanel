@@ -16,6 +16,8 @@ $session_name = /*session_name_start*/'phantompanelsession12345'/*session_name_e
 $domain = /*domain_start*/'localhost'/*domain_end*/;
 //A random string used as a secret key, best to let the installer generate this with a secure randomizer
 $sk = /*sk_start*/'invalidsk'/*sk_end*/;
+//A random string used as an initialization vector, best to let the installer generate this with a secure randomizer
+$iv = /*iv_start*/'invalidiv'/*iv_end*/;
 //The URI to the login page (index.php). A URI is everything that is after the domain (.com) including the first slash
 $login_uri = /*login_uri_start*/'/index.php'/*login_uri_end*/;
 
