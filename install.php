@@ -123,6 +123,9 @@ function echopost() {
                                 <?php
                             }
                         } else if ($step == 2) {
+                            file_put_contents("testFile", "test");
+                            $user = fileowner("testFile");
+                            unlink("testFile");
                             ?>
                             <h6>Write Check</h6>
                             <?php
@@ -132,6 +135,9 @@ function echopost() {
                                     <div class="error">
                                         Unable to change permissions on config file. Please change the permissions of <strong>includes/config.php</strong>
                                         to allow writing by all (on linux this is <em>chmod 0777 includes/config.php</em>)
+
+                                        You should also change the file owner to match the web server's user. This user is <strong><?php echo $user; ?></strong> 
+                                        (on linux this is <em>chown <?php echo $user; ?> includes/.sessions</em>)
                                     </div>
                                     <button type="submit" class="btn btn-default">TRY AGAIN</button>
                                 </form>
