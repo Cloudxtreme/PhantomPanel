@@ -289,6 +289,8 @@ form.installform input[type="text"], form.installform input[type="password"] {
     border: 1px #AA0000 dashed;
     margin-left: auto;
     margin-right: auto;
+    background: url("../images/silk/exclamation.png") no-repeat 2px center;
+    padding-left: 20px;
 }
 .warning {
     width: 50%;
@@ -298,6 +300,8 @@ form.installform input[type="text"], form.installform input[type="password"] {
     border: 1px #EEEE00 dashed;
     margin-left: auto;
     margin-right: auto;
+    background: url("../images/silk/error.png") no-repeat 2px center;
+    padding-left: 20px;
 }
 .success {
     width: 50%;
@@ -307,4 +311,6 @@ form.installform input[type="text"], form.installform input[type="password"] {
     border: 1px #00AA00 dashed;
     margin-left: auto;
     margin-right: auto;
+    background: url("../images/silk/accept.png") no-repeat 2px center;
+    padding-left: 20px;
 }

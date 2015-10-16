@@ -721,7 +721,7 @@ function echopost() {
                                 require_once(__DIR__ . '/includes/config.php');
                                 ?>
                                 <div class="error">
-                                    Unable to delete install.php, please do this now otherwise security may be compromised <br />
+                                    Unable to delete install.php, please do this now otherwise security may be compromised<br />
                                     Once this is done, PhantomPanel is ready for use, click <a href="<?php echo $login_uri; ?>" target="_self">here</a> to login
                                 </div>
                                 <?php
