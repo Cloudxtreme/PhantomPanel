@@ -100,35 +100,31 @@ $session_data = array();
 function load_session() {
     global $session_data, $_SESSION, $_SERVER, $expire_time, $sk, $iv, $hmac_algo, $session_debug, $debugdata;
 
-    if (!file_exists(__DIR__ . '/.sessions')) {
-        return;
-    }
+    if (file_exists(__DIR__ . '/.sessions')) {
+        $data = file_get_contents(__DIR__ . '/.sessions');
 
-    $data = file_get_contents(__DIR__ . '/.sessions');
+        if (strlen($data) > 0) {
+            $mc = mcrypt_module_open(MCRYPT_RIJNDAEL_256, "", MCRYPT_MODE_CBC, "");
 
-    $mc = mcrypt_module_open(MCRYPT_RIJNDAEL_256, "", MCRYPT_MODE_CBC, "");
+            mcrypt_generic_init($mc, substr($sk, 0, mcrypt_enc_get_key_size($mc)), base64_decode($iv));
 
-    mcrypt_generic_init($mc, substr($sk, 0, mcrypt_enc_get_key_size($mc)), base64_decode($iv));
+            $data = mdecrypt_generic($mc, base64_decode($data));
 
-    $data = mdecrypt_generic($mc, base64_decode($data));
+            $data = rtrim($data, chr(0));
 
-    $data = rtrim($data, chr(0));
+            mcrypt_generic_deinit($mc);
+            mcrypt_module_close($mc);
 
-    mcrypt_generic_deinit($mc);
-    mcrypt_module_close($mc);
+            $jdata = json_decode($data, true);
 
-    $jdata = json_decode($data, true);
+            if ($session_debug === true) {
+                $debugdata .= '<br><pre>jdata=' . print_r($jdata, true) . '</pre><br>';
+            }
 
-    if ($session_debug === true) {
-        $debugdata .= '<br><pre>jdata=' . print_r($jdata, true) . '</pre><br>';
-    }
-
-    if (!is_array($jdata)) {
-        return;
-    }
-
-    if (array_key_exists(session_id(), $jdata)) {
-        $_SESSION = $jdata[session_id()];
+            if (is_array($jdata) && array_key_exists(session_id(), $jdata)) {
+                $_SESSION = $jdata[session_id()];
+            }
+        }
     }
 }
 
@@ -181,21 +177,23 @@ function save_session() {
     if (file_exists(__DIR__ . '/.sessions')) {
         $data = file_get_contents(__DIR__ . '/.sessions');
 
-        $mc = mcrypt_module_open(MCRYPT_RIJNDAEL_256, "", MCRYPT_MODE_CBC, "");
+        if (strlen($data) > 0) {
+            $mc = mcrypt_module_open(MCRYPT_RIJNDAEL_256, "", MCRYPT_MODE_CBC, "");
 
-        mcrypt_generic_init($mc, substr($sk, 0, mcrypt_enc_get_key_size($mc)), base64_decode($iv));
+            mcrypt_generic_init($mc, substr($sk, 0, mcrypt_enc_get_key_size($mc)), base64_decode($iv));
 
-        $data = mdecrypt_generic($mc, base64_decode($data));
+            $data = mdecrypt_generic($mc, base64_decode($data));
 
-        $data = rtrim($data, chr(0));
+            $data = rtrim($data, chr(0));
 
-        mcrypt_generic_deinit($mc);
-        mcrypt_module_close($mc);
+            mcrypt_generic_deinit($mc);
+            mcrypt_module_close($mc);
 
-        $jdata = json_decode($data, true);
+            $jdata = json_decode($data, true);
 
-        if (!is_array($jdata)) {
-            $jdata = array();
+            if (!is_array($jdata)) {
+                $jdata = array();
+            }
         }
     }
 
