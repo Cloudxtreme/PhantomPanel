@@ -102,6 +102,8 @@ register_shutdown_function('save_session');
 session_name($session_name);
 session_set_cookie_params($lifetime, $path, $domain, $secure, $httponly);
 
+$debugdata .= '<br><pre>cookies=' . print_r($_COOKIE, true) . '</pre><br>';
+
 if (isset($_COOKIE[$session_name]) && strlen($_COOKIE[$session_name]) > 0) {
     $debugtrace .= '<br>session restore sid=' . $_COOKIE[$session_name];
     session_id($_COOKIE[$session_name]);
