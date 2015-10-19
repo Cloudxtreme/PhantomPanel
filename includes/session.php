@@ -96,6 +96,15 @@ ini_set("session.use_only_cookies", 1);
 ini_set("session.cookie_domain", "");
 ini_set("session.save_path", "");
 
+if ($domain == "localhost") {
+    $domain = "127.0.0.1";
+}
+
+if ($_SERVER['HTTP_HOST'] == "localhost") {
+    header("Location: " . str_replace("localhost", "127.0.0.1", full_url($_SERVER)));
+    die();
+}
+
 $debugtrace .= '<br>session setup';
 register_shutdown_function('session_write_close');
 register_shutdown_function('save_session');
@@ -104,10 +113,10 @@ session_set_cookie_params($lifetime, $path, $domain, $secure, $httponly);
 
 $debugdata .= '<br><pre>cookies=' . print_r($_COOKIE, true) . '</pre><br>';
 
-if (isset($_COOKIE[$session_name]) && strlen($_COOKIE[$session_name]) > 0) {
+/*if (isset($_COOKIE[$session_name]) && strlen($_COOKIE[$session_name]) > 0) {
     $debugtrace .= '<br>session restore sid=' . $_COOKIE[$session_name];
     session_id($_COOKIE[$session_name]);
-}
+}*/
 
 session_start();
 $session_data = array();
@@ -166,7 +175,7 @@ function create_session() {
 
     session_regenerate_id(true);
     
-    setcookie($session_name, session_id(), $lifetime, $path, $domain, $secure, $httponly);
+    //setcookie($session_name, session_id(), $lifetime, $path, $domain, $secure, $httponly);
 
     $debugtrace .= '<br>create_session newsid=' . session_id();
 
