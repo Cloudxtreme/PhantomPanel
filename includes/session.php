@@ -157,7 +157,7 @@ function load_session() {
 }
 
 function create_session() {
-    global $session_data, $_SESSION, $_SERVER, $expire_time, $sk, $iv, $hmac_algo, $debugtrace;
+    global $session_data, $_SESSION, $_SERVER, $expire_time, $sk, $iv, $hmac_algo, $debugtrace, $session_name, $lifetime, $path, $domain, $secure, $httponly;
 
     $debugtrace .= '<br>create_session start';
 
@@ -165,6 +165,8 @@ function create_session() {
     $session_data = array();
 
     session_regenerate_id(true);
+    
+    setcookie($session_name, session_id(), $lifetime, $path, $domain, $secure, $httponly);
 
     $debugtrace .= '<br>create_session newsid=' . session_id();
 
