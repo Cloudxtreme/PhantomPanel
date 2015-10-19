@@ -1,11 +1,7 @@
-<?php
-include('../includes/includes.php');
-?>
-
 <script>
-function setURL(url){
-    document.getElementById('vid').src = url;
-}
+    function setURL(url) {
+        document.getElementById('vid').src = url;
+    }
 </script>
 
 <!DOCTYPE html>
@@ -14,8 +10,8 @@ function setURL(url){
         <title>Phantombot Youtube Player</title>
         <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
 
-		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.min.css" />
 
         <link rel="icon" href="../favicon.ico" type="image/x-icon" />
         <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
@@ -28,67 +24,67 @@ function setURL(url){
         <div class="header">
             <img id="logo" src="images/logo.png"/>
             <h1>Music Player</h1>
-			<form name="change" style="display:inline;">
-		<SELECT  style="margin-left: 105px;width: 78px;text-align:center;" class="btn btn-sm btn-default" NAME="options" ONCHANGE="document.getElementById('vid').src = this.options[this.selectedIndex].value">
-		<option disabled selected style='display:none;'>Start</option>
-		<option value="playerhd.html">HQ</option>
-		<option value="player.html">Auto</option>
-		<option value="">Stop</option>
-		</SELECT>
-		</form>
+            <form name="change" style="display:inline;">
+                <SELECT  style="margin-left: 105px;width: 78px;text-align:center;" class="btn btn-sm btn-default" NAME="options" ONCHANGE="document.getElementById('vid').src = this.options[this.selectedIndex].value">
+                    <option disabled selected style='display:none;'>Start</option>
+                    <option value="player.php?hd=yes">HQ</option>
+                    <option value="player.php">Auto</option>
+                    <option value="">Stop</option>
+                </SELECT>
+            </form>
         </div>
         <div class="container">
             <div id="main">
-				<iframe id="vid" style="background-color: #000;" height="179" width="318" scrolling="no" frameborder="0"/></iframe>
-				<br />
-♫ Now Playing:
-<marquee style="color: #93c54b;width:318px;background-color: #24242a;border:1px solid #3E3E3E;" behavior="scroll" direction=left>
-<div id="now-playing" style="width: 318px;">Searching for currentsong files...</div>
-</marquee>
-<br/>
-<br/>
-				<iframe id="ytf" src="youtubecontrol.php" scrolling="no" frameborder="0" width="100%"></iframe> <br />
-				<div class="tabs">
+                <iframe id="vid" style="background-color: #000;" height="179" width="318" scrolling="no" frameborder="0"/></iframe>
+                <br />
+                ♫ Now Playing:
+                <marquee style="color: #93c54b;width:318px;background-color: #24242a;border:1px solid #3E3E3E;" behavior="scroll" direction=left>
+                    <div id="now-playing" style="width: 318px;">Searching for currentsong files...</div>
+                </marquee>
+                <br/>
+                <br/>
+                <iframe id="ytf" src="youtubecontrol.php" scrolling="no" frameborder="0" width="100%"></iframe> <br />
+                <div class="tabs">
 
-   <div class="tab">
-       <input type="radio" id="tab-1" name="tab-group-1" checked>
-       <label for="tab-1">Queue</label>
+                    <div class="tab">
+                        <input type="radio" id="tab-1" name="tab-group-1" checked>
+                        <label for="tab-1">Queue</label>
 
-       <div class="content">
-<div id="queue">Searching for queue files...</div>
-<br />
-       </div>
-   </div>
+                        <div class="content">
+                            <div id="queue">Searching for queue files...</div>
+                            <br />
+                        </div>
+                    </div>
 
-   <div class="tab">
-       <input type="radio" id="tab-2" name="tab-group-1">
-       <label for="tab-2">Default Playlist</label>
+                    <div class="tab">
+                        <input type="radio" id="tab-2" name="tab-group-1">
+                        <label for="tab-2">Default Playlist</label>
 
-       <div class="content">
-		<div id="playlist">Searching for playlist files...</div>
-		<br />
-       </div>
-   </div>
+                        <div class="content">
+                            <div id="playlist">Searching for playlist files...</div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
-				</div>
-				</div>
-            </div>
-
-
-        </div>
-
-    </body>
+</body>
 </html>
 
 
 <script type="text/javascript">
-$(document).ready(function() {
-$.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
-setInterval(function() {
-$('#now-playing').load('nowplaying.php');
-$('#queue').load('queue.php');
-$('#playlist').load('playlist.php');
-}, 5000);
-});
+    $(document).ready(function () {
+        $.ajaxSetup({cache: false}); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
+        setInterval(function () {
+            $('#now-playing').load('nowplaying.php');
+            $('#queue').load('queue.php');
+            $('#playlist').load('playlist.php');
+        }, 5000);
+    });
 </script>

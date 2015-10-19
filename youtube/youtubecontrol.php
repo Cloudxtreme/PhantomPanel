@@ -7,6 +7,11 @@ if (isset($_POST['message'])) {
 if (isset($_POST['message2']) && isset($_POST['message3'])) {
     $result = curl_put($_POST['message2'] . $_POST['message3']);
 }
+
+if (isset($_GET['skipsong']) && $_GET['skipsong'] == "yes") {
+    $result = curl_put("!skipsong");
+    die();
+}
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>

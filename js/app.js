@@ -5,6 +5,7 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
+usehd = false;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
@@ -21,15 +22,28 @@ function onYouTubeIframeAPIReady() {
         },
         events: {
             'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            'onStateChange': onPlayerStateChange,
+            'onError': onPlayerError
         }
     });
 }
 
 function onPlayerReady(event) {
-    event.target.setPlaybackQuality('auto');
+    if (usehd) {
+        event.target.setPlaybackQuality('hd720');
+    } else {
+        event.target.setPlaybackQuality('auto');
+    }
+
     ready();
 
+}
+
+function onPlayerError(event) {
+    console.log(event);
+    if (event.data > 0) {
+        connection.send("state|0");
+    }
 }
 
 var r = false;
@@ -50,9 +64,13 @@ function onPlayerStateChange(event) {
 
     console.log(event);
     connection.send("state|" + event.data);
-if (event.data == YT.PlayerState.BUFFERING) {
-    event.target.setPlaybackQuality('auto');
-}
+    if (event.data == YT.PlayerState.BUFFERING) {
+        if (usehd) {
+            event.target.setPlaybackQuality('hd720');
+        } else {
+            event.target.setPlaybackQuality('auto');
+        }
+    }
 }
 
 var url = window.location.host.split(":");
@@ -106,14 +124,25 @@ connection.onmessage = function (e) {
 
 function handleNext(d) {
     i++;
-    if (vids[i] === null) i = 0;
-    player.cueVideoById(vids[i], 0, "auto");
+    if (vids[i] === null)
+        i = 0;
+
+    if (usehd) {
+        player.cueVideoById(vids[i], 0, "hd720");
+    } else {
+        player.cueVideoById(vids[i], 0, "auto");
+    }
 }
 
 function handlePrevious(d) {
     i--;
-    if (vids[i] === null) i = vids.length - 1;
-    player.cueVideoById(vids[i], 0, "auto");
+    if (vids[i] === null)
+        i = vids.length - 1;
+    if (usehd) {
+        player.cueVideoById(vids[i], 0, "hd720");
+    } else {
+        player.cueVideoById(vids[i], 0, "auto");
+    }
 }
 
 function handlePlay(d) {
@@ -137,7 +166,11 @@ function handleReload(d) {
 }
 
 function handleCue(d) {
-    player.cueVideoById(d[1], 0, "auto");
+    if (usehd) {
+        player.cueVideoById(d[1], 0, "hd720");
+    } else {
+        player.cueVideoById(d[1], 0, "auto");
+    }
 }
 
 function handleEval(d) {
