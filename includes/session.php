@@ -100,6 +100,10 @@ if ($domain == "localhost") {
     $domain = "127.0.0.1";
 }
 
+if (substr_count($domain, ".") < 2) {
+    $domain = ".$domain";
+}
+
 if ($_SERVER['HTTP_HOST'] == "localhost") {
     header("Location: " . str_replace("localhost", "127.0.0.1", full_url($_SERVER)));
     die();
