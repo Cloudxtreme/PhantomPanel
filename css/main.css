@@ -296,8 +296,8 @@ form.installform input[type="text"], form.installform input[type="password"] {
     width: 50%;
     min-width: 400px;
     text-align: center;
-    color: #EEEE00;
-    border: 1px #EEEE00 dashed;
+    color: #EE7700;
+    border: 1px #EE7700 dashed;
     margin-left: auto;
     margin-right: auto;
     background: url("../images/silk/error.png") no-repeat 2px center;
