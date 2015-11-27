@@ -234,6 +234,7 @@ function echopost() {
                             ?>
                             <h6>Bot Settings</h6>
                             <?php
+                            $users = array();
                             for ($i = 0; $i < intval($_POST['count']); $i++) {
                                 if (empty($_POST['username' . $i]) || empty($_POST['password' . $i])) {
                                     continue;
